@@ -9,6 +9,7 @@ module.exports = {
         secondary: "#FFEAA6",
         button: "#FFD95A",
         black: "#000000",
+        grey: "#ABABAB"
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
