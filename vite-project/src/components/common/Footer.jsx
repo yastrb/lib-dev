@@ -8,7 +8,7 @@ import styles from "../../style"
 const Footer = () => {
   return (
     <footer className="py-8">
-      <div className={` ${styles.footerLinkConrainer}`}>
+      <div className={` ${styles.footerTop}`}>
         <img src={logo} alt="logo-book" />
         <ul className={`${styles.footerList} ${styles.footerContacts}`}>
           {contactData.map(el => (
