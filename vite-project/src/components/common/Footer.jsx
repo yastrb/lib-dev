@@ -8,9 +8,9 @@ import styles from "../../style"
 const Footer = () => {
   return (
     <footer className="py-8">
-      <div className={`${styles.paddingX} ${styles.flexStart} ${styles.footerLinkConrainer}`}>
+      <div className={` ${styles.footerLinkConrainer}`}>
         <img src={logo} alt="logo-book" />
-        <ul className={styles.footerList}>
+        <ul className={`${styles.footerList} ${styles.footerContacts}`}>
           {contactData.map(el => (
             <li key={el.id}>
             <Typography
@@ -22,8 +22,9 @@ const Footer = () => {
           </li>
           ))}
         </ul>
+        <div className={`${styles.footerColumns}`}>
         {footerData.map(({id, links}) => (
-           <ul key={id} className={styles.footerList}>
+           <ul key={id} className={`${styles.footerList}`}>
             {
               links.map(link => (
                 <li key={link}>
@@ -36,6 +37,7 @@ const Footer = () => {
            </ul>
         ))
         }
+        </div>
         <ul className={styles.footerSocialList}>
           {
             socialData.map(el => (
@@ -48,7 +50,8 @@ const Footer = () => {
           }
         </ul>
       </div>
-        <div className={`${styles.flexJustifyBetween} ${styles.border}  pt-8`}>
+      <hr className={`${styles.borderFooter}`}/>
+        <div className={`${styles.footerBottom}`}>
           <Typography className="text-center font-normal">
              &copy; BIBLIOTEKA 2024. Усі права захищено
           </Typography>

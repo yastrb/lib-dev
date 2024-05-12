@@ -40,10 +40,10 @@ const App = () => (
         </div>
 
         {/* footer start */}
-        <div className={`  ${styles.footerHeader} shrink-0`}>
-          {/* <div className={`${styles.boxWidth}`}> */}
+        <div className={`${styles.paddingX} ${styles.flexStart}  ${styles.footerHeader} static shrink-0`}>
+          <div className={`${styles.boxWidth}`}>
             < Footer />
-          {/* </div> */}
+          </div>
         </div>
         {/* footer end */}
       </div>
