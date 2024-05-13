@@ -7,11 +7,11 @@ import facebook from "../assets/icons/facebook.svg"
 export const footerData = [
     {
         id: "1",
-        links: ["Каталог", "Про нас"]
+        links: [{id:"a", text:"Каталог", link:"/catalog"}, {id:"b", text: "Про нас", link: "/about"}]
     },
     {
         id: "2",
-        links:[ "Топ книг", "Акції"]
+        links:[ {id:"c", text:"Топ книг", link:"/top-books"}, {id:"d", text:"Акції", link:"/sales"}]
     },
 
 ]

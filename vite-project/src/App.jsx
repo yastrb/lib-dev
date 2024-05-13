@@ -1,55 +1,29 @@
 import React from "react"
-import { BrowserRouter } from "react-router-dom"
-import styles from "./style"
-import Header from './components/common/Header';
-import Hero from "./components/hero/Hero";
-import New from "./components/new/New";
-import Promotion from './components/promotion/Promotion';
-import Bestsellers from "./components/bestsellers/Bestsellers";
-import Footer from "./components/common/Footer";
+import { BrowserRouter as Router, useRoutes  } from "react-router-dom"
+import Home from "./pages/home/home"
+import AboutUs from "./pages/aboutUs/aboutUs"
+import Catalog from "./pages/catalog/catalog"
+import TopBooks from "./pages/topBooks/topBooks"
+import Sales from "./pages/sales/sales"
 
 
 
-const App = () => (
-  <>
-    <BrowserRouter>
-      <div className=" mx-auto min-h-[100vh] flex flex-col">
+const AppWrapper = () => {
+ let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/about", element: <AboutUs /> },
+    { path: "/catalog", element: <Catalog /> },
+    { path: "/top-books", element: <TopBooks /> },
+    { path: "/sales", element: <Sales /> },
+  ])
+  return routes
+}
 
-        {/* header start */}
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Header />
-          </div>
-        </div>
-        {/* header end */}
-
-        {/* hero */}
-        <div className={`${styles.paddingX} ${styles.flexStart}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Hero />
-          </div>
-        </div>
-
-        {/* main */}
-        <div className={`${styles.paddingX} ${styles.flexStart} flex grow`} >
-          <div className={`${styles.boxWidth}`}>
-            <New />
-            <Promotion />
-            <Bestsellers />
-          </div>
-        </div>
-
-        {/* footer start */}
-        <div className={`${styles.paddingX} ${styles.flexStart}  ${styles.footerHeader} static shrink-0`}>
-          <div className={`${styles.boxWidth}`}>
-            < Footer />
-          </div>
-        </div>
-        {/* footer end */}
-      </div>
-    </BrowserRouter>
-  </>
-)
+const App = () => {
+  return <Router>
+      <AppWrapper/>
+  </Router>
+}
 
 
 export default App

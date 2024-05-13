@@ -27,9 +27,9 @@ const Footer = () => {
            <ul key={id} className={`${styles.footerList}`}>
             {
               links.map(link => (
-                <li key={link}>
-                  <Typography color="black" className={styles.footerLink}>
-                    {link}
+                <li key={link.id}>
+                  <Typography as="a" color="black" href={link.link} className={styles.footerLink}>
+                    {link.text}
                   </Typography>
                 </li>
               ))
