@@ -12,7 +12,7 @@ import Footer from "./components/common/Footer";
 const App = () => (
   <>
     <BrowserRouter>
-      <div className=" mx-auto min-h-[100vh] flex flex-col">
+      <div className=" mx-auto min-h-[100vh] flex flex-col text-black">
 
         {/* header start */}
         <div className={`${styles.flexCenter} `}>
