@@ -15,7 +15,7 @@ const App = () => (
       <div className=" mx-auto min-h-[100vh] flex flex-col">
 
         {/* header start */}
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+        <div className={`${styles.flexCenter} pt-[44px] `}>
           <div className={`${styles.boxWidth}`}>
             <Header />
           </div>
