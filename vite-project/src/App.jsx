@@ -21,8 +21,8 @@ const AppWrapper = () => {
 
 const App = () => {
   return <Router>
-      <AppWrapper/>
-  </Router>
+          <AppWrapper/>
+       </Router>
 }
 
 
