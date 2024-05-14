@@ -6,7 +6,7 @@
     subtitleMedium: "font-montserrat font-medium text-lg text-black",
 
     paddingX: "lg:px-[120px] md:px-12 px-3  ",
-    paddingY: "",
+    paddingY: "lg:py-[60px] md:py-10 py-5",
 
     marginX: "",
     marginY: "",
