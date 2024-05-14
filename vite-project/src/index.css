@@ -11,4 +11,20 @@
 }
 
 
+.slick-arrow.slick-prev::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 24px;
+  background-image: url(../src/assets/left.svg);
+  background-size: cover;
+}
 
+.slick-arrow.slick-next::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 24px;
+  background-image: url(../src/assets/right.svg);
+  background-size: cover;
+}

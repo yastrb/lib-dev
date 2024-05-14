@@ -20,8 +20,8 @@ const Nav = () => {
             </div>
 
             <div className=' flex justify-between md:hidden'>
-                <div>
-                    <img src={menu} alt="menu" className=' cursor-pointer'/>
+                <div className=' w-12 h-12'>
+                    <img src={menu} alt="menu" className=' cursor-pointer w-12 h-12 object-cover'/>
                 </div>
                 <div className=' flex md:hidden'>
                     <SearchBar />
