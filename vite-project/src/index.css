@@ -19,6 +19,12 @@
   background-image: url(../src/assets/left.svg);
   background-size: cover;
 }
+@media (max-width: 360px) {
+  .slick-next,
+  .slick-prev {
+    display: none !important;
+  }
+}
 
 .slick-arrow.slick-next::before {
   content: "";
@@ -28,3 +34,4 @@
   background-image: url(../src/assets/right.svg);
   background-size: cover;
 }
+
