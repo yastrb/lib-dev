@@ -7,12 +7,13 @@ import New from "./components/new/New";
 import Promotion from './components/promotion/Promotion';
 import Bestsellers from "./components/bestsellers/Bestsellers";
 import Footer from "./components/common/Footer";
+import AboutUs from "./components/hero/AboutUs";
 
 
 const App = () => (
   <>
     <BrowserRouter>
-      <div className=" mx-auto min-h-[100vh] flex flex-col text-black">
+      <div className=" mx-auto min-h-[100vh] flex flex-col text-black text-xl">
 
         {/* header start */}
         <div className={`${styles.flexCenter} `}>
@@ -26,6 +27,8 @@ const App = () => (
             <Hero />
           </div>
         </div>
+        <AboutUs/>
+        {/* hero end */}
 
         {/* main */}
         <div className={`${styles.paddingX} ${styles.flexStart} flex grow`} >

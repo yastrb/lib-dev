@@ -7,7 +7,7 @@ import SearchBar from './SearchBar.jsx';
 const Nav = () => {
     return (
         <>
-            <div className=' hidden md:flex md:justify-between'>
+            <div className=' hidden md:flex md:justify-between heading'>
 
                 <nav className=' flex gap-3' >
                     {navLinks.map(link => (
