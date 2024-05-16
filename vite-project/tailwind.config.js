@@ -18,8 +18,9 @@ module.exports =withMT( {
     },
     screens: {
       md: "768px",
-      lg: "1280px",
-      xl: "1440px",
+      lg: "1024px",
+      xl: "1280px",
+      xxl: "1440px",
     },
   },
   plugins: [],

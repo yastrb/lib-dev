@@ -10,7 +10,6 @@
   scroll-behavior: smooth;
 }
 
-
 .slick-arrow.slick-prev::before {
   content: "";
   display: inline-block;
@@ -18,12 +17,6 @@
   height: 24px;
   background-image: url(../src/assets/left.svg);
   background-size: cover;
-}
-@media (max-width: 360px) {
-  .slick-next,
-  .slick-prev {
-    display: none !important;
-  }
 }
 
 .slick-arrow.slick-next::before {
