@@ -8,8 +8,8 @@ module.exports =withMT( {
         main: "#FFF7D4",
         secondary: "#FFEAA6",
         button: "#FFD95A",
-        black: "#121416",
-        grey: "#ABABAB",
+        black: "#000000",
+        grey: "#ABABAB"
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
