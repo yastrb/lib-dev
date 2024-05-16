@@ -3,7 +3,7 @@ import styles from '../../style'
 import bgImage from "../../assets/bgImage.jpg"
 import { textContent } from '../../constants'
 
-const AboutUs = () => (
+const AboutUsText = () => (
     <div className='relative w-full h-[235px] md:h-[262px] lg:h-[348px]'>
         <img src={bgImage} alt="bg-image" className=' w-full h-full object-cover' />
         <div className='absolute inset-0 flex items-center justify-center'>
@@ -12,4 +12,4 @@ const AboutUs = () => (
     </div>
 )
 
-export default AboutUs
+export default AboutUsText
