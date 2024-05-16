@@ -20,17 +20,20 @@ export const contactData = [
     {
       id: "1",
       icon: mail,
-      text: "biblioteka.gmail.com"
+      text: "biblioteka.gmail.com",
+      link: "mailto:biblioteka@gmail.com"
     },
     {
         id: "2",
         icon: phone,
-        text: "+380 053 088 3635"
+        text: "+380 053 088 3635",
+        link: "tel:+"
       },
       {
         id: "3",
         icon: address,
-        text: "м. Київ, вул.Шевченка, 22"
+        text: "м. Київ, вул.Шевченка, 22",
+        link: ""
       }
 ]
 

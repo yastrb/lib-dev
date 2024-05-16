@@ -14,7 +14,7 @@ const Footer = () => {
           {contactData.map(el => (
             <li key={el.id}>
             <Typography
-              color="black"
+               as="a" color="black" href={el.link}
               className={`flex gap-1 ${styles.footerLink}`}
             >
               <img src={el.icon}/>{" "}{el.text}
