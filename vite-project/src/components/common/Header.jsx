@@ -21,7 +21,11 @@ const Header = () => {
           </div>
 
           <div className=' flex'>
-            <SelectLanguage />
+
+            <div className=" hidden md:flex">
+              <SelectLanguage />
+            </div>
+
             <div className="flex">
               <img src={cart} alt="cart" />
               <img src={user} alt="user" />

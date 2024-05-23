@@ -27,7 +27,9 @@ const Layout = () => {
       <div className={`${styles.flexCenter} `}>
         <Header />
       </div>
+      
         <AppWrapper />
+        
       <div className={`${styles.paddingX} ${styles.flexStart}  ${styles.footerHeader} static shrink-0`}>
         <div className={`${styles.boxWidth}`}>
           < Footer />

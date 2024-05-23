@@ -5,7 +5,7 @@ import arrow from "../../assets/arrow.svg"
 
 const SelectLanguage = () => {
   return (
-    <div className=' hidden md:flex '>
+    <div className='flex flex-row'>
         <img src={ua} alt="українська" />
         <img src={arrow} alt="" />
     </div>
