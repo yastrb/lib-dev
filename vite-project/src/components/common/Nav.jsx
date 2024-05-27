@@ -16,7 +16,7 @@ const Nav = () => {
 
     return (
         <>
-            <div className={`${styles.boxWidth}${styles.paddingX} py-5 md:mx-auto hidden md:flex md:justify-between heading`}>
+            <div className={`${styles.boxWidth} ${styles.paddingX} py-5 md:mx-auto hidden md:flex md:justify-between heading`}>
 
                 {/* navlinks desktop */}
                 <nav className='flex gap-3'>
@@ -29,7 +29,7 @@ const Nav = () => {
                 </span>
             </div>
 
-            <div className='flex justify-between md:hidden'>
+            <div className={`${styles.paddingX} py-2 flex justify-between md:hidden`}>
 
                     {/*open menu btn on mobile devices*/}
                 <div className='w-12 h-12'>
