@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className=' w-full '>
       <div className='bg-main pt-[44px]'>
-        <div className={`${styles.paddingX} flex justify-between  py-5`}>
+        <div className={`${styles.paddingX} ${styles.boxWidth} mx-auto flex justify-between  py-5`}>
 
           <Link to='/'>
             <img src={logo} alt="BookShop" className=' w-[180px] h-[80px]' />
@@ -40,9 +40,7 @@ const Header = () => {
       </div>
 
       <div className="bg-secondary">
-        <div className={`${styles.paddingX} py-5`}>
           <Nav />
-        </div>
       </div>
       
     </header>

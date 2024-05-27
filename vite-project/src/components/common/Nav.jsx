@@ -4,6 +4,7 @@ import { navLinks } from "../../constants/index.js";
 import menu from "../../assets/menu.svg";
 import SearchBar from './SearchBar.jsx';
 import close from '../../assets/close.svg';
+import styles from '../../style.js';
 import SelectLanguage from './SelectLanguage.jsx';
 
 const Nav = () => {
@@ -15,7 +16,7 @@ const Nav = () => {
 
     return (
         <>
-            <div className='hidden md:flex md:justify-between heading'>
+            <div className={`${styles.boxWidth}${styles.paddingX} py-5 md:mx-auto hidden md:flex md:justify-between heading`}>
 
                 {/* navlinks desktop */}
                 <nav className='flex gap-3'>
