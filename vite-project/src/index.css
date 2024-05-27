@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@0,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
@@ -10,3 +10,35 @@
   scroll-behavior: smooth;
 }
 
+.slick-arrow.slick-prev::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 24px;
+  background-image: url(../src/assets/left.svg);
+  background-size: cover;
+}
+
+.slick-arrow.slick-next::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 24px;
+  background-image: url(../src/assets/right.svg);
+  background-size: cover;
+}
+
+.sidebar {
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(-300px);
+    transform: translateX(-300px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}

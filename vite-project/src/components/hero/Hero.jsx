@@ -1,8 +1,11 @@
 ﻿import React from 'react'
+import Carousel from './Carousel'
 
 const Hero = () => {
   return (
-    <div>Hero</div>
+    <section className='hero'>
+          <Carousel/>
+    </section>
   )
 }
 
