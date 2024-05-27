@@ -7,6 +7,7 @@ import user from "../../assets/user.svg"
 import SearchBar from './SearchBar';
 import SelectLanguage from './SelectLanguage';
 import Nav from './Nav';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -14,7 +15,11 @@ const Header = () => {
     <header className=' w-full '>
       <div className='bg-main pt-[44px]'>
         <div className={`${styles.paddingX} flex justify-between  py-5`}>
-          <img src={logo} alt="BookShop" className=' w-[180px] h-[80px]' />
+
+          <Link to='/'>
+            <img src={logo} alt="BookShop" className=' w-[180px] h-[80px]' />
+          </Link>
+
 
           <div className=' hidden md:flex'>
             <SearchBar />
@@ -33,11 +38,13 @@ const Header = () => {
           </div>
         </div>
       </div>
+
       <div className="bg-secondary">
         <div className={`${styles.paddingX} py-5`}>
           <Nav />
         </div>
       </div>
+      
     </header>
   )
 }

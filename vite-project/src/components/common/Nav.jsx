@@ -16,7 +16,8 @@ const Nav = () => {
     return (
         <>
             <div className='hidden md:flex md:justify-between heading'>
-                {/* navlinks  */}
+
+                {/* navlinks desktop */}
                 <nav className='flex gap-3'>
                     {navLinks.map(link => (
                         <NavLink key={link.id} to={link.path}>{link.display}</NavLink>
@@ -29,7 +30,7 @@ const Nav = () => {
 
             <div className='flex justify-between md:hidden'>
 
-                    {/*open menu btn */}
+                    {/*open menu btn on mobile devices*/}
                 <div className='w-12 h-12'>
                     <img 
                         onClick={toggleMenu}
@@ -51,7 +52,7 @@ const Nav = () => {
             )}
 
             {/* mobile menu */}
-            <div className={`${menuOpen ? "absolute" : "hidden"} md:hidden absolute z-50 top-0 left-0 bottom-0 w-[300px] bg-secondary rounded-r-2xl pt-2 pr-2 sidebar`}>
+            <div className={`${menuOpen ? "absolute" : "hidden"} md:hidden absolute z-50 top-0 left-0 bottom-0 w-[300px] bg-secondary rounded-r-2xl pt-2 pr-2 sidebar drop-shadow-md`}>
                 <div className='flex justify-end mb-6 cursor-pointer'>
                     <img 
                         onClick={toggleMenu}
