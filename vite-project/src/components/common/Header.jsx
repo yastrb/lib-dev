@@ -21,28 +21,32 @@ const Header = () => {
           </Link>
 
 
-          <div className=' hidden md:flex'>
+          <div className=' hidden md:flex md:items-center md:justify-center'>
             <SearchBar />
           </div>
 
-          <div className=' flex'>
+          <div className=' flex md:items-center md:justify-center'>
 
-            <div className=" hidden md:flex">
+            <div className=" hidden md:flex  h-12">
               <SelectLanguage />
             </div>
 
             <div className="flex items-center justify-center">
-              <div><img src={cart} alt="cart" /></div>
-              <div><img src={user} alt="user" /></div>
+              <div>
+                <img src={cart} alt="cart" />
+              </div>
+              <div
+              ><img src={user} alt="user" />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="bg-secondary">
-          <Nav />
+        <Nav />
       </div>
-      
+
     </header>
   )
 }
