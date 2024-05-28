@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClientProvider } from 'react-query';
-import queryClient from './queryClient'; // імпортуємо створений QueryClient
+import queryClient from './queryClient';
 import App from './App.jsx';
 import './index.css';
 
