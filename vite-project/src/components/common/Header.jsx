@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className=' w-full '>
       <div className='bg-main pt-[44px]'>
-        <div className={`${styles.paddingX} ${styles.boxWidth} mx-auto flex justify-between  py-5`}>
+        <div className={`${styles.paddingX} ${styles.boxWidth} mx-auto justify-between flex py-5`}>
 
           <Link to='/'>
             <img src={logo} alt="BookShop" className=' w-[180px] h-[80px]' />
@@ -31,9 +31,9 @@ const Header = () => {
               <SelectLanguage />
             </div>
 
-            <div className="flex">
-              <img src={cart} alt="cart" />
-              <img src={user} alt="user" />
+            <div className="flex items-center justify-center">
+              <div><img src={cart} alt="cart" /></div>
+              <div><img src={user} alt="user" /></div>
             </div>
           </div>
         </div>
