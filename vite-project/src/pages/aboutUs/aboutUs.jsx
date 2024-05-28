@@ -1,9 +1,9 @@
-import BookList from "."
+// import BookList from "."
 
 const AboutUs = () => {
     return <div>
         About Us page
-        <BookList/>
+{/*         <BookList/> */}
     </div>
 }
 
