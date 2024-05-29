@@ -1,25 +1,30 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('https://backend-git-dev-bibliotekas-projects.vercel.app/');
+        const response = await axios.get('/api/');
         setBooks(response.data.newBooks);
-      } catch (error) {
-        console.error('Error fetching books:', error);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
       }
     };
 
     fetchBooks();
   }, []);
 
-  useEffect(() => {
-    console.log(books);
-  }, [books]);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching books</div>;
+
+  console.log(books);
 
   return null;
 };
