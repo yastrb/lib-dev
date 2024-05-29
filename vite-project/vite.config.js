@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['axios'],
+      external: ['axios'], // Зовнішній модуль
     },
   },
   server: {
@@ -18,6 +18,7 @@ export default defineConfig({
     },
   },
 })
+
 
 
 
