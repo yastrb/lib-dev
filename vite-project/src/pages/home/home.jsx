@@ -26,9 +26,11 @@ const Home = () => {
                 <Promotion />
                 <Bestsellers />
                 <BookList/>
+                <BookList/>
             </div>
         </div>
     </div>
 }
 
 export default Home;
+
