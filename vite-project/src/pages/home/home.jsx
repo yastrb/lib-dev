@@ -6,8 +6,6 @@ import Bestsellers from "../../components/bestsellers/Bestsellers";
 import AboutUsText from "../../components/hero/AboutUs";
 import BookList from "./bookList";
 
-
-
 const Home = () => {
     return <div>
         
