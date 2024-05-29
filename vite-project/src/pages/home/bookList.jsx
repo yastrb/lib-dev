@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '/node_modules/axios';
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
