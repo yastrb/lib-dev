@@ -1,4 +1,4 @@
-import BookList from "."
+import BookList from "./books"
 
 const AboutUs = () => {
     return <div>
