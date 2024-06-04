@@ -26,7 +26,6 @@ const Home = () => {
                 <Promotion />
                 <Bestsellers />
                 <BookList/>
-                <BookList/>
             </div>
         </div>
     </div>
