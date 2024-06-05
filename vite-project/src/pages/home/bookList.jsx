@@ -8,33 +8,34 @@ const BookList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   axios
-  //     .get('/api/')
-  //     .then(({ data }) => {
-  //       const { newBooks, salesBooks, bestsellerBooks } = data;
-  //       const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks];
-  //       setBooks(combinedBooks);
-  //       setFilteredBooks(combinedBooks);
-  //       setLoading(false);
-  //     })
-  //     .catch(error => {
-  //       setError(error);
-  //       setLoading(false);
-  //     });
-  // }, []);
-  useEffect(()=> {
-    axios.get('/api/')
-    .then(response => {
-      setFilteredBooks(response.data.newBooks)
-      setLoading(false);
-      console.log(response.data.newBooks)
-    })
-    .catch(error=> {
-      setError(error)
-      setLoading(false)
-    });
-  },[]);
+  useEffect(() => {
+    axios
+      .get('/api/')
+      .then(({ data }) => {
+        const { newBooks, salesBooks, bestsellerBooks } = data;
+        const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks];
+        // setBooks(combinedBooks);
+        setFilteredBooks(combinedBooks);
+        setLoading(false);
+        console.log(combinedBooks)
+      })
+      .catch(error => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+  // useEffect(()=> {
+  //   axios.get('/api/')
+  //   .then(response => {
+  //     setFilteredBooks(response.data.newBooks)
+  //     setLoading(false);
+  //     console.log(response.data.newBooks)
+  //   })
+  //   .catch(error=> {
+  //     setError(error)
+  //     setLoading(false)
+  //   });
+  // },[]);
 
   const handleFilter = (event) => {
     const res = filteredBooks.filter(b => b && b.title ? b.title.toLowerCase().includes(event.target.value) : false);
