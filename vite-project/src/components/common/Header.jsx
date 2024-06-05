@@ -1,5 +1,4 @@
-﻿// import React from 'react';
-
+﻿
 import styles from "../../style";
 import logo from "../../assets/logo.svg"
 import cart from "../../assets/cart.svg"
@@ -10,7 +9,10 @@ import Nav from './Nav';
 import { Link } from 'react-router-dom';
 
 
+
 const Header = () => {
+
+ 
   return (
     <header className=' w-full '>
       <div className='bg-main pt-[44px]'>
@@ -20,9 +22,8 @@ const Header = () => {
             <img src={logo} alt="BookShop" className=' w-[180px] h-[80px]' />
           </Link>
 
-
           <div className=' hidden md:flex md:items-center md:justify-center'>
-            <SearchBar />
+            <SearchBar  />
           </div>
 
           <div className=' flex md:items-center md:justify-center'>
