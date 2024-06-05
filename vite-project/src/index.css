@@ -28,9 +28,14 @@
   background-size: cover;
 }
 
+.shadow {
+  box-shadow: 10px -11px 35px -11px rgba(145,145,145,1);
+}
+
 .sidebar {
   animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
 
 @keyframes slide-left {
   0% {
