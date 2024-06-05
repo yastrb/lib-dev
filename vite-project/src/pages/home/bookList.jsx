@@ -24,18 +24,6 @@ const BookList = () => {
         setLoading(false);
       });
   }, []);
-  // useEffect(()=> {
-  //   axios.get('/api/')
-  //   .then(response => {
-  //     setFilteredBooks(response.data.newBooks)
-  //     setLoading(false);
-  //     console.log(response.data.newBooks)
-  //   })
-  //   .catch(error=> {
-  //     setError(error)
-  //     setLoading(false)
-  //   });
-  // },[]);
 
   const handleFilter = (event) => {
     const res = filteredBooks.filter(b => b && b.title ? b.title.toLowerCase().includes(event.target.value) : false);
