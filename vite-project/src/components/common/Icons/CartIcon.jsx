@@ -13,7 +13,12 @@ const CartIcon = () => {
             strokeWidth="2" 
             strokeLinecap="round" 
             strokeLinejoin="round" />
-            <path d="M21.5 34C22.3284 34 23 33.3284 23 32.5C23 31.6716 22.3284 31 21.5 31C20.6716 31 20 31.6716 20 32.5C20 33.3284 20.6716 34 21.5 34Z" fill="black" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M21.5 34C22.3284 34 23 33.3284 23 32.5C23 31.6716 22.3284 31 21.5 31C20.6716 31 20 31.6716 20 32.5C20 33.3284 20.6716 34 21.5 34Z" 
+            fill="black" 
+            stroke="black" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" />
             <path d="M17 16H34L32 27H19L17 16ZM17 16C16.8333 15.3333 16 14 14 14" 
             stroke="black" 
             strokeWidth="2" 

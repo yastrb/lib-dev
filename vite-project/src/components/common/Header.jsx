@@ -5,9 +5,7 @@ import SearchBar from './SearchBar';
 import SelectLanguage from './SelectLanguage';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
-import CartIcon from "./CartIcon";
-import LogInIcon from "./LogInIcon";
-import Modal from '@m'
+import IconGroup from "./Icons/IconGroup";
 
 const Header = () => {
 
@@ -31,8 +29,7 @@ const Header = () => {
             </div>
 
             <div className="flex items-center justify-center">
-              <CartIcon />
-              <LogInIcon/>
+              <IconGroup/>
             </div>
 
           </div>
