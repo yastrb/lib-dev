@@ -13,7 +13,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     axios
-      .get('https://backend-git-dev-bibliotekas-projects.vercel.app')
+      .get('/api/')
       .then(({ data }) => {
         const { newBooks, salesBooks, bestsellerBooks } = data;
         const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks];
