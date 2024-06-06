@@ -4,7 +4,6 @@ import { Modal } from 'react-responsive-modal';
 
 const CartIcon = () => {
     const [open, setOpen] = useState(false);
-
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
     return (
