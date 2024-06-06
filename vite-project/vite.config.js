@@ -8,14 +8,14 @@ export default defineConfig({
       external: ['axios'], 
     },
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://backend-git-dev-bibliotekas-projects.vercel.app',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
-  },
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://backend-git-dev-bibliotekas-projects.vercel.app',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, ''),
+  //     },
+  //   },
+  // },
 })
 
