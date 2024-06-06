@@ -1,12 +1,13 @@
 ﻿
 import styles from "../../style";
 import logo from "../../assets/logo.svg"
-import user from "../../assets/user.svg"
 import SearchBar from './SearchBar';
 import SelectLanguage from './SelectLanguage';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
 import CartIcon from "./CartIcon";
+import LogInIcon from "./LogInIcon";
+import Modal from '@m'
 
 const Header = () => {
 
@@ -30,13 +31,10 @@ const Header = () => {
             </div>
 
             <div className="flex items-center justify-center">
-            
-<CartIcon/>
-
-              <div>
-                <img src={user} alt="user" />
-              </div>
+              <CartIcon />
+              <LogInIcon/>
             </div>
+
           </div>
         </div>
       </div>
