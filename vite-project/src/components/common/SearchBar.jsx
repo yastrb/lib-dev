@@ -2,7 +2,7 @@
 import search from "../../assets/search.svg"
 import clear from "../../assets/xmark.svg"
 import { useEffect } from 'react';
-import axios from 'axios';
+import axios from '/node_modules/axios';
 
 
 
