@@ -5,7 +5,9 @@ import SearchBar from './SearchBar';
 import SelectLanguage from './SelectLanguage';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
-import IconGroup from "./Icons/IconGroup";
+import CartIcon from '../common/Icons/CartIcon';
+import LoginIcon from '../common/Icons/LogInIcon';
+
 
 const Header = () => {
 
@@ -29,7 +31,8 @@ const Header = () => {
             </div>
 
             <div className="flex items-center justify-center">
-              <IconGroup/>
+              <CartIcon/>
+              <LoginIcon/>
             </div>
 
           </div>
