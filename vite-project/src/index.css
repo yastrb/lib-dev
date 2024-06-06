@@ -9,6 +9,16 @@
 * {
   scroll-behavior: smooth;
 }
+svg path {
+  fill:inherit;
+  stroke:inherit;
+  stroke-width:inherit;
+  
+  }
+
+.icon:hover {
+ color:#C07F00;
+}
 
 .slick-arrow.slick-prev::before {
   content: "";

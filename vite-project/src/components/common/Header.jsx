@@ -39,6 +39,7 @@ const Header = () => {
   const handleFilter = (event) => {
     const res = filteredBooks.filter(b => b && b.title ? b.title.toLowerCase().includes(event.target.value) : false);
     setBooks(res);
+    console.log("test")
   };
 
   if (loading) return <div>Завантаження книг...</div>;
@@ -73,7 +74,7 @@ const Header = () => {
 
             <div className="flex items-center justify-center">
               <div>
-                <img src={cart} alt="cart" />
+                <img className="icon" src={cart} alt="cart" />
               </div>
               <div
               ><img src={user} alt="user" />
