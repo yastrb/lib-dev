@@ -7,43 +7,43 @@ import SearchBar from './SearchBar';
 import SelectLanguage from './SelectLanguage';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import { useEffect, useState } from 'react';
+// import axios from 'axios';
 
 
 
 const Header = () => {
 
-  const [books, setBooks] = useState([]);
-  const [filteredBooks, setFilteredBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [books, setBooks] = useState([]);
+  // const [filteredBooks, setFilteredBooks] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get('/api/')
-      .then(({ data }) => {
-        const { newBooks, salesBooks, bestsellerBooks } = data;
-        const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks];
-        // setBooks(combinedBooks);
-        setFilteredBooks(combinedBooks);
-        setLoading(false);
-        console.log(combinedBooks)
-      })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('/api/')
+  //     .then(({ data }) => {
+  //       const { newBooks, salesBooks, bestsellerBooks } = data;
+  //       const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks];
+  //       // setBooks(combinedBooks);
+  //       setFilteredBooks(combinedBooks);
+  //       setLoading(false);
+  //       console.log(combinedBooks)
+  //     })
+  //     .catch(error => {
+  //       setError(error);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
-  const handleFilter = (event) => {
-    const res = filteredBooks.filter(b => b && b.title ? b.title.toLowerCase().includes(event.target.value) : false);
-    setBooks(res);
-    console.log("test")
-  };
+  // const handleFilter = (event) => {
+  //   const res = filteredBooks.filter(b => b && b.title ? b.title.toLowerCase().includes(event.target.value) : false);
+  //   setBooks(res);
+  //   console.log("test")
+  // };
 
-  if (loading) return <div>Завантаження книг...</div>;
-  if (error) return <div>Помилка при завантаженні книг: {error.message}</div>;
+  // if (loading) return <div>Завантаження книг...</div>;
+  // if (error) return <div>Помилка при завантаженні книг: {error.message}</div>;
 
 
   return (
@@ -56,13 +56,14 @@ const Header = () => {
           </Link>
 
           <div className=' hidden md:flex md:flex-col md:items-center md:justify-center relative'>
-            <SearchBar onChange={handleFilter} />
+            {/* <SearchBar onChange={handleFilter} /> */}
+            <SearchBar />
             
-              <ul className=' px-2 absolute top-20 z-50 rounded-md shadow bg-white w-full'>
+              {/* <ul className='list px-2 absolute top-20 z-50 rounded-md shadow bg-white w-full'>
                 {books.map(item => (
                   <li className='my-2' key={item.id}>{item.title}</li>
                 ))}
-              </ul>
+              </ul> */}
         
           </div>
 
