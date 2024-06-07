@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
+    manifest: true,
     rollupOptions: {
       external: ['axios'], 
     },
@@ -14,6 +15,7 @@ export default defineConfig({
         target: 'https://backend-tan-phi.vercel.app',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
       },
     },
   },
