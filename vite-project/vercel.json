@@ -1,9 +1,3 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "https://backend-tan-phi.vercel.app"
-    }
-  ]
+  "version": 2
 }
