@@ -13,7 +13,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     axios
-      .get('https://backend-tan-phi.vercel.app/api')
+      .get('https://cors-anywhere.herokuapp.com/https://backend-tan-phi.vercel.app/api')
       // .get('/api/')
       .then(({ data }) => {
         const { newBooks, salesBooks, bestsellerBooks } = data;
