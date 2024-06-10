@@ -12,9 +12,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://backend-git-dev-bibliotekas-projects.vercel.app',
+        target: 'https://backend-tan-phi.vercel.app/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
       },
     },
   },
