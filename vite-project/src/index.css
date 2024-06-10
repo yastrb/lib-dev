@@ -54,8 +54,6 @@ body.active-modal {
   background: #f1f1f1;
   padding-top: 24px;
   border-radius: 12px;
-  max-width: 600px;
-  min-width: 300px;
   height: 80vh;
 }
 
@@ -70,12 +68,22 @@ body.active-modal {
   background: rgba(36, 123, 160, 0.7);
 }
 
-.heading-with-divider {
+.block-with-divider {
   position: relative;
-  padding-bottom: 24px;
+ padding: 12px;
 }
 
-.heading-with-divider:after {
+.block-with-divider:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px; 
+  background-color: grey; 
+}
+
+.block-with-divider:after {
   content: "";
   position: absolute;
   left: 0;
