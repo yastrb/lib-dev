@@ -1,6 +1,6 @@
 import { useState } from 'react';
-
-
+import close from '../../../assets/close-modal.svg';
+import styles from '../../../style';
 const CartIcon = () => {
     const [modal, setModal] = useState(false);
 
@@ -47,21 +47,19 @@ const CartIcon = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round" />
             </svg>
+
             {modal && (
                 <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
-                        <h2>Hello Modal</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-                            perferendis suscipit officia recusandae, eveniet quaerat assumenda
-                            id fugit, dignissimos maxime non natus placeat illo iusto!
-                            Sapiente dolorum id maiores dolores? Illum pariatur possimus
-                            quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
-                            placeat tempora vitae enim incidunt porro fuga ea.
-                        </p>
+                        <h1 className={`${styles.heading} text-center`}>Кошик</h1>
+                        <div className=' flex justify-between'>
+                            <div>2 шт</div>
+                            <div>2</div>
+                        </div>
+                        
                         <button className="close-modal" onClick={toggleModal}>
-                            CLOSE
+                            <img src={close} alt="" />
                         </button>
                     </div>
                 </div>

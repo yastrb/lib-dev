@@ -1,7 +1,7 @@
 ﻿const styles = {
     boxWidth: " xxl:max-w-[1200px] xl:max-w-[1040px] lg:max-w-[1004px] md:max-w-[704px] w-full",
 
-    heading: "font-montserrat text-xl text-black",
+    heading: "font-montserrat text-xl md:text-[32px] text-black font-semibold uppercase",
     subtitleMain: "font-montserrat font-semibold text-[32px] text-black",
     subtitleMedium: "font-montserrat font-medium text-lg text-black",
 
