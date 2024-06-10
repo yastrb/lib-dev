@@ -4,18 +4,19 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
+    manifest: true,
     rollupOptions: {
       external: ['axios'], 
     },
   },
-  // server: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'https://backend-git-dev-bibliotekas-projects.vercel.app',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/api/, ''),
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://backend-git-dev-bibliotekas-projects.vercel.app',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })
 
