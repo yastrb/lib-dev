@@ -14,7 +14,7 @@ const SearchBar = () => {
   useEffect(() => {
     axios
       // .get('/api/')
-      .get('/api/')
+      .get('https://cors-anywhere.herokuapp.com/https://backend-tan-phi.vercel.app/api')
       .then(({ data }) => {
         const { newBooks, salesBooks, bestsellerBooks } = data;
         const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks];
