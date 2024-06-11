@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import close from '../../../assets/close-modal.svg';
-import styles from '../../../style';
 import { useSelector } from 'react-redux';
+import CartModal from '../modals/CartModal';
 const CartIcon = () => {
     const amount = useSelector((store)=>store.cart.amount)
     const [modal, setModal] = useState(false);
@@ -53,7 +52,7 @@ const CartIcon = () => {
                 <p className='mb-0 text-xs'>{amount}</p>
             </div>
 
-            {modal && (
+            {/* {modal && (
                 <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content w-[300px] md:w-[600px] xl:w-[996px] ">
@@ -68,7 +67,8 @@ const CartIcon = () => {
                         </button>
                     </div>
                 </div>
-            )}
+            )} */}
+            {modal && <CartModal toggleModal={toggleModal}/>}
 
         </div>
     )
