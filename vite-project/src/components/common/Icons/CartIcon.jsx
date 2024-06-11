@@ -47,6 +47,9 @@ const CartIcon = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round" />
             </svg>
+            <div className=' absolute top-[-o.6rem] bg-orange'>
+                <p>0</p>
+            </div>
 
             {modal && (
                 <div className="modal">

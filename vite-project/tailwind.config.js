@@ -11,6 +11,7 @@ module.exports = withMT( {
         black: "#000000",
         grey: "#ABABAB",
         hover: "#C07F00",
+        orange:"#FFA259",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
