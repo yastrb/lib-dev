@@ -24,16 +24,41 @@ const CartModal = ({ toggleModal }) => {
                     {cartItems.length > 0 ? (
                         <>
                             <div className={`${styles.menu} cart-heading flex justify-between block-with-divider text-grey`}>
-                                <div>{amount}</div>
+                                <div>{amount} шт</div>
                                 <button onClick={handleClearCart}>Видалити все</button>
                             </div>
-                            {cartItems.map((item) => (
-                                <div key={item._id} className="cart-item">
-                                    <h2>{item.title}</h2>
-                                    <p>Автор: {item.author_id.map(author => `${author.name} ${author.surname}`).join(', ')}</p>
-                                    <p>Ціна: ${item.price_id.discounted_price || item.price_id.original_price}</p>
-                                </div>
-                            ))}
+
+                            <div className='mt-8 mx-6 flex flex-col gap-6'>
+                                {cartItems.map((item) => (
+
+                                    <div key={item._id} className="cart-item flex justify-between">
+
+                                        <div className=' flex'>
+                                            <img className='hidden' src={item.coverImageLink} alt={item.title} />
+                                            <div>
+                                                <h2>{item.title}</h2>
+                                                <p>Автор: {item.author_id.map(author => `${author.name} ${author.surname}`).join(', ')}</p>
+                                                <p>Код товару {item.isbn}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className=' flex flex-col'>
+                                            <button>delete</button>
+                                            <div className=' flex justify-between'>
+                                                <div className=' flex'>
+                                                    <button>-</button>
+                                                    <div>{ }</div>
+                                                    <button>+</button>
+                                                </div>
+                                                <p>{item.price_id.discounted_price || item.price_id.original_price} грн</p>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                ))}
+                            </div>
+
                         </>
                     ) : (
 
