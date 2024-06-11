@@ -51,23 +51,6 @@ const CartIcon = () => {
             <div className=' absolute w-5 h-5 top-1 right-1 flex items-center justify-center  bg-orange rounded-full'>
                 <p className='mb-0 text-xs'>{amount}</p>
             </div>
-
-            {/* {modal && (
-                <div className="modal">
-                    <div onClick={toggleModal} className="overlay"></div>
-                    <div className="modal-content w-[300px] md:w-[600px] xl:w-[996px] ">
-                        <h1 className={`${styles.heading} text-center mb-6`}>Кошик</h1>
-                        <div className={`${styles.menu} flex justify-between block-with-divider text-grey`}>
-                            <div>2 шт</div>
-                            <button>Видалити все</button>
-                        </div>
-                        
-                        <button className="close-modal" onClick={toggleModal}>
-                            <img src={close} alt="" />
-                        </button>
-                    </div>
-                </div>
-            )} */}
             {modal && <CartModal toggleModal={toggleModal}/>}
 
         </div>
