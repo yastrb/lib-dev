@@ -3,7 +3,7 @@
 
     heading: "font-montserrat text-xl md:text-[32px] text-black font-semibold uppercase",
     menu: "font-montserrat text-base md:text-xl",
-    subtitleMain: "font-montserrat font-semibold text-[32px] text-black",
+    subtitleMain: "font-montserrat font-semibold text-2xl lg:text-[32px] text-black",
     subtitleMedium: "font-montserrat font-medium text-lg text-black",
 
     paddingX: "lg:px-8 md:px-4 px-3  ",

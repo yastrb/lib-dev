@@ -36,7 +36,8 @@ const CartModal = ({ toggleModal }) => {
                             ))}
                         </>
                     ) : (
-                        <p>Кошик порожній</p>
+
+                        <p className={`${styles.subtitleMain} cart-info text-grey`}>Кошик поки що порожній :)</p>
                     )}
                 </div>
 

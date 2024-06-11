@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import CartModal from '../modals/CartModal';
 const CartIcon = () => {
-    const amount = useSelector((store)=>store.cart.amount)
+    const amount = useSelector((store) => store.cart.amount)
+    const cartItems = useSelector((state) => state.cart.cartItems);
     const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
@@ -17,6 +18,7 @@ const CartIcon = () => {
 
     return (
         <div className=' relative'>
+            
             <svg
                 onClick={toggleModal}
                 className="icon cursor-pointer"
@@ -48,10 +50,14 @@ const CartIcon = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round" />
             </svg>
-            <div className=' absolute w-5 h-5 top-1 right-1 flex items-center justify-center  bg-orange rounded-full'>
-                <p className='mb-0 text-xs'>{amount}</p>
-            </div>
-            {modal && <CartModal toggleModal={toggleModal}/>}
+
+            {cartItems.length > 0 && (
+                <div className=' absolute w-5 h-5 top-1 right-1 flex items-center justify-center  bg-orange rounded-full'>
+                    <p className='mb-0 text-xs'>{amount}</p>
+                </div>
+            )}
+
+            {modal && <CartModal toggleModal={toggleModal} />}
 
         </div>
     )
