@@ -13,6 +13,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     axios
+      .get('https://cors-anywhere.herokuapp.com/https://backend-tan-phi.vercel.app/api')
       // .get('/api/')
       .get('https://backend-tan-phi.vercel.app/api')
       .then(({ data }) => {
