@@ -9,7 +9,8 @@ module.exports = withMT( {
         secondary: "#FFEAA6",
         button: "#FFD95A",
         black: "#000000",
-        grey: "#ABABAB"
+        grey: "#ABABAB",
+        hover: "#C07F00",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],

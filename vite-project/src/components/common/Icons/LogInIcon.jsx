@@ -1,15 +1,8 @@
-import { useState } from 'react';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-
 const LogInIcon = () => {
-    const [open, setOpen] = useState(false);
-    const onOpenModal = () => setOpen(true);
-    const onCloseModal = () => setOpen(false);
+
     return (
         <>
             <svg
-                onClick={onOpenModal}
                 className=" icon cursor-pointer"
                 width="48"
                 height="48"
@@ -27,9 +20,7 @@ const LogInIcon = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round" />
             </svg>
-            <Modal open={open} onClose={onCloseModal} center>
-                <h2>Зареєструватись</h2>
-            </Modal>
+     
         </>
     )
 }

@@ -12,6 +12,4 @@ export const booksDataApi = createApi({
  }),
 });
 
-export const {
-  useGetNewBestsellersSalesBooks,
-} = booksDataApi;
+export const useGetNewBestsellersSalesBooks = booksDataApi.endpoints.getNewBestsellersSalesBooks.useQuery;
