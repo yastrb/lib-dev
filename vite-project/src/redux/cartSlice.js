@@ -14,14 +14,15 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = action.payload;
-      state.items.push(item);
+      state.cartItems.push(item);
     },
     removeFromCart: (state, action) => {
       const itemId = action.payload;
-      state.items = state.items.filter(item => item._id !== itemId);
+      state.cartItems = state.cartItems.filter(item => item._id !== itemId);
     },
   },
 });
-// console.log(cartSlice);
 export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
+
+
