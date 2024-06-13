@@ -21,7 +21,8 @@ const CartModal = ({ toggleModal }) => {
             <div className="modal-content w-[300px] md:w-[600px] xl:w-[996px]">
                 <h1 className={`${styles.heading} text-center mb-6`}>Кошик</h1>
 
-                <div className="cart-items">
+                    {/* cart items container */}
+                <div className="cart-items mb-6">
                     {cartItems.length > 0 ? (
                         <>
                             <div className={`${styles.menu} cart-heading flex justify-between block-with-divider text-grey`}>
@@ -29,7 +30,7 @@ const CartModal = ({ toggleModal }) => {
                                 <button onClick={handleClearCart}>Видалити все</button>
                             </div>
 
-                            <div className='mt-8 mx-6 flex flex-col gap-6'>
+                            <div className=' overflow-y-auto max-h-[50vh] mt-8 mx-6 flex flex-col gap-6'>
                                 {cartItems.map((item) => {
                                     return <CartItem key={item._id} {...item}/>
                                 })}
@@ -42,6 +43,19 @@ const CartModal = ({ toggleModal }) => {
                     )}
                 </div>
 
+                    {/* total */}
+                <div className=' flex justify-between px-6'>
+                    <p className={`${styles.subtitleSemibold}`}>Разом</p>
+                    <div className={`${styles.subtitleSemibold}`}>{12} грн</div>
+                </div>
+
+                    {/* cart butions */}
+                    <div className=' flex justify-between px-6'>
+                        <button className={`${styles.button}`}>Продовжити покупки</button>
+                        <button className={`${styles.button}`}>До сплати</button>
+                    </div>
+
+                    {/* close btn */}
                 <button className="close-modal" onClick={toggleModal}>
                     <img src={close} alt="Закрити" />
                 </button>
