@@ -1,11 +1,11 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cartItems: [],
-  amount:0,
-  total:0,
+  amount: 0,
+  total: 0,
   isLoading: true,
+  qty: 1,
 };
 
 const cartSlice = createSlice({
@@ -18,25 +18,39 @@ const cartSlice = createSlice({
     },
     addToCart: (state, action) => {
       const item = action.payload;
-      state.cartItems.push(item);
-      state.amount += 1;
+      const existingItem = state.cartItems.find(cartItem => cartItem._id === item._id);
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        state.cartItems.push({ ...item, qty: 1 });
+        state.amount += 1;
+      }
     },
     removeFromCart: (state, action) => {
       const itemId = action.payload;
-      state.cartItems = state.cartItems.filter(item => item._id !== itemId);
-      state.amount -= 1;
+      const itemToRemove = state.cartItems.find(item => item._id === itemId);
+      if (itemToRemove) {
+        state.cartItems = state.cartItems.filter(item => item._id !== itemId);
+        state.amount -= itemToRemove.qty;
+      }
     },
-    increase: (state, {payload}) => {
+    increase: (state, { payload }) => {
       const cartItem = state.cartItems.find((item) => item._id === payload._id);
-      cartItem.__v = cartItem.__v +1;
+      if (cartItem) {
+        cartItem.qty += 1;
+      }
     },
     decrease: (state, { payload }) => {
-      const cartItem = state.cartItems.find((item) => item.id === payload.id);
-      cartItem.__v = cartItem.__v - 1;
+      const cartItem = state.cartItems.find((item) => item._id === payload._id);
+      if (cartItem && cartItem.qty > 1) {
+        cartItem.qty -= 1;
+      } else if (cartItem && cartItem.qty === 1) {
+        state.cartItems = state.cartItems.filter((item) => item._id !== payload._id);
+        state.amount -= 1;
+      }
     },
   },
 });
-export const { addToCart, removeFromCart, clearCart, increase, decrease  } = cartSlice.actions;
+
+export const { addToCart, removeFromCart, clearCart, increase, decrease } = cartSlice.actions;
 export default cartSlice.reducer;
-
-

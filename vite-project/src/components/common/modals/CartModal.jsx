@@ -1,5 +1,4 @@
 import close from '../../../assets/close-modal.svg';
-import { removeFromCart } from '../../../redux/cartSlice';
 import styles from '../../../style';
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
