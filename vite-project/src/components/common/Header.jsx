@@ -1,16 +1,16 @@
-﻿// import React from 'react';
-
+﻿
 import styles from "../../style";
 import logo from "../../assets/logo.svg"
-import cart from "../../assets/cart.svg"
-import user from "../../assets/user.svg"
 import SearchBar from './SearchBar';
 import SelectLanguage from './SelectLanguage';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
+import CartIcon from '../common/Icons/CartIcon';
+import LoginIcon from '../common/Icons/LogInIcon';
 
 
 const Header = () => {
+
   return (
     <header className=' w-full '>
       <div className='bg-main pt-[44px]'>
@@ -20,8 +20,7 @@ const Header = () => {
             <img src={logo} alt="BookShop" className=' w-[180px] h-[80px]' />
           </Link>
 
-
-          <div className=' hidden md:flex md:items-center md:justify-center'>
+          <div className=' hidden md:flex md:flex-col md:items-center md:justify-center relative'>
             <SearchBar />
           </div>
 
@@ -32,13 +31,10 @@ const Header = () => {
             </div>
 
             <div className="flex items-center justify-center">
-              <div>
-                <img src={cart} alt="cart" />
-              </div>
-              <div
-              ><img src={user} alt="user" />
-              </div>
+              <CartIcon/>
+              <LoginIcon/>
             </div>
+
           </div>
         </div>
       </div>

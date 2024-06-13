@@ -4,7 +4,6 @@ import New from "../../components/new/New";
 import Promotion from '../../components/promotion/Promotion';
 import Bestsellers from "../../components/bestsellers/Bestsellers";
 import AboutUsText from "../../components/hero/AboutUs";
-import BookList from "./bookList";
 
 const Home = () => {
     return <div>
@@ -25,7 +24,6 @@ const Home = () => {
                 <New />
                 <Promotion />
                 <Bestsellers />
-                <BookList/>
             </div>
         </div>
     </div>

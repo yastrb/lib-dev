@@ -1,9 +1,14 @@
 ﻿const styles = {
     boxWidth: " xxl:max-w-[1200px] xl:max-w-[1040px] lg:max-w-[1004px] md:max-w-[704px] w-full",
 
-    heading: "font-montserrat text-xl text-black",
-    subtitleMain: "font-montserrat font-semibold text-[32px] text-black",
+    heading: "font-montserrat text-xl md:text-[32px] text-black font-semibold uppercase",
+    menu: "font-montserrat text-base md:text-xl",
+    subtitleMain: "font-montserrat font-semibold text-2xl lg:text-[32px] text-black",
+    subtitleSemibold: "font-montserrat font-semibold text-2xl",
     subtitleMedium: "font-montserrat font-medium text-lg text-black",
+    bodyRegular: "font-montserrat font-normal text-base leading-6",
+    button: "font-montserrat font-medium text-base ",
+
 
     paddingX: "lg:px-8 md:px-4 px-3  ",
     paddingY: "lg:py-[60px] md:py-10 py-5",
