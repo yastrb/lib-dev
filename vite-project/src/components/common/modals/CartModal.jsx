@@ -2,7 +2,8 @@ import close from '../../../assets/close-modal.svg';
 import styles from '../../../style';
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
-import { clearCart } from '../../../redux/cartSlice';
+import { clearCart, calculateTotals } from '../../../redux/cartSlice';
+import { useEffect } from 'react';
 
 const CartModal = ({ toggleModal }) => {
     const dispatch = useDispatch();
@@ -13,6 +14,10 @@ const CartModal = ({ toggleModal }) => {
     const handleClearCart = () => {
         dispatch(clearCart());
     };
+
+    useEffect(()=> {
+        dispatch(calculateTotals());
+    },[cartItems]);
 
     return (
         <div className="modal">
