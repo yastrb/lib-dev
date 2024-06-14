@@ -50,7 +50,7 @@ const CartItem = ({ _id, title, author_id, coverImageLink, isbn, price_id }) => 
                             dispatch(increase({ _id }));
                         }} className='flex items-center justify-center w-12 h-12'>+</button>
                     </div>
-                    <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{price_id.discounted_price || price_id.original_price} грн</h4>
+                    <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{price_id.original_price} грн</h4>
                 </div>
             </div>
         </div>
