@@ -23,7 +23,7 @@ const CartItem = ({ _id, title, author_id, coverImageLink, isbn, price_id }) => 
             <img className=' cart-image h-32 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink} alt={title} />
 
             {/* info */}
-            <div className=' cart-data'>
+            <div className=' cart-data flex items-start justify-between'>
                 <div>
                     <h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
                     <p className={`${styles.bodyRegular} mb-4`}>Автор: {author_id.map(author => `${author.name_ukr} ${author.surname_ukr}`).join(', ')}</p>
@@ -42,7 +42,7 @@ const CartItem = ({ _id, title, author_id, coverImageLink, isbn, price_id }) => 
             {/* price */}
             <div className='cart-price flex gap-8 justify-between'>
 
-                <div className='flex'>
+                <div className={`${styles.flexCenter}`}>
                     <button onClick={() => {
                         if (qty === 1) {
                             dispatch(removeFromCart(_id));
@@ -50,7 +50,7 @@ const CartItem = ({ _id, title, author_id, coverImageLink, isbn, price_id }) => 
                             dispatch(decrease({ _id }));
                         }
                     }} className='flex items-center justify-center w-12 h-12'>-</button>
-                    <div className='flex items-center justify-center w-12 h-12 border-solid border-[1px] border-grey rounded-lg'>{qty}</div>
+                    <div className='flex items-center justify-center w-8 h-8 md:w-12 md:h-12 border-solid border-[1px] border-grey rounded-lg'>{qty}</div>
                     <button onClick={() => {
                         dispatch(increase({ _id }));
                     }} className='flex items-center justify-center w-12 h-12'>+</button>

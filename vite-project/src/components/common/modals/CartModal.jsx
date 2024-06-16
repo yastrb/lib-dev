@@ -50,7 +50,7 @@ const CartModal = ({ toggleModal }) => {
                                 </div>
 
                                 {/* cart action buttons */}
-                                <div className='flex gap-10 px-6 items-center justify-center'>
+                                <div className='flex flex-col md:flex-row gap-3 md:gap-[6px] lg:gap-10 px-6 items-center justify-center'>
                                     <button className={`${styles.button} py-[14px]  w-[240px] border border-button rounded-xl`}>Продовжити покупки</button>
                                     <button className={`${styles.button} py-[14px] px-12 w-[240px] border border-button bg-button rounded-xl `}>До сплати</button>
                                 </div>
