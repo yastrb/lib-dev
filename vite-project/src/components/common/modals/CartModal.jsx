@@ -36,7 +36,7 @@ const CartModal = ({ toggleModal }) => {
                             </div>
 
                             {/* items list */}
-                            <div className='cart-list overflow-y-auto max-h-[560px] mt-4 mx-6 flex-grow'>
+                            <div className='cart-list overflow-y-auto max-h-[560px] mx-3 mt-4 md:mx-6 flex-grow'>
                                 {cartItems.map((item) => {
                                     return <CartItem key={item._id} {...item} />
                                 })}

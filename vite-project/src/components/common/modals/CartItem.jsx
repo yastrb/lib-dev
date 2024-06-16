@@ -18,42 +18,49 @@ const CartItem = ({ _id, title, author_id, coverImageLink, isbn, price_id }) => 
     const qty = cartItem ? cartItem.qty : 1;
 
     return (
-        <div className="relative cart-item flex justify-between pb-6 after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
-            <div className='flex gap-4'>
-                <img className='hidden xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink} alt={title} />
+        <div className="cart-item pb-6 after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
+            {/* image */}
+            <img className=' cart-image h-32 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink} alt={title} />
+
+            {/* info */}
+            <div className=' cart-data'>
                 <div>
                     <h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
                     <p className={`${styles.bodyRegular} mb-4`}>Автор: {author_id.map(author => `${author.name_ukr} ${author.surname_ukr}`).join(', ')}</p>
-                    <p className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}>Код товару: {isbn}</p>
+                    <p className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}>Код товару: 1234</p>
                     <p className='flex gap-2 items-center'>
                         <img src={stock} alt="in stock" />
                         <span className={`${styles.bodyRegular} text-green`}>В наявності</span>
                     </p>
                 </div>
-            </div>
 
-            <div className='flex flex-col justify-between items-end'>
                 <button onClick={handleRemoveFromCart}>
                     <img src={trash} alt="remove item" />
                 </button>
-                <div className='flex gap-8 justify-between'>
-                    <div className='flex'>
-                        <button onClick={() => {
-                            if (qty === 1) {
-                                dispatch(removeFromCart(_id));
-                            } else {
-                                dispatch(decrease({ _id }));
-                            }
-                        }} className='flex items-center justify-center w-12 h-12'>-</button>
-                        <div className='flex items-center justify-center w-12 h-12 border-solid border-[1px] border-grey rounded-lg'>{qty}</div>
-                        <button onClick={() => {
-                            dispatch(increase({ _id }));
-                        }} className='flex items-center justify-center w-12 h-12'>+</button>
-                    </div>
-                    <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{price_id.original_price} грн</h4>
-                </div>
             </div>
+
+            {/* price */}
+            <div className='cart-price flex gap-8 justify-between'>
+
+                <div className='flex'>
+                    <button onClick={() => {
+                        if (qty === 1) {
+                            dispatch(removeFromCart(_id));
+                        } else {
+                            dispatch(decrease({ _id }));
+                        }
+                    }} className='flex items-center justify-center w-12 h-12'>-</button>
+                    <div className='flex items-center justify-center w-12 h-12 border-solid border-[1px] border-grey rounded-lg'>{qty}</div>
+                    <button onClick={() => {
+                        dispatch(increase({ _id }));
+                    }} className='flex items-center justify-center w-12 h-12'>+</button>
+                </div>
+
+                <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{price_id.original_price} грн</h4>
+            </div>
+
         </div>
+
     );
 };
 
