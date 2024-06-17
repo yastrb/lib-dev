@@ -1,4 +1,5 @@
 const withMT = require("@material-tailwind/react/utils/withMT");
+const { light } = require("@mui/material/styles/createPalette");
 module.exports = withMT( {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   mode: "jit",
