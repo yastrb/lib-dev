@@ -150,6 +150,26 @@ body.active-modal {
   background-color: grey; 
 }
 
+.login-links::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-left: 70px;
+  height: 1px; 
+  background-color: grey; 
+  width: 78px;
+}
+
+.login-links::before {
+  content: "";
+  position: absolute;
+  left:-200%;
+  top: 50%;
+  height: 1px; 
+  background-color: grey; 
+  width: 78px;
+}
+
 .modal-input {
   margin-bottom: 12px;
   background: transparent;

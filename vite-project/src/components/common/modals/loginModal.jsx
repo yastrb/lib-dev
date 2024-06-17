@@ -26,9 +26,9 @@ const LoginModal = ({ toggleModal }) => {
                 <Button label="Увійти" className="bg-button mb-3"/>
                 <Button label="Зареєструватися" className="mb-10" />
 
-                <span className={`${styles.bodyRegular} text-grey mb-6`}>Увійти з</span>
+                <span className={`${styles.bodyRegular} login-links text-grey mb-6 relative `}>Увійти з</span>
 
-                <div className=' flex gap-20'>
+                <div className=' flex gap-20 '>
                     <Link>
                         <img src={facebook} alt="facebook login" />
                     </Link>
