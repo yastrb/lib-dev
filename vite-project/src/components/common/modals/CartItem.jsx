@@ -18,9 +18,9 @@ const CartItem = ({ _id, title, author_id, coverImageLink, isbn, price_id }) => 
     const qty = cartItem ? cartItem.qty : 1;
 
     return (
-        <div className="cart-item pb-6 after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
+        <div className="cart-item relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
             {/* image */}
-            <img className=' cart-image h-32 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink} alt={title} />
+            <img className=' cart-image h-32 md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink} alt={title} />
 
             {/* info */}
             <div className=' cart-data flex items-start justify-between'>
