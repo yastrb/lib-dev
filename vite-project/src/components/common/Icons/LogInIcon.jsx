@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import LoginModal from '../modals/loginModal';
+import RegisterModal from '../modals/RegisterModal';
 
 const LogInIcon = () => {
 
+    const [isLogin, setIsLogin] = useState(true);
     const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
+        console.log('Toggling modal');
         setModal(!modal);
+
+    };
+
+    const toggleForm = () => {
+        setIsLogin(!isLogin);
+        console.log('Toggling form');
     };
 
     if (modal) {
@@ -37,7 +46,11 @@ const LogInIcon = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round" />
             </svg>
-            {modal && <LoginModal toggleModal={toggleModal} />}
+            {modal && (isLogin ?
+                <LoginModal toggleModal={toggleModal} toggleForm={toggleForm} />
+                :
+                <RegisterModal toggleModal={toggleModal} toggleForm={toggleForm} />
+            )}
 
         </>
     )

@@ -5,26 +5,30 @@ import styles from '../../../style';
 import { Link } from "react-router-dom";
 import Button from '../button/Button';
 
-const LoginModal = ({ toggleModal }) => {
+const LoginModal = ({ toggleModal, toggleForm }) => {
     return (
         <div className=" modal ">
             <div onClick={toggleModal} className="overlay"></div>
             <div className=" modal-content w-[300px] md:w-[600px]  flex flex-col items-center h-[80vh] max-h-[90vh] pb-[50px]">
-            <h1 className={`${styles.heading} text-center mb-10`}>увійти</h1>
+                <h1 className={`${styles.heading} text-center mb-10`}>увійти</h1>
 
                 <input type="text"
-                placeholder='Ваша пошта або телефон'
-                className=' modal-input w-[90%] md:w-[75%]'
+                    placeholder='Ваша пошта або телефон'
+                    className=' modal-input w-[90%] md:w-[75%]'
                 />
 
                 <input type="text"
-                placeholder='Пароль'
-                className=' modal-input w-[90%] md:w-[75%] mb-6'
+                    placeholder='Пароль'
+                    className=' modal-input w-[90%] md:w-[75%] mb-6'
                 />
                 <Link to='/' className='mt-3 mb-10'>Забули пароль?</Link>
 
-                <Button label="Увійти" className="bg-button mb-3"/>
-                <Button label="Зареєструватися" className="mb-10" />
+                <Button label="Увійти" className="bg-button mb-3" />
+                <Button label="Зареєструватися" className="mb-10"
+                    onClick={() => {
+                        console.log('Switching to register modal');
+                        toggleForm();
+                    }} />
 
                 <span className={`${styles.bodyRegular} login-links text-grey mb-6 relative `}>Увійти з</span>
 
