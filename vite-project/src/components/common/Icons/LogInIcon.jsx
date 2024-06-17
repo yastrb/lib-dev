@@ -1,8 +1,25 @@
+import { useState } from 'react';
+import LoginModal from '../modals/loginModal';
+
 const LogInIcon = () => {
+
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    };
+
+    if (modal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
 
     return (
         <>
             <svg
+                onClick={toggleModal}
                 className=" icon cursor-pointer"
                 width="48"
                 height="48"
@@ -20,7 +37,8 @@ const LogInIcon = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round" />
             </svg>
-     
+            {modal && <LoginModal toggleModal={toggleModal} />}
+
         </>
     )
 }

@@ -65,14 +65,7 @@ body.active-modal {
   "img price";
  }
 }
-/* @media (max-width: 1024px){
- .cart-item {
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas: 
-  "img info"
-  "img price";
- }
-} */
+
 
 .modal, .overlay {
   width: 100vw;
