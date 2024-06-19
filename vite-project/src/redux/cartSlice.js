@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const loadCartFromLocalStorage = () => {
   try {
-    const cart = localStorage.getItem('cart');
+    const cart = localStorage.getItem('newCart');
     if (cart && cart !== 'undefined') {
       return JSON.parse(cart);
     } else {
@@ -16,7 +16,7 @@ const loadCartFromLocalStorage = () => {
 
 const loadAmountFromLocalStorage = () => {
   try {
-    const amount = localStorage.getItem('amount');
+    const amount = localStorage.getItem('newAmount');
     if (amount && amount !== 'undefined') {
       return JSON.parse(amount);
     } else {
@@ -30,16 +30,16 @@ const loadAmountFromLocalStorage = () => {
 
 const saveCartToLocalStorage = (cartItems, amount) => {
   try {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
-    localStorage.setItem('amount', JSON.stringify(amount));
+    localStorage.setItem('newCart', JSON.stringify(cartItems));
+    localStorage.setItem('newAmount', JSON.stringify(amount));
   } catch (error) {
     console.error("Error saving JSON to localStorage", error);
   }
 };
 
 const initialState = {
-  cartItems: loadCartFromLocalStorage(), // Завантажуємо корзину при початковому стані
-  amount: loadAmountFromLocalStorage(),  // Завантажуємо кількість при початковому стані
+  cartItems: loadCartFromLocalStorage(), 
+  amount: loadAmountFromLocalStorage(),  
   total: 0,
 };
 
