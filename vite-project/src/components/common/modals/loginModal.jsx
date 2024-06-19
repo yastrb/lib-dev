@@ -26,7 +26,6 @@ const LoginModal = ({ toggleModal, toggleForm }) => {
                 <Button label="Увійти" className="bg-button mb-3" />
                 <Button label="Зареєструватися" className="mb-10"
                     onClick={() => {
-                        console.log('Switching to register modal');
                         toggleForm();
                     }} />
 
