@@ -1,22 +1,42 @@
-﻿
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../redux/cartSlice';
+﻿// import { useDispatch } from 'react-redux';
+// import { addToCart } from '../../redux/cartSlice';
 
 const BookCard = ({ book }) => {
-  const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
-  const handleAddToCart = () => {
-    dispatch(addToCart(book));
-  };
+	// const handleAddToCart = () => {
+	//   dispatch(addToCart(book));
+	// };
+	return (
+		<div className='book-card mx-8 border-solid w-44'>
+			<img
+				className='rounded-xl w-44 h-60'
+				src={book.coverImageLink_ukr}
+				alt={book.title_ukr}
+			/>
 
-  return (
-    <div className="book-card border-solid border-2">
-      <h2>{book.title}</h2>
-      <p>Author: {book.author_id.map(author => `${author.name} ${author.surname}`).join(', ')}</p>
-      <p>Price: ${book.price_id.discounted_price || book.price_id.original_price}</p>
-      <button className=' bg-button rounded-lg p-2 hover:bg-hover' onClick={handleAddToCart}>Add to Cart</button>
-    </div>
-  );
-};
+			<h2 className='font-medium font-montserrat my-4 w-44 truncate'>
+				{book.title_ukr}
+			</h2>
+			<p className='font-montserrat'>
+				{book.author
+					.map(author => `${author.name_ukr} ${author.surname_ukr}`)
+					.join(', ')}
+			</p>
+			<p className='font-montserrat my-4 font-medium'>
+				{book.price[0].discounted_price > 0
+					? `${book.price[0].discounted_price} грн`
+					: `${book.price[0].original_price} грн`}
+			</p>
 
-export default BookCard;
+			<button
+				className=' bg-button rounded-lg p-2 hover:bg-hover font-montserrat duration-300'
+				// onClick={handleAddToCart}
+			>
+				Add to Cart
+			</button>
+		</div>
+	)
+}
+
+export default BookCard
