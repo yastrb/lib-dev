@@ -1,33 +1,41 @@
-import styles from "../../style";
-import Hero from "../../components/hero/Hero";
-import New from "../../components/new/New";
-import Promotion from '../../components/promotion/Promotion';
-import Bestsellers from "../../components/bestsellers/Bestsellers";
-import AboutUsText from "../../components/hero/AboutUs";
-
+import FeaturedCarouselSection from '../../components/FeaturedCarouselSection/FeaturedCarouselSection'
+import AboutUsText from '../../components/hero/AboutUs'
+import Hero from '../../components/hero/Hero'
+import { useGetNewBestsellersSalesBooks } from '../../redux/booksSlice.js'
+import styles from '../../style'
 const Home = () => {
-    return <div>
-        
-        {/* hero */}
-        <div className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart}`}>
-            <div className={`${styles.boxWidth}`}>
-                <Hero />
-            </div>
-        </div>
-        <AboutUsText />
-        {/* hero end */}
+	const { data, error, isLoading } = useGetNewBestsellersSalesBooks()
+	if (error) return <div>Error loading data</div>
+	return (
+		<div>
+			{/* hero */}
+			<div
+				className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart}`}
+			>
+				<div className={`${styles.boxWidth}`}>
+					<Hero />
+				</div>
+			</div>
+			<AboutUsText />
+			{/* hero end */}
 
-
-        {/* main */}
-        <div className={`${styles.paddingX} ${styles.flexStart} flex grow`} >
-            <div className={`${styles.boxWidth}`}>
-                <New />
-                <Promotion />
-                <Bestsellers />
-            </div>
-        </div>
-    </div>
+			{/* main */}
+			<div className={`${styles.paddingX} ${styles.flexStart} flex grow`}>
+				{isLoading ? (
+					<div>Loading...</div>
+				) : (
+					<div className={`${styles.boxWidth}`}>
+						<FeaturedCarouselSection data={data.newBooks} title={'Новинки'} />
+						<FeaturedCarouselSection data={data.salesBooks} title={'Акції'} />
+						<FeaturedCarouselSection
+							data={data.bestsellerBooks}
+							title={'Бестселери'}
+						/>
+					</div>
+				)}
+			</div>
+		</div>
+	)
 }
 
-export default Home;
-
+export default Home
