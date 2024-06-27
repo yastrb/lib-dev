@@ -18,12 +18,12 @@ const BookCard = ({ book }) => {
 			<h2 className='font-medium font-montserrat my-4 w-44 truncate'>
 				{book.title_ukr}
 			</h2>
-			<p className='font-montserrat'>
+			<p className='font-montserrat truncate'>
 				{book.author
 					.map(author => `${author.name_ukr} ${author.surname_ukr}`)
 					.join(', ')}
 			</p>
-			<p className='font-montserrat my-4 font-medium'>
+			<p className='font-montserrat my-4 font-medium '>
 				{book.price[0].discounted_price > 0
 					? `${book.price[0].discounted_price} грн`
 					: `${book.price[0].original_price} грн`}
