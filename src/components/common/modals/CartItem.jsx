@@ -4,7 +4,7 @@ import styles from '../../../style';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, increase, decrease } from '../../../redux/cartSlice';
 
-const CartItem = ({ _id, title, author_id = [], coverImageLink = [], price }) => {
+const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
     const dispatch = useDispatch();
 
     const handleRemoveFromCart = () => {
@@ -28,7 +28,7 @@ const CartItem = ({ _id, title, author_id = [], coverImageLink = [], price }) =>
             <div className=' cart-data flex items-start justify-between'>
                 <div>
                     <h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
-                    <p className={`${styles.bodyRegular} mb-4`}>Автор: {author_id.map(author => `${author.name_ukr} ${author.surname_ukr}`).join(', ')}</p>
+                    <p className={`${styles.bodyRegular} mb-4`}>Автор: {author.map(author => `${author.name_ukr} ${author.surname_ukr}`).join(', ')}</p>
                     <p className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}>Код товару: 1234</p>
                     <p className='flex gap-2 items-center'>
                         <img src={stock} alt="in stock" />
