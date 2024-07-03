@@ -58,7 +58,9 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
                     }} className='flex items-center justify-center w-12 h-12'>+</button>
                 </div>
 
-                <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{bookPrice} грн</h4>
+                <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{price[0].discounted_price > 0
+					? `${price[0].discounted_price} грн`
+					: `${price[0].original_price} грн`}</h4>
             </div>
 
         </div>

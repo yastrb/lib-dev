@@ -93,14 +93,16 @@ const cartSlice = createSlice({
     calculateTotals: (state) => {
       let total = 0;
       state.cartItems.forEach((item) => {
-        if (item.price && item.price.original_price) {
-          total += item.qty * item.price.original_price;
+        const priceObject = item.price && item.price[0];
+        if (priceObject && priceObject.original_price) {
+          total += item.qty * priceObject.original_price;
         } else {
-          console.warn(`Item with id ${item._id} does not have a valid price or original_price`);
+          console.warn(`Item with id ${item._id} does not have a valid original_price`);
         }
       });
       state.total = total;
     },
+    
   },
 });
 
