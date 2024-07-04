@@ -48,7 +48,7 @@ body.active-modal {
   grid-area: price;
 }
 
-@media (max-width: 425px){
+@media (max-width: 424.89px){
  .cart-item {
   grid-template-columns: 1fr 2fr;
   grid-template-areas: 
@@ -59,7 +59,8 @@ body.active-modal {
 
 @media (min-width: 425px){
  .cart-item {
-  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  grid-template-columns: 180px 2fr;
   grid-template-areas: 
   "img info"
   "img price";

@@ -20,7 +20,7 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
     const bookPrice = price && price.original_price ? price.original_price : 0;
 
     return (
-        <div className="cart-item relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
+        <div className="cart-item w-full relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
             {/* image */}
             <img className=' cart-image h-32 md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink[0]} alt={title} />
 
@@ -42,7 +42,7 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
             </div>
 
             {/* price */}
-            <div className='cart-price flex gap-8 justify-between'>
+            <div className='cart-price flex gap-8 justify-between xl:justify-end'>
 
                 <div className={`${styles.flexCenter}`}>
                     <button onClick={() => {
@@ -58,7 +58,8 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
                     }} className='flex items-center justify-center w-12 h-12'>+</button>
                 </div>
 
-                <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{price[0].discounted_price > 0
+                <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>
+                    {price[0].discounted_price > 0
 					? `${price[0].discounted_price} грн`
 					: `${price[0].original_price} грн`}</h4>
             </div>
