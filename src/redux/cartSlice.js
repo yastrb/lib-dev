@@ -81,15 +81,25 @@ const cartSlice = createSlice({
       saveCartToLocalStorage(state.cartItems, state.amount);
     },
     decrease: (state, { payload }) => {
-      const cartItem = state.cartItems.find((item) => item._id === payload._id);
-      if (cartItem && cartItem.qty > 1) {
-        cartItem.qty -= 1;
-      } else if (cartItem && cartItem.qty === 1) {
-        state.cartItems = state.cartItems.filter((item) => item._id !== payload._id);
-      }
-      state.amount = state.cartItems.reduce((total, item) => total + item.qty, 0);
-      saveCartToLocalStorage(state.cartItems, state.amount);
+      const updatedCartItems = state.cartItems.map(item => {
+        if (item._id === payload._id) {
+          if (item.qty >= 2) {
+            return { ...item, qty: item.qty - 1 };
+          } else {
+            return { ...item, qty: 1 };
+          }
+        }
+        return item;
+      });
+    
+      state.cartItems = updatedCartItems;
+      state.amount = updatedCartItems.reduce((total, item) => total + item.qty, 0);
+      saveCartToLocalStorage(updatedCartItems, state.amount);
     },
+    
+    
+    
+    
     calculateTotals: (state) => {
       let total = 0;
       state.cartItems.forEach((item) => {

@@ -6,7 +6,7 @@ import CustomLeftArrow from './ArrowCustomLeft.jsx'
 import CustomRightArrow from './ArrowCustomRight.jsx'
 
 const FeaturedCarouselSection = ({ title, data }) => {
-	console.log(data)
+	// console.log(data)
 
 	const responsive = {
 		superLargeDesktop: {
@@ -47,7 +47,7 @@ const FeaturedCarouselSection = ({ title, data }) => {
 				customRightArrow={<CustomRightArrow />}
 			>
 				{data.map(el => {
-					console.log(`${title}`, el)
+					// console.log(`${title}`, el)
 					return <BookCard key={el._id} book={el} />
 				})}
 			</Carousel>
