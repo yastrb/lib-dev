@@ -22,7 +22,7 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
     return (
         <div className="cart-item w-full relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
             {/* image */}
-            <img className=' cart-image h-32 md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink[0]} alt={title} />
+            <img className=' cart-image h-full w-full bg-cover md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink[0]} alt={title} />
 
             {/* info */}
             <div className=' cart-data flex items-start justify-between'>
