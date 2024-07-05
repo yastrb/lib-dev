@@ -45,14 +45,21 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
             <div className='cart-price flex gap-8 justify-between xl:justify-end'>
 
                 <div className={`${styles.flexCenter}`}>
+
+                    {/* decrease */}
                     <button onClick={() => {
-                        if (qty === 1) {
-                            dispatch(removeFromCart(_id));
-                        } else {
+                        if (qty >= 1) {
                             dispatch(decrease({ _id }));
+                        } else {
+                            cartItem.qty = 0;
                         }
                     }} className='flex items-center justify-center w-12 h-12'>-</button>
+
+                        
+                        {/* quantity */}
                     <div className='flex items-center justify-center w-8 h-8 md:w-12 md:h-12 border-solid border-[1px] border-grey rounded-lg'>{qty}</div>
+                    
+                        {/* increase */}
                     <button onClick={() => {
                         dispatch(increase({ _id }));
                     }} className='flex items-center justify-center w-12 h-12'>+</button>
