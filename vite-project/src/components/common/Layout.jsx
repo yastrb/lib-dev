@@ -1,5 +1,6 @@
 ﻿// import React from 'react'
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
+import ProductPage from '../../pages/ProductPage/productPage'
 import AboutUs from '../../pages/aboutUs/aboutUs'
 import Catalog from '../../pages/catalog/catalog'
 import Home from '../../pages/home/home'
@@ -16,6 +17,7 @@ const AppWrapper = () => {
 		{ path: '/catalog', element: <Catalog /> },
 		{ path: '/top-books', element: <TopBooks /> },
 		{ path: '/sales', element: <Sales /> },
+		{ path: '/productPage', element: <ProductPage /> },
 	])
 	return routes
 }
@@ -23,7 +25,7 @@ const AppWrapper = () => {
 const Layout = () => {
 	return (
 		<Router>
-			<div className=' mx-auto min-h-[100vh] flex flex-col'>
+			<div className='overflow-x-hidden mx-auto min-h-[100vh] flex flex-col'>
 				<div className={`${styles.flexCenter} `}>
 					<Header />
 				</div>

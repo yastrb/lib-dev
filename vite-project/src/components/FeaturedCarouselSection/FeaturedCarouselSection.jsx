@@ -1,13 +1,10 @@
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
-import styles from '../../style.js'
+import CustomLeftArrow from '../../assets/icons/ArrowCustomLeft.jsx'
+import CustomRightArrow from '../../assets/icons/ArrowCustomRight.jsx'
 import BookCard from '../product/BookCard.jsx'
-import CustomLeftArrow from './ArrowCustomLeft.jsx'
-import CustomRightArrow from './ArrowCustomRight.jsx'
 
 const FeaturedCarouselSection = ({ title, data }) => {
-	console.log(data)
-
 	const responsive = {
 		superLargeDesktop: {
 			// the naming can be any, depends on you.
@@ -24,11 +21,12 @@ const FeaturedCarouselSection = ({ title, data }) => {
 		},
 		mobile: {
 			breakpoint: { max: 464, min: 0 },
-			items: 2,
+			items: 1,
 		},
 	}
+
 	return (
-		<section className={`${styles.boxWidth} my-14 `}>
+		<section className={` my-14 `}>
 			<div className='flex justify-between'>
 				<h2 className='text-2xl font-semibold bg-main py-2 pr-4 pl-6 rounded-br-lg rounded-bl-lg rounded-tr-lg'>
 					{title}
@@ -39,17 +37,18 @@ const FeaturedCarouselSection = ({ title, data }) => {
 			</div>
 
 			<Carousel
-				className={`overflow-hidden  my-14 relative`}
+				className={`overflow-hidden my-14 relative`}
 				responsive={responsive}
-				removeArrowOnDeviceType={['tablet', 'mobile']}
+				// removeArrowOnDeviceType={['tablet', 'mobile']}
 				infinite={true}
 				customLeftArrow={<CustomLeftArrow />}
 				customRightArrow={<CustomRightArrow />}
 			>
-				{data.map(el => {
-					console.log(`${title}`, el)
-					return <BookCard key={el._id} book={el} />
-				})}
+				{data.map(el => (
+					<div key={el._id} className=' flex justify-center'>
+						<BookCard book={el} />
+					</div>
+				))}
 			</Carousel>
 		</section>
 	)

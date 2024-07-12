@@ -13,7 +13,7 @@ const Footer = () => {
 	}
 
 	return (
-		<footer className='realtive bottom-0'>
+		<footer className='realtive bottom-0 p-4'>
 			<div className={` ${styles.footerTop} py-10`}>
 				<img src={logo} alt='logo-book' />
 				<ul className={`${styles.footerList} ${styles.footerContacts}`}>
