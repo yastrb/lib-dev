@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ua from '../../assets/ukraine.svg';
 import uk from '../../assets/united-kingdom.svg';
@@ -23,6 +23,7 @@ const SelectLanguage = () => {
         <img src={i18n.language === 'uk' ? ua : uk} alt={i18n.language === 'uk' ? 'українська' : 'english'} />
         <img src={arrow} alt="dropdown arrow" className={`transform ${isOpen ? 'rotate-180' : 'rotate-0'}`} />
       </div>
+
       {isOpen && (
         <div className='absolute mt-2 w-32 bg-white border border-gray-200 rounded shadow-lg'>
           <div className='flex flex-col'>
