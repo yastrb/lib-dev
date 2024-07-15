@@ -1,15 +1,20 @@
-﻿import React from 'react'
-import styles from '../../style'
-import bgImage from "../../assets/bgImage.jpg"
-import { textContent } from '../../constants'
+﻿import styles from '../../style';
+import bgImage from "../../assets/bgImage.jpg";
+import { useTranslation } from 'react-i18next';
 
-const AboutUsText = () => (
+function AboutUsText() {
+  const { t } = useTranslation();
+
+  return (
     <div className='relative w-full h-[235px] md:h-[262px] lg:h-[348px]'>
-        <img src={bgImage} alt="bg-image" className=' w-full h-full object-cover' />
-        <div className='absolute inset-0 flex items-center justify-center'>
-            <article className={`${styles.boxWidth}${styles.paddingX} ${styles.paddingY} text-[12px] md:text-base lg:text-2xl text-center leading-[1.6]`}>{textContent}</article>
-        </div>
+      <img src={bgImage} alt="bg-image" className='w-full h-full object-cover' />
+      <div className='absolute inset-0 flex items-center justify-center'>
+        <article className={`${styles.boxWidth} ${styles.paddingX} ${styles.paddingY} text-[12px] md:text-base lg:text-2xl text-center leading-[1.6]`}>
+          {t('welcome')}
+        </article>
+      </div>
     </div>
-)
+  );
+}
 
-export default AboutUsText
+export default AboutUsText;
