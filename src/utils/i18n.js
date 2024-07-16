@@ -9,19 +9,6 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    // resources: {
-    //   en: {
-    //     translation: {
-    //       "welcome": "Welcome to the book store",
-    //     }
-    //   },
-    //   uk: {
-    //     translation: {
-    //       "welcome": "Ласкаво просимо до книжкового магазину",
-    //     }
-    //   }
-    // },
-    // lng: "uk",
     debug: true,
     fallbackLng: "uk",
 
@@ -29,6 +16,5 @@ i18n
       escapeValue: false
     }
   });
-  // i18n.changeLanguage("en")
 
 export default i18n;
