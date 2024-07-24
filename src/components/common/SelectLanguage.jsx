@@ -25,18 +25,18 @@ const SelectLanguage = () => {
       </div>
 
       {isOpen && (
-        <div className='absolute mt-2 w-32 bg-white border border-gray-200 rounded shadow-lg'>
+        <div className='absolute my-4 py-3 w-[198px] bg-white border border-gray-200 rounded shadow-lg'>
           <div className='flex flex-col'>
             <button
               onClick={() => handleLanguageChange('uk')}
-              className='flex items-center px-4 py-2 hover:bg-gray-100'
+              className='flex items-center px-4 hover:bg-gray-100'
             >
               <img src={ua} alt="українська" className='mr-2' />
               Українська
             </button>
             <button
               onClick={() => handleLanguageChange('en')}
-              className='flex items-center px-4 py-2 hover:bg-gray-100'
+              className='flex items-center px-4 hover:bg-gray-100'
             >
               <img src={uk} alt="english" className='mr-2' />
               English

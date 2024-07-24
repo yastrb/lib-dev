@@ -1,11 +1,12 @@
 ﻿import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { navLinks } from "../../constants/index.js";
+// import { navLinks } from "../../constants/index.js";
 import menu from "../../assets/menu.svg";
 import SearchBar from './SearchBar.jsx';
 import close from '../../assets/close.svg';
 import styles from '../../style.js';
 import SelectLanguage from './SelectLanguage.jsx';
+import { useTranslation } from 'react-i18next';
 
 const Nav = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -13,6 +14,36 @@ const Nav = () => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+
+    const { t, i18n } = useTranslation();
+
+    const navLinks = [
+        {
+          id: "1",
+          display: t('main.navlinks.home'),
+          path: "/",
+        },
+        {
+          id: "2",
+          display: t('main.navlinks.catalog'),
+          path: "/",
+        },
+        {
+          id: "3",
+          display: t('main.navlinks.aboutUs'),
+          path: "/about",
+        },
+        {
+          id: "4",
+          display: t('main.navlinks.topBooks'),
+          path: "/top-books",
+        },
+        {
+          id: "5",
+          display: t('main.navlinks.stock'),
+          path: "/special-offers",
+        },
+      ];
 
     return (
         <>
@@ -23,6 +54,7 @@ const Nav = () => {
                     {navLinks.map(link => (
                         <NavLink key={link.id} to={link.path}>{link.display}</NavLink>
                     ))}
+                    
                 </nav>
                 <span>
                 <a href="tel:+3800530883635">+380 053 088 3635</a>
