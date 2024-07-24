@@ -1,12 +1,19 @@
 ﻿import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+<<<<<<< HEAD
 // import { navLinks } from "../../constants/index.js";
+=======
+import { navLinks } from "../../constants/index.js";
+>>>>>>> 6b682d2e7b8398b7d0372c4ee472c8f896913544
 import menu from "../../assets/menu.svg";
 import SearchBar from './SearchBar.jsx';
 import close from '../../assets/close.svg';
 import styles from '../../style.js';
 import SelectLanguage from './SelectLanguage.jsx';
+<<<<<<< HEAD
 import { useTranslation } from 'react-i18next';
+=======
+>>>>>>> 6b682d2e7b8398b7d0372c4ee472c8f896913544
 
 const Nav = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -15,6 +22,7 @@ const Nav = () => {
         setMenuOpen(!menuOpen);
     };
 
+<<<<<<< HEAD
     const { t, i18n } = useTranslation();
 
     const navLinks = [
@@ -45,6 +53,8 @@ const Nav = () => {
         },
       ];
 
+=======
+>>>>>>> 6b682d2e7b8398b7d0372c4ee472c8f896913544
     return (
         <>
             <div className={`${styles.boxWidth} ${styles.paddingX} py-5 md:mx-auto hidden md:flex md:justify-between heading`}>
@@ -54,7 +64,10 @@ const Nav = () => {
                     {navLinks.map(link => (
                         <NavLink key={link.id} to={link.path}>{link.display}</NavLink>
                     ))}
+<<<<<<< HEAD
                     
+=======
+>>>>>>> 6b682d2e7b8398b7d0372c4ee472c8f896913544
                 </nav>
                 <span>
                 <a href="tel:+3800530883635">+380 053 088 3635</a>
