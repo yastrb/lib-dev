@@ -1,6 +1,5 @@
 {
     "main":{
-<<<<<<< HEAD
         "hero":
              "Book Shop - your guide to a world of unforgettable adventures and unique stories. Our collection includes everything from classic masterpieces to the latest bestsellers. Let words become your companions, and books your best friends. Welcome to our store, where every page is a new opportunity to discover something incredible!",
         "navlinks":{
@@ -10,8 +9,5 @@
             "topBooks":"Top Books",
             "stock":"Stock"
         }
-=======
-        "hero": "Book Shop - your guide to a world of unforgettable adventures and unique stories. Our collection includes everything from classic masterpieces to the latest bestsellers. Let words become your companions, and books your best friends. Welcome to our store, where every page is a new opportunity to discover something incredible!"
->>>>>>> 6b682d2e7b8398b7d0372c4ee472c8f896913544
     }
 }
