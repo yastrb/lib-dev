@@ -23,7 +23,7 @@ const AppWrapper = () => {
 const Layout = () => {
 	return (
 		<Router>
-			<div className=' mx-auto min-h-[100vh] flex flex-col'>
+			<div className=' mx-auto min-h-[100vh] flex flex-col font-montserrat'>
 				<div className={`${styles.flexCenter} `}>
 					<Header />
 				</div>

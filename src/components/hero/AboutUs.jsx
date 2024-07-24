@@ -14,11 +14,6 @@ function AboutUsText() {
                     <article className={`${styles.boxWidth} ${styles.paddingX} ${styles.paddingY} text-[12px] md:text-base lg:text-2xl text-center leading-[1.6]`}>
                         {t('main.hero')}
                     </article>
-                    <ul>
-                    <li>{t('main.navlinks.home')}</li>
-                        <li>{t('main.navlinks.two')}</li>
-                        <li>{t('main.navlinks.three')}</li>
-                    </ul>
                 </div>
             </div>
         </Suspense>
