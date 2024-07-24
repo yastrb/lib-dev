@@ -25,7 +25,7 @@ const SelectLanguage = () => {
       </div>
 
       {isOpen && (
-        <div className='absolute my-4 py-3 w-40 bg-white border border-gray-200 rounded shadow-lg'>
+        <div className='absolute my-4 py-3 w-[198px] bg-white border border-gray-200 rounded shadow-lg'>
           <div className='flex flex-col'>
             <button
               onClick={() => handleLanguageChange('uk')}
