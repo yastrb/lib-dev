@@ -13,23 +13,34 @@ const SearchBar = () => {
 			const { newBooks, salesBooks, bestsellerBooks } = data
 			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
 			setBooks(combinedBooks)
-			// Початково не показуємо список книг
 			setFilteredBooks([])
 		})
 	}, [])
 
 	const handleFilter = (event) => {
-		const searchWord = event.target.value
+		const searchWord = event.target.value.toLowerCase()
 		setWordEntered(searchWord)
 
+		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(searchWord)
+
 		const res = books.filter(b => {
-			const hasTitleUkr = b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord.toLowerCase()) : false
+			if (isUkrainian) {
+				const hasTitleUkr = b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord) : false
 
-			const hasAuthorUkr = b && b.author && b.author.length > 0
-				? b.author.some(a => a.name_ukr.toLowerCase().includes(searchWord.toLowerCase()) || a.surname_ukr.toLowerCase().includes(searchWord.toLowerCase()))
-				: false
+				const hasAuthorUkr = b && b.author && b.author.length > 0
+					? b.author.some(a => a.name_ukr.toLowerCase().includes(searchWord) || a.surname_ukr.toLowerCase().includes(searchWord))
+					: false
 
-			return hasTitleUkr || hasAuthorUkr
+				return hasTitleUkr || hasAuthorUkr
+			} else {
+				const hasTitleEng = b && b.title ? b.title.toLowerCase().includes(searchWord) : false
+
+				const hasAuthorEng = b && b.author && b.author.length > 0
+					? b.author.some(a => a.name.toLowerCase().includes(searchWord) || a.surname.toLowerCase().includes(searchWord))
+					: false
+
+				return hasTitleEng || hasAuthorEng
+			}
 		})
 
 		if (searchWord === '') {
@@ -69,11 +80,16 @@ const SearchBar = () => {
 
 			{filteredBooks.length !== 0 && (
 				<ul className='list px-2 absolute top-20 z-50 rounded-md shadow bg-white w-full'>
-					{filteredBooks.map(item => (
-						<li className='my-2' key={item.id}>
-							{item.title_ukr}
-						</li>
-					))}
+					{filteredBooks.map(item => {
+						const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
+						return (
+							<li className='my-2' key={item.id}>
+								{isUkrainian ? 
+									`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')} - ${item.title_ukr}` : 
+									`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')} - ${item.title}`}
+							</li>
+						)
+					})}
 				</ul>
 			)}
 		</>
