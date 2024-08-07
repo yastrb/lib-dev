@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
 import axios from 'axios'
