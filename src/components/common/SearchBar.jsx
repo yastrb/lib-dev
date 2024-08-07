@@ -14,17 +14,30 @@ const SearchBar = () => {
 			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
 			// setBooks(combinedBooks);
 			setFilteredBooks(combinedBooks)
-			// console.log(combinedBooks);
-			// console.log(filteredBooks.length);
-		})
-	}, [])
-
+			console.log(salesBooks);
+			console.log(filteredBooks.length);
+		}) 
+	}, []) 
+ 
 	const handleFilter = event => {
 		const searchWord = event.target.value
 		setWordEntered(searchWord)
-		const res = filteredBooks.filter(b =>
-			b && b.title ? b.title.toLowerCase().includes(searchWord) : false
-		)
+		// const res = filteredBooks.filter(b =>
+		// 	b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord) : false
+		// )
+		const res = filteredBooks.filter(b => {
+			// Перевіряємо, чи існує об'єкт книги та назва книги
+			const hasTitle = b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord) : false;
+			
+			// Перевіряємо, чи існує автор та його ім'я
+			const hasAuthor = b && b.author && b.author.length > 0 
+				? b.author.some(a => a.name_ukr.toLowerCase().includes(searchWord) || a.surname_ukr.toLowerCase().includes(searchWord))
+				: false;
+		
+			// Повертаємо true, якщо збіг за назвою або автором
+			return hasTitle || hasAuthor;
+		});
+		
 
 		if (searchWord === '') {
 			setFilteredBooks([])
@@ -67,7 +80,7 @@ const SearchBar = () => {
 				<ul className='list px-2 absolute top-20 z-50 rounded-md shadow bg-white w-full'>
 					{books.map(item => (
 						<li className='my-2' key={item.id}>
-							{item.title}
+							{item.title_ukr}
 						</li>
 					))}
 				</ul>
