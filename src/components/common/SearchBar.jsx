@@ -1,7 +1,7 @@
 ﻿import { useEffect, useState } from 'react'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
-import axios from '/node_modules/axios'
+import axios from 'axios'
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
@@ -10,31 +10,48 @@ const SearchBar = () => {
 
 	useEffect(() => {
 		axios.get('https://backend-tan-phi.vercel.app/api').then(({ data }) => {
-			const { newBooks, salesBooks, bestsellerBooks } = data
-			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
-			// setBooks(combinedBooks);
-			setFilteredBooks(combinedBooks)
-			// console.log(combinedBooks);
-			// console.log(filteredBooks.length);
+			const { newBooks } = data
+			const combinedBooks = [...newBooks]
+			setBooks(combinedBooks)
+			setFilteredBooks([])
 		})
 	}, [])
 
-	const handleFilter = event => {
-		const searchWord = event.target.value
+	const handleFilter = (event) => {
+		const searchWord = event.target.value.toLowerCase()
 		setWordEntered(searchWord)
-		const res = filteredBooks.filter(b =>
-			b && b.title ? b.title.toLowerCase().includes(searchWord) : false
-		)
+
+		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(searchWord)
+
+		const res = books.filter(b => {
+			if (isUkrainian) {
+				const hasTitleUkr = b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord) : false
+
+				const hasAuthorUkr = b && b.author && b.author.length > 0
+					? b.author.some(a => a.name_ukr.toLowerCase().includes(searchWord) || a.surname_ukr.toLowerCase().includes(searchWord))
+					: false
+
+				return hasTitleUkr || hasAuthorUkr
+			} else {
+				const hasTitleEng = b && b.title ? b.title.toLowerCase().includes(searchWord) : false
+
+				const hasAuthorEng = b && b.author && b.author.length > 0
+					? b.author.some(a => a.name.toLowerCase().includes(searchWord) || a.surname.toLowerCase().includes(searchWord))
+					: false
+
+				return hasTitleEng || hasAuthorEng
+			}
+		})
 
 		if (searchWord === '') {
-			setFilteredBooks([])
+			setFilteredBooks([]) 
 		} else {
-			setBooks(res)
+			setFilteredBooks(res)
 		}
 	}
 
 	const clearInput = () => {
-		setFilteredBooks([])
+		setFilteredBooks([]) 
 		setWordEntered('')
 	}
 
@@ -51,7 +68,6 @@ const SearchBar = () => {
 					value={wordEntered}
 				/>
 
-				{/* close icon */}
 				{wordEntered.length > 0 && (
 					<img
 						src={clear}
@@ -62,14 +78,18 @@ const SearchBar = () => {
 				)}
 			</div>
 
-			{/* search  results  */}
-			{filteredBooks.length != 0 && (
+			{filteredBooks.length !== 0 && (
 				<ul className='list px-2 absolute top-20 z-50 rounded-md shadow bg-white w-full'>
-					{books.map(item => (
-						<li className='my-2' key={item.id}>
-							{item.title}
-						</li>
-					))}
+					{filteredBooks.map(item => {
+						const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
+						return (
+							<li className='my-2' key={item._id}>
+								{isUkrainian ? 
+									`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')} - ${item.title_ukr}` : 
+									`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')} - ${item.title}`}
+							</li>
+						)
+					})}
 				</ul>
 			)}
 		</>

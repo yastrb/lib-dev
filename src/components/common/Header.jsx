@@ -26,6 +26,8 @@ const Header = () => {
           <div className='hidden md:flex md:flex-col md:items-center md:justify-center relative'>
             <SearchBar />
           </div>
+        
+          
 
           <div className='flex md:items-center md:justify-center'>
             <div className="hidden md:flex h-12">
