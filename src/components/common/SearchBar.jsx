@@ -10,8 +10,8 @@ const SearchBar = () => {
 
 	useEffect(() => {
 		axios.get('https://backend-tan-phi.vercel.app/api').then(({ data }) => {
-			const { newBooks, salesBooks, bestsellerBooks } = data
-			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
+			const { newBooks } = data
+			const combinedBooks = [...newBooks]
 			setBooks(combinedBooks)
 			setFilteredBooks([])
 		})
@@ -44,15 +44,15 @@ const SearchBar = () => {
 		})
 
 		if (searchWord === '') {
-			setFilteredBooks([]) // Якщо рядок пошуку пустий, показуємо пустий список
+			setFilteredBooks([]) 
 		} else {
 			setFilteredBooks(res)
 		}
 	}
 
 	const clearInput = () => {
-		setFilteredBooks([]) // Очищуємо відфільтрований список
-		setWordEntered('') // Очищуємо рядок пошуку
+		setFilteredBooks([]) 
+		setWordEntered('')
 	}
 
 	return (
@@ -83,7 +83,7 @@ const SearchBar = () => {
 					{filteredBooks.map(item => {
 						const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
 						return (
-							<li className='my-2' key={item.id}>
+							<li className='my-2' key={item._id}>
 								{isUkrainian ? 
 									`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')} - ${item.title_ukr}` : 
 									`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')} - ${item.title}`}
