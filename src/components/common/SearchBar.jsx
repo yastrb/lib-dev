@@ -121,7 +121,7 @@ const SearchBar = () => {
 										</p>
 
 										{/* price */}
-										<p className={`${styles.bodyMedium}`}>{displayPrice} грн</p>
+										<p className={`${styles.bodyMedium} mb-2`}>{displayPrice} грн</p>
 
 										{/* stock */}
 										<p className='flex gap-2 items-center'>
