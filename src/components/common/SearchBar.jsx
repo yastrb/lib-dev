@@ -2,8 +2,12 @@
 import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
+<<<<<<< HEAD
 import stock from '../../assets/stock.svg'
 import axios from 'axios'
+=======
+import axios from '/node_modules/axios'
+>>>>>>> afd6780350132545b47c714d3dbed37a0d0d5779
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
