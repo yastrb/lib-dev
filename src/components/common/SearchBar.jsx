@@ -107,19 +107,21 @@ const SearchBar = () => {
 									{/* results info */}
 									<div className='flex flex-col'>
 										{/* title */}
-										{isUkrainian ?
-											<p className={`${styles.bodyRegular}`}>{item.title_ukr}</p> :
-											<p>{item.title}</p>}
+										<p className={`${styles.bodyRegular}`}>
+											{isUkrainian ?
+												<p >{item.title_ukr}</p> :
+												<p>{item.title}</p>}
+										</p>
 
 										{/* author */}
-										<p className={`${styles.captionRegular}`}>
+										<p className={`${styles.captionRegular} mb-2`}>
 											{isUkrainian ?
 												`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')}` :
 												`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')}`}
 										</p>
 
 										{/* price */}
-										<p>{displayPrice} грн</p>
+										<p className={`${styles.bodyMedium}`}>{displayPrice} грн</p>
 
 										{/* stock */}
 										<p className='flex gap-2 items-center'>
