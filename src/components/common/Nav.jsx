@@ -19,31 +19,31 @@ const Nav = () => {
 
     const navLinks = [
         {
-          id: "1",
-          display: t('main.navlinks.home'),
-          path: "/",
+            id: "1",
+            display: t('main.navlinks.home'),
+            path: "/",
         },
         {
-          id: "2",
-          display: t('main.navlinks.catalog'),
-          path: "/",
+            id: "2",
+            display: t('main.navlinks.catalog'),
+            path: "/",
         },
         {
-          id: "3",
-          display: t('main.navlinks.aboutUs'),
-          path: "/about",
+            id: "3",
+            display: t('main.navlinks.aboutUs'),
+            path: "/about",
         },
         {
-          id: "4",
-          display: t('main.navlinks.topBooks'),
-          path: "/top-books",
+            id: "4",
+            display: t('main.navlinks.topBooks'),
+            path: "/top-books",
         },
         {
-          id: "5",
-          display: t('main.navlinks.stock'),
-          path: "/special-offers",
+            id: "5",
+            display: t('main.navlinks.stock'),
+            path: "/special-offers",
         },
-      ];
+    ];
 
     return (
         <>
@@ -54,27 +54,27 @@ const Nav = () => {
                     {navLinks.map(link => (
                         <NavLink key={link.id} to={link.path}>{link.display}</NavLink>
                     ))}
-                    
+
                 </nav>
                 <span>
-                <a href="tel:+3800530883635">+380 053 088 3635</a>
+                    <a href="tel:+3800530883635">+380 053 088 3635</a>
                 </span>
             </div>
 
             <div className={`${styles.paddingX} py-2 flex justify-between md:hidden`}>
 
-                    {/*open menu btn on mobile devices*/}
+                {/*open menu btn on mobile devices*/}
                 <div className='w-12 h-12'>
-                    <img 
+                    <img
                         onClick={toggleMenu}
-                        src={menu} 
-                        alt="menu" 
-                        className='cursor-pointer w-12 h-12 object-cover' 
+                        src={menu}
+                        alt="menu"
+                        className='cursor-pointer w-12 h-12 object-cover'
                     />
                 </div>
 
-                    {/* searchbar on mobile devices */}
-                <div className='flex md:hidden'>
+                {/* searchbar on mobile devices */}
+                <div className='relative flex md:hidden'>
                     <SearchBar />
                 </div>
             </div>
@@ -87,11 +87,11 @@ const Nav = () => {
             {/* mobile menu */}
             <div className={`${menuOpen ? "absolute" : "hidden"} md:hidden absolute z-50 top-0 left-0 bottom-0 w-[300px] bg-secondary rounded-r-2xl pt-2 pr-2 sidebar drop-shadow-md`}>
                 <div className='flex justify-end mb-6 cursor-pointer'>
-                    <img 
+                    <img
                         onClick={toggleMenu}
-                        src={close} 
-                        alt="close" 
-                        className='w-12 h-12' 
+                        src={close}
+                        alt="close"
+                        className='w-12 h-12'
                     />
                 </div>
                 <div className='flex flex-col items-center justify-center'>
