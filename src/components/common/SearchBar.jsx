@@ -1,7 +1,7 @@
 ﻿import { useEffect, useState } from 'react'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
-import axios from 'axios'
+import axios from '/node_modules/axios'
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
