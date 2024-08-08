@@ -1,7 +1,7 @@
 ﻿import { useEffect, useState } from 'react'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
-import axios from 'axios'
+import axios from '/node_modules/axios'
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
@@ -14,6 +14,7 @@ const SearchBar = () => {
 			const combinedBooks = [...newBooks]
 			setBooks(combinedBooks)
 			setFilteredBooks([])
+			console.log(combinedBooks)
 		})
 	}, [])
 
@@ -44,14 +45,14 @@ const SearchBar = () => {
 		})
 
 		if (searchWord === '') {
-			setFilteredBooks([]) 
+			setFilteredBooks([])
 		} else {
 			setFilteredBooks(res)
 		}
 	}
 
 	const clearInput = () => {
-		setFilteredBooks([]) 
+		setFilteredBooks([])
 		setWordEntered('')
 	}
 
@@ -79,18 +80,28 @@ const SearchBar = () => {
 			</div>
 
 			{filteredBooks.length !== 0 && (
-				<ul className='list px-2 absolute top-20 z-50 rounded-md shadow bg-white w-full'>
-					{filteredBooks.map(item => {
-						const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
-						return (
-							<li className='my-2' key={item._id}>
-								{isUkrainian ? 
-									`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')} - ${item.title_ukr}` : 
-									`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')} - ${item.title}`}
-							</li>
-						)
-					})}
-				</ul>
+				<div className='search-results absolute top-20 z-50 rounded-md shadow bg-white ' >
+					<p className='px-3 py-2 font-medium divider'>Результат пошуку</p>
+					<ul className=''>
+						{filteredBooks.map(item => {
+							const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
+							return (
+								<li className='p-3 flex gap-2' key={item._id}>
+									<div >
+									{isUkrainian ?
+										<img className=' w-[75px] h-[99px]' src={item.coverImageLink_ukr} alt={item.title} /> :
+										<img className=' w-[75px] h-[99px]' src={item.coverImageLink} alt={item.title} />}
+									</div>
+
+									{isUkrainian ?
+										`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')} - ${item.title_ukr}` :
+										`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')} - ${item.title}`}
+								</li>
+							)
+						})}
+					</ul>
+				</div>
+
 			)}
 		</>
 	)
