@@ -10,6 +10,7 @@
 	subtitleSemibold: 'font-montserrat font-semibold text-2xl',
 	subtitleMedium: 'font-montserrat font-medium text-lg text-black',
 	bodyRegular: 'font-montserrat font-normal text-base leading-6',
+	captionRegular: "font-montserrat font-normal text-[12px] leading-[15px]",
 	button: 'font-montserrat font-medium text-base ',
 
 	paddingX: 'lg:px-8 md:px-4 px-3  ',

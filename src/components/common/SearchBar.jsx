@@ -1,6 +1,8 @@
 ﻿import { useEffect, useState } from 'react'
+import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
+import stock from '../../assets/stock.svg'
 import axios from 'axios'
 
 const SearchBar = () => {
@@ -85,14 +87,14 @@ const SearchBar = () => {
 					<p className='px-3 py-2 font-medium divider'>Результат пошуку</p>
 					<ul>
 						{filteredBooks.map(item => {
-							
+
 							const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
-							
+
 							const price = item.price[0]
-							const displayPrice = price.discounted_price > 0 
-								? price.discounted_price 
+							const displayPrice = price.discounted_price > 0
+								? price.discounted_price
 								: price.original_price
-							
+
 							return (
 								<li className='p-3 flex gap-2' key={item._id}>
 									{/* results img */}
@@ -101,16 +103,16 @@ const SearchBar = () => {
 											<img className='w-[75px] h-[99px]' src={item.coverImageLink_ukr} alt={item.title_ukr} /> :
 											<img className='w-[75px] h-[99px]' src={item.coverImageLink} alt={item.title} />}
 									</div>
-										
+
 									{/* results info */}
 									<div className='flex flex-col'>
 										{/* title */}
 										{isUkrainian ?
-											<p>{item.title_ukr}</p> :
+											<p className={`${styles.bodyRegular}`}>{item.title_ukr}</p> :
 											<p>{item.title}</p>}
-										
+
 										{/* author */}
-										<p>
+										<p className={`${styles.captionRegular}`}>
 											{isUkrainian ?
 												`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')}` :
 												`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')}`}
@@ -118,6 +120,12 @@ const SearchBar = () => {
 
 										{/* price */}
 										<p>{displayPrice} грн</p>
+
+										{/* stock */}
+										<p className='flex gap-2 items-center'>
+											<img src={stock} alt="in stock" />
+											<span className={`${styles.bodyRegular} text-green`}>В наявності</span>
+										</p>
 									</div>
 								</li>
 							)
