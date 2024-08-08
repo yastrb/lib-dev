@@ -1,7 +1,7 @@
 ﻿import { useEffect, useState } from 'react'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
-import axios from '/node_modules/axios'
+import axios from 'axios'
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
@@ -79,29 +79,51 @@ const SearchBar = () => {
 				)}
 			</div>
 
+			{/* results */}
 			{filteredBooks.length !== 0 && (
-				<div className='search-results absolute top-20 z-50 rounded-md shadow bg-white ' >
+				<div className='search-results absolute top-20 z-50 rounded-md shadow bg-white'>
 					<p className='px-3 py-2 font-medium divider'>Результат пошуку</p>
-					<ul className=''>
+					<ul>
 						{filteredBooks.map(item => {
+							
 							const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
+							
+							const price = item.price[0]
+							const displayPrice = price.discounted_price > 0 
+								? price.discounted_price 
+								: price.original_price
+							
 							return (
 								<li className='p-3 flex gap-2' key={item._id}>
-									<div >
-									{isUkrainian ?
-										<img className=' w-[75px] h-[99px]' src={item.coverImageLink_ukr} alt={item.title} /> :
-										<img className=' w-[75px] h-[99px]' src={item.coverImageLink} alt={item.title} />}
+									{/* results img */}
+									<div>
+										{isUkrainian ?
+											<img className='w-[75px] h-[99px]' src={item.coverImageLink_ukr} alt={item.title_ukr} /> :
+											<img className='w-[75px] h-[99px]' src={item.coverImageLink} alt={item.title} />}
 									</div>
+										
+									{/* results info */}
+									<div className='flex flex-col'>
+										{/* title */}
+										{isUkrainian ?
+											<p>{item.title_ukr}</p> :
+											<p>{item.title}</p>}
+										
+										{/* author */}
+										<p>
+											{isUkrainian ?
+												`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')}` :
+												`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')}`}
+										</p>
 
-									{isUkrainian ?
-										`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')} - ${item.title_ukr}` :
-										`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')} - ${item.title}`}
+										{/* price */}
+										<p>{displayPrice} грн</p>
+									</div>
 								</li>
 							)
 						})}
 					</ul>
 				</div>
-
 			)}
 		</>
 	)
