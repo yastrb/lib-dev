@@ -7,12 +7,12 @@ import img1 from '../../components/ProductImageGallery/imagesPrewiev/img1.webp'
 import img2 from '../../components/ProductImageGallery/imagesPrewiev/img2.jpg'
 import img3 from '../../components/ProductImageGallery/imagesPrewiev/img3.jpg'
 import ProductImageGallery from '../../components/ProductImageGallery/productImageGallery'
+import Button from '../../components/common/button/Button.jsx'
 import { useGetBookInfoQuery } from '../../redux/productPageSlice'
 import styles from '../../style'
 import IconStatusFalse from './ProductStatusItemFalse.svg'
 import IconStatusTrue from './ProductStatusItemTrue.svg'
 import ProductDescription from './productDescription'
-import Button from '../../components/common/button/Button.jsx'
 
 const ProductPage = () => {
 	const location = useLocation()
@@ -30,7 +30,7 @@ const ProductPage = () => {
 	// }, [])
 
 	if (isLoading) return <div className='h-screen'>Loading...</div>
-	if (error) return <div>Error: {error.message}</div>
+	if (error) return <div className='h-screen'>Error: {error.message}</div>
 	// console.log(data)
 
 	const book = data.bookById
@@ -61,13 +61,12 @@ const ProductPage = () => {
 		<div className={` mt-14 ${styles.boxWidth} mx-auto`}>
 			{imageLightBoxStatus && <ImageLightBox images={PHTArrray} />}
 			<div className='product-item'>
-
 				{/* title */}
 				<div className='product-title'>
-					<p className='font-semibold text-2xl whitespace-nowrap mb-2 pt-3 px-3'>
+					<p className='font-semibold text-2xl whitespace-nowrap mb-2  px-3'>
 						{title_ukr}
 					</p>
-					<p className='font-normal text-base px-3 mb-5'>
+					<p className='font-normal text-base px-3'>
 						{author_id[0].name_ukr} {author_id[0].surname_ukr}
 					</p>
 				</div>
@@ -93,8 +92,8 @@ const ProductPage = () => {
 				</div>
 
 				{/* price */}
-				<div className='product-price'>
-					<p className=' text-hover text-2xl font-semibold'>
+				<div className='product-price pl-4'>
+					<p className=' text-hover text-2xl flex md:justify-center  lg:justify-end font-semibold'>
 						<span className=' text-4xl pr-2'>
 							{price_id.discounted_price > 0
 								? price_id.discounted_price
@@ -103,11 +102,11 @@ const ProductPage = () => {
 						грн
 					</p>
 					{statusIcon ? (
-						<p className=' text-green flex text-base font-normal  gap-x-2 mt-2'>
+						<p className=' text-green flex text-base md:justify-center  lg:justify-end font-normal  gap-x-2 mt-2'>
 							<img src={IconStatusTrue} alt='' /> {'В наявності'}
 						</p>
 					) : (
-						<p className='text-red flex text-base font-normal gap-x-2 mt-2'>
+						<p className='text-red flex text-base font-normal md:justify-center lg:justify-end gap-x-2 mt-2'>
 							<img src={IconStatusFalse} alt='' />
 							{'Немає в наявності'}
 						</p>
@@ -115,24 +114,25 @@ const ProductPage = () => {
 				</div>
 
 				{/* buttons */}
-				<div className={`product-btns flex xl:flex-col gap-2  `}>
-					<Button
-						label="В кошик"
-						className="bg-button py-2.5 px-10" />
-					<Button
-						label="Оплатити"
-						className="bg-buttonB border-none py-2.5 px-10" />
+				<div className={`product-btns   `}>
+					<div className='flex xl:flex-col gap-2'>
+						<Button label='В кошик' className='bg-button py-2.5 px-10' />
+						<Button
+							label='Оплатити'
+							className='bg-buttonB border-none py-2.5 px-10'
+						/>
+					</div>
 				</div>
 
-				{/* <ProductDescription description={summary_ukr} /> */}
 				<div className='product-summary'>
-					<ProductDescription description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Id aperiam dicta voluptate. Soluta iste earum corporis dolores quae aliquam nisi itaque ratione laboriosam. Ratione libero quo adipisci nobis deserunt debitis.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate repellendus error velit iusto dicta deserunt voluptates praesentium officia ex temporibus dolores totam, aliquid vero nihil, voluptas incidunt eos? Quae, commodi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quibusdam fugit labore incidunt harum. Exercitationem commodi, perferendis consequatur, omnis officia ducimus beatae consequuntur, fuga repellendus quae iusto. Perspiciatis, debitis corrupti?' />
+					<ProductDescription description={summary_ukr} />
 				</div>
 			</div>
 
 			<FeaturedCarouselSection
 				title='Вас може зацікавити'
 				data={data.recommendation}
+				seeMoreStatus={false}
 			/>
 		</div>
 	)

@@ -6,10 +6,10 @@ import CustomLeftArrow from '../../assets/icons/ArrowCustomLeft'
 import CustomRightArrow from '../../assets/icons/ArrowCustomRight'
 import closeIcon from '../../assets/icons/IconClose.svg'
 import { updateStatus } from '../../redux/imageLightBoxStatus'
+import './style.css'
 
 const responsive = {
 	superLargeDesktop: {
-		// the naming can be any, depends on you.
 		breakpoint: { max: 4000, min: 1280 },
 		items: 1,
 	},
@@ -26,6 +26,7 @@ const responsive = {
 		items: 1,
 	},
 }
+
 const ImageLightBox = ({ images }) => {
 	const dispatch = useDispatch()
 	const status = useSelector(state => state.imageLightBoxStatus.status)
@@ -35,22 +36,18 @@ const ImageLightBox = ({ images }) => {
 	}
 
 	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'auto',
-		})
 		document.body.style.overflow = 'hidden'
 		return () => {
 			document.body.style.overflow = 'auto'
 		}
-	}, [status])
+	}, [])
 
 	return (
 		<div className='fixed top-0 left-0 w-full h-full bg-white md:bg-popUpBg flex justify-center items-center z-30 md:bg-opacity-90'>
-			<div className=' bg-white w-full'>
+			<div className='bg-white ImageLightBox-contentWrapper'>
 				<img
 					style={{ right: '10%', top: '7%' }}
-					className='absolute'
+					className='absolute cursor-pointer'
 					onClick={handleToggleStatus}
 					src={closeIcon}
 					alt='CloseIcon'
@@ -62,11 +59,16 @@ const ImageLightBox = ({ images }) => {
 					showDots={true}
 					customLeftArrow={<CustomLeftArrow />}
 					customRightArrow={<CustomRightArrow />}
-					className='mx-2'
+					removeArrowOnDeviceType={['mobile']}
+					className='mx-2 carouselLightBox'
 				>
-					{images.map(el => (
-						<div className='flex justify-center pb-8'>
-							<img className='w-64 h-21rem rounded-xl' src={el} alt='el' />
+					{images.map((el, index) => (
+						<div key={index} className='flex justify-center pb-8'>
+							<img
+								className='rounded-xl carouselContentImage'
+								src={el}
+								alt={`slide-${index}`}
+							/>
 						</div>
 					))}
 				</Carousel>
