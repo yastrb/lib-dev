@@ -1,67 +1,104 @@
-import trash from './../../../assets/trash.svg';
-import stock from './../../../assets/stock.svg';
-import styles from '../../../style';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart, increase, decrease } from '../../../redux/cartSlice';
+import { useDispatch, useSelector } from 'react-redux'
+import { decrease, increase, removeFromCart } from '../../../redux/cartSlice'
+import styles from '../../../style'
+import stock from './../../../assets/stock.svg'
+import trash from './../../../assets/trash.svg'
 
-const CartItem = ({ _id, title, author_id, coverImageLink, isbn, price_id }) => {
-    const dispatch = useDispatch();
+const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
+	const dispatch = useDispatch()
 
-    const handleRemoveFromCart = () => {
-        dispatch(removeFromCart(_id));
-    };
+	const handleRemoveFromCart = () => {
+		dispatch(removeFromCart(_id))
+	}
 
-    const cartItem = useSelector((state) =>
-        state.cart.cartItems.find((item) => item._id === _id)
-    );
+	const cartItem = useSelector(state =>
+		state.cart.cartItems.find(item => item._id === _id)
+	)
 
-    const qty = cartItem ? cartItem.qty : 1;
+	const qty = cartItem ? cartItem.qty : 1
 
-    return (
-        <div className="cart-item relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
-            {/* image */}
-            <img className=' cart-image h-32 md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl' src={coverImageLink} alt={title} />
+	const bookPrice = price && price.original_price ? price.original_price : 0
 
-            {/* info */}
-            <div className=' cart-data flex items-start justify-between'>
-                <div>
-                    <h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
-                    <p className={`${styles.bodyRegular} mb-4`}>Автор: {author_id.map(author => `${author.name_ukr} ${author.surname_ukr}`).join(', ')}</p>
-                    <p className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}>Код товару: 1234</p>
-                    <p className='flex gap-2 items-center'>
-                        <img src={stock} alt="in stock" />
-                        <span className={`${styles.bodyRegular} text-green`}>В наявності</span>
-                    </p>
-                </div>
+	return (
+		<div className="cart-item w-full relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
+			{/* image */}
+			<img
+				className=' cart-image h-full w-full bg-cover md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl'
+				src={coverImageLink[0]}
+				alt={title}
+			/>
 
-                <button onClick={handleRemoveFromCart}>
-                    <img src={trash} alt="remove item" />
-                </button>
-            </div>
+			{/* info */}
+			<div className=' cart-data flex items-start justify-between'>
+				<div>
+					<h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
+					<p className={`${styles.bodyRegular} mb-4`}>
+						Автор:{' '}
+						{author
+							.map(author => `${author.name_ukr} ${author.surname_ukr}`)
+							.join(', ')}
+					</p>
+					<p
+						className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}
+					>
+						Код товару: 1234
+					</p>
+					<p className='flex gap-2 items-center'>
+						<img src={stock} alt='in stock' />
+						<span className={`${styles.bodyRegular} text-green`}>
+							В наявності
+						</span>
+					</p>
+				</div>
 
-            {/* price */}
-            <div className='cart-price flex gap-8 justify-between'>
+				<button onClick={handleRemoveFromCart}>
+					<img src={trash} alt='remove item' />
+				</button>
+			</div>
 
-                <div className={`${styles.flexCenter}`}>
-                    <button onClick={() => {
-                        if (qty === 1) {
-                            dispatch(removeFromCart(_id));
-                        } else {
-                            dispatch(decrease({ _id }));
-                        }
-                    }} className='flex items-center justify-center w-12 h-12'>-</button>
-                    <div className='flex items-center justify-center w-8 h-8 md:w-12 md:h-12 border-solid border-[1px] border-grey rounded-lg'>{qty}</div>
-                    <button onClick={() => {
-                        dispatch(increase({ _id }));
-                    }} className='flex items-center justify-center w-12 h-12'>+</button>
-                </div>
+			{/* price */}
+			<div className='cart-price flex gap-8 justify-between xl:justify-end'>
+				<div className={`${styles.flexCenter}`}>
+					{/* decrease */}
+					<button
+						onClick={() => {
+							if (qty >= 1) {
+								dispatch(decrease({ _id }))
+							} else {
+								cartItem.qty = 0
+							}
+						}}
+						className='flex items-center justify-center w-12 h-12'
+					>
+						-
+					</button>
 
-                <h4 className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}>{price_id.original_price} грн</h4>
-            </div>
+					{/* quantity */}
+					<div className='flex items-center justify-center w-8 h-8 md:w-12 md:h-12 border-solid border-[1px] border-grey rounded-lg'>
+						{qty}
+					</div>
 
-        </div>
+					{/* increase */}
+					<button
+						onClick={() => {
+							dispatch(increase({ _id }))
+						}}
+						className='flex items-center justify-center w-12 h-12'
+					>
+						+
+					</button>
+				</div>
 
-    );
-};
+				<h4
+					className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}
+				>
+					{price[0].discounted_price > 0
+						? `${price[0].discounted_price} грн`
+						: `${price[0].original_price} грн`}
+				</h4>
+			</div>
+		</div>
+	)
+}
 
-export default CartItem;
+export default CartItem
