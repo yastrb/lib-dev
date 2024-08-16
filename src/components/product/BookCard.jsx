@@ -1,16 +1,16 @@
-// import { useDispatch } from 'react-redux';
-// import { addToCart } from '../../redux/cartSlice';
+// import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+// import { addToCart } from '../../redux/cartSlice'
 const BookCard = ({ book }) => {
-	// const dispatch = useDispatch();
-
+	// const dispatch = useDispatch()
 	// const handleAddToCart = () => {
-	//   dispatch(addToCart(book));
-	// };
+	// 	dispatch(addToCart(book))
+	// }
 	const navigate = useNavigate()
 
 	const handleClick = () => {
 		navigate('/productpage', { state: { id: book.price[0].book_id } })
+		window.scroll(0, 0)
 	}
 
 	return (
