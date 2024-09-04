@@ -4,6 +4,7 @@ import DropDownCatalogSort from '../../components/dropDownCatalogSort'
 import FiltersMenu from '../../components/filtersMenu/index.jsx'
 import styles from '../../style.js'
 import './styles.css'
+import Cataloglist from './cataloglist.jsx'
 
 const Catalog = () => {
 	const [menuStatus, setMenuStatus] = useState(false)
@@ -40,8 +41,10 @@ const Catalog = () => {
 					changeMenuStatus={handleChangeMenuStatus}
 					bgRender='true'
 				/>
-				<p>hallo</p>
+			
 				{/* -------------------- */}
+
+				<Cataloglist/>
 			</div>
 		</div>
 	)
