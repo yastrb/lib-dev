@@ -87,9 +87,6 @@ body.active-modal {
 	grid-area: img;
 }
 
-/* .product-info {
-	grid-area: info;
-} */
 .product-info {
 	grid-area: info;
 	width: 100%;
@@ -110,6 +107,7 @@ body.active-modal {
 	height: 2.5rem;
 	padding: 0;
 }
+
 .product-price {
 	grid-area: price;
 	padding-bottom: 20px;
@@ -175,6 +173,25 @@ body.active-modal {
 	background: rgba(49, 49, 49, 0.8);
 }
 
+.search-results {
+	position: absolute;
+	z-index: 50;
+	top: 80px;
+	border-radius: 12px;
+	width: 588px;
+}
+
+@media (max-width: 768px) {
+	.search-results {
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transform: none;
+		border-radius: 0;
+		background: #f1f1f1;
+	}
+}
+
 .modal-content {
 	position: absolute;
 	z-index: 60;
@@ -223,72 +240,68 @@ body.active-modal {
 	padding: 12px;
 }
 
-.block-with-divider:before {
+.block-with-divider::before,
+.block-with-divider::after {
 	content: '';
 	position: absolute;
-	left: 0;
+	width: 100%;
+	height: 1px;
+	background-color: grey;
+}
+
+.block-with-divider::before {
 	top: 0;
-	width: 100%;
-	height: 1px;
-	background-color: grey;
 }
 
-.block-with-divider:after {
-	content: '';
-	position: absolute;
-	left: 0;
+.block-with-divider::after {
 	bottom: 0;
-	width: 100%;
-	height: 1px;
-	background-color: grey;
 }
 
-.login-links::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	margin-left: 70px;
-	height: 1px;
-	background-color: grey;
-	width: 78px;
-}
-
+.login-links::after,
 .login-links::before {
 	content: '';
 	position: absolute;
-	left: -200%;
-	top: 50%;
 	height: 1px;
 	background-color: grey;
 	width: 78px;
+}
+
+.login-links::after {
+	top: 50%;
+	margin-left: 70px;
+}
+
+.login-links::before {
+	left: -200%;
+	top: 50%;
 }
 
 .modal-input {
 	margin-bottom: 12px;
 	background: transparent;
 	outline: none;
-	padding-inline: 16px 16px;
+	padding-inline: 16px;
 	padding-block: 20px;
 	border-radius: 16px;
 	border-color: #ababab;
 	border-width: 1px;
 }
-.slick-arrow.slick-prev::before {
-	content: '';
-	display: inline-block;
-	width: 14px;
-	height: 24px;
-	background-image: url(../src/assets/left.svg);
-	background-size: cover;
-}
 
+.slick-arrow.slick-prev::before,
 .slick-arrow.slick-next::before {
 	content: '';
 	display: inline-block;
 	width: 14px;
 	height: 24px;
-	background-image: url(../src/assets/right.svg);
 	background-size: cover;
+}
+
+.slick-arrow.slick-prev::before {
+	background-image: url(../src/assets/left.svg);
+}
+
+.slick-arrow.slick-next::before {
+	background-image: url(../src/assets/right.svg);
 }
 
 .shadow {
@@ -301,11 +314,9 @@ body.active-modal {
 
 @keyframes slide-left {
 	0% {
-		-webkit-transform: translateX(-300px);
 		transform: translateX(-300px);
 	}
 	100% {
-		-webkit-transform: translateX(0);
 		transform: translateX(0);
 	}
 }

@@ -1,6 +1,8 @@
 ﻿import { useEffect, useState } from 'react'
+import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
+import stock from '../../assets/stock.svg'
 import axios from '/node_modules/axios'
 
 const SearchBar = () => {
@@ -10,26 +12,44 @@ const SearchBar = () => {
 
 	useEffect(() => {
 		axios.get('https://backend-tan-phi.vercel.app/api').then(({ data }) => {
-			const { newBooks, salesBooks, bestsellerBooks } = data
-			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
-			// setBooks(combinedBooks);
-			setFilteredBooks(combinedBooks)
-			// console.log(combinedBooks);
-			// console.log(filteredBooks.length);
+			const { newBooks } = data
+			const combinedBooks = [...newBooks]
+			setBooks(combinedBooks)
+			setFilteredBooks([])
+			console.log(combinedBooks)
 		})
 	}, [])
 
-	const handleFilter = event => {
-		const searchWord = event.target.value
+	const handleFilter = (event) => {
+		const searchWord = event.target.value.toLowerCase()
 		setWordEntered(searchWord)
-		const res = filteredBooks.filter(b =>
-			b && b.title ? b.title.toLowerCase().includes(searchWord) : false
-		)
+
+		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(searchWord)
+
+		const res = books.filter(b => {
+			if (isUkrainian) {
+				const hasTitleUkr = b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord) : false
+
+				const hasAuthorUkr = b && b.author && b.author.length > 0
+					? b.author.some(a => a.name_ukr.toLowerCase().includes(searchWord) || a.surname_ukr.toLowerCase().includes(searchWord))
+					: false
+
+				return hasTitleUkr || hasAuthorUkr
+			} else {
+				const hasTitleEng = b && b.title ? b.title.toLowerCase().includes(searchWord) : false
+
+				const hasAuthorEng = b && b.author && b.author.length > 0
+					? b.author.some(a => a.name.toLowerCase().includes(searchWord) || a.surname.toLowerCase().includes(searchWord))
+					: false
+
+				return hasTitleEng || hasAuthorEng
+			}
+		})
 
 		if (searchWord === '') {
 			setFilteredBooks([])
 		} else {
-			setBooks(res)
+			setFilteredBooks(res)
 		}
 	}
 
@@ -51,7 +71,6 @@ const SearchBar = () => {
 					value={wordEntered}
 				/>
 
-				{/* close icon */}
 				{wordEntered.length > 0 && (
 					<img
 						src={clear}
@@ -62,15 +81,59 @@ const SearchBar = () => {
 				)}
 			</div>
 
-			{/* search  results  */}
-			{filteredBooks.length != 0 && (
-				<ul className='list px-2 absolute top-20 z-50 rounded-md shadow bg-white w-full'>
-					{books.map(item => (
-						<li className='my-2' key={item.id}>
-							{item.title}
-						</li>
-					))}
-				</ul>
+			{/* results */}
+			{filteredBooks.length !== 0 && (
+				<div className='search-results absolute top-20 z-50 rounded-md shadow bg-white'>
+					<p className='px-3 py-2 font-medium divider'>Результат пошуку</p>
+					<ul>
+						{filteredBooks.map(item => {
+
+							const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
+
+							const price = item.price[0]
+							const displayPrice = price.discounted_price > 0
+								? price.discounted_price
+								: price.original_price
+
+							return (
+								<li className='p-3 flex gap-2' key={item._id}>
+									{/* results img */}
+									<div>
+										{isUkrainian ?
+											<img className='w-[75px] h-[99px]' src={item.coverImageLink_ukr} alt={item.title_ukr} /> :
+											<img className='w-[75px] h-[99px]' src={item.coverImageLink} alt={item.title} />}
+									</div>
+
+									{/* results info */}
+									<div className='flex flex-col'>
+										{/* title */}
+										<p className={`${styles.bodyRegular}`}>
+											{isUkrainian ?
+												<p >{item.title_ukr}</p> :
+												<p>{item.title}</p>}
+										</p>
+
+										{/* author */}
+										<p className={`${styles.captionRegular} mb-2`}>
+											{isUkrainian ?
+												`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')}` :
+												`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')}`}
+										</p>
+
+										{/* price */}
+										<p className={`${styles.bodyMedium} mb-2`}>{displayPrice} грн</p>
+
+										{/* stock */}
+										<p className='flex gap-2 items-center'>
+											<img src={stock} alt="in stock" />
+											<span className={`${styles.bodyRegular} text-green`}>В наявності</span>
+										</p>
+									</div>
+								</li>
+							)
+						})}
+					</ul>
+				</div>
 			)}
 		</>
 	)
