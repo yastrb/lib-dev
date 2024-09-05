@@ -3,7 +3,7 @@ import arrowDown from '../../assets/icons/CatalogArrowDown.svg'
 import arrowUp from '../../assets/icons/CatalogArrowUp.svg'
 import './styles.css'
 
-const DropDownCatalogSort = () => {
+const DropDownCatalogSort = ({ books, onSort }) => {
 	const variantsArray = [
 		'За популярністю',
 		'За знижкою',
@@ -15,6 +15,27 @@ const DropDownCatalogSort = () => {
 
 	const handleBtnClick = () => {
 		setIsOpen(!isOpen)
+	}
+
+	const handleSort = (sortOption) => {
+		let sortedBooks = [...books];
+
+		if (sortOption === 'Від дешевих') {
+			sortedBooks.sort((a, b) => {
+				const priceA = a.price[0].discounted_price || a.price[0].original_price;
+				const priceB = b.price[0].discounted_price || b.price[0].original_price;
+				return priceA - priceB;
+			});
+		} else if (sortOption === 'Від дорогих') {
+			sortedBooks.sort((a, b) => {
+				const priceA = a.price[0].discounted_price || a.price[0].original_price;
+				const priceB = b.price[0].discounted_price || b.price[0].original_price;
+				return priceB - priceA;
+			});
+		}
+
+		// Тут можна додати додаткові умови для "За популярністю" та "За знижкою"
+		onSort(sortedBooks);
 	}
 
 	return (
@@ -33,8 +54,9 @@ const DropDownCatalogSort = () => {
 						key={index}
 						className='CatalogDropDownVariantsOfSort__item'
 						onClick={() => {
-							setSelectedText(e)
-							setIsOpen(false)
+							setSelectedText(e);
+							setIsOpen(false);
+							handleSort(e);
 						}}
 					>
 						{e}
@@ -45,4 +67,4 @@ const DropDownCatalogSort = () => {
 	)
 }
 
-export default DropDownCatalogSort
+export default DropDownCatalogSort;
