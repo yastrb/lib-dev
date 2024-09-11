@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
@@ -96,7 +97,7 @@ const SearchBar = () => {
 								: price.original_price
 
 							return (
-								<li className='p-3 flex gap-2' key={item._id}>
+								<Link to={`/catalog/${item._id}`} className='p-3 flex gap-2' key={item._id}>
 									{/* results img */}
 									<div>
 										{isUkrainian ?
@@ -129,7 +130,7 @@ const SearchBar = () => {
 											<span className={`${styles.bodyRegular} text-green`}>В наявності</span>
 										</p>
 									</div>
-								</li>
+								</Link>
 							)
 						})}
 					</ul>
