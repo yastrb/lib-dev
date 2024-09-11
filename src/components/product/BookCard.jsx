@@ -11,7 +11,7 @@ const BookCard = ({ book }) => {
 	};
 
 	const handleClick = () => {
-		navigate('/productpage', { state: { id: book.price[0].book_id } });
+		navigate(`/catalog/${book._id}`);
 		window.scroll(0, 0);
 	};
 

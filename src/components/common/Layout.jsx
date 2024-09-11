@@ -16,8 +16,8 @@ const AppWrapper = () => {
 		{ path: '/about', element: <AboutUs /> },
 		{ path: '/catalog', element: <Catalog /> },
 		{ path: '/top-books', element: <TopBooks /> },
-		{ path: '/sales', element: <Sales /> },
-		{ path: '/productPage', element: <ProductPage /> },
+		{ path: '/special-offers', element: <Sales /> },
+		{ path: '/catalog/:bookId', element: <ProductPage /> },
 	])
 	return routes
 }
