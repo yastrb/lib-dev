@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
+import axios from '/node_modules/axios'
 
 export const fetchSearchResults = createAsyncThunk(
 	'search/fetchSearchResults',
