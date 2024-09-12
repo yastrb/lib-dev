@@ -15,7 +15,7 @@ import IconStatusFalse from './ProductStatusItemFalse.svg';
 import IconStatusTrue from './ProductStatusItemTrue.svg';
 
 const ProductPage = () => {
-  const { bookId } = useParams(); // Отримуємо bookId з URL
+  const { bookId } = useParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
