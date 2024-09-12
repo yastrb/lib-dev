@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '/node_modules/axios';
 import FeaturedCarouselSection from '../../components/FeaturedCarouselSection/FeaturedCarouselSection.jsx';
 import ImageLightBox from '../../components/ImageLightbox/ImageLightbox';
 import img1 from '../../components/ProductImageGallery/imagesPrewiev/img1.webp';
