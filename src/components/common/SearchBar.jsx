@@ -97,7 +97,7 @@ const SearchBar = () => {
 								: price.original_price
 
 							return (
-								<Link to={`/catalog/${item._id}`} className='p-3 flex gap-2' key={item._id}>
+								<Link to={`/${item._id}`} className='p-3 flex gap-2' key={item._id}>
 									{/* results img */}
 									<div>
 										{isUkrainian ?
