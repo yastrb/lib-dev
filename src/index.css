@@ -87,6 +87,9 @@ body.active-modal {
 	grid-area: img;
 }
 
+/* .product-info {
+	grid-area: info;
+} */
 .product-info {
 	grid-area: info;
 	width: 100%;
