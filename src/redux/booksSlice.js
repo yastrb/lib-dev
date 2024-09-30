@@ -7,7 +7,7 @@ export const booksDataApi = createApi({
   }),
   endpoints: (builder) => ({
     getNewBestsellersSalesBooks: builder.query({
-      query: () => "https://backend-tan-phi.vercel.app/api",
+      query: () => "https://backend-o1yz.onrender.com/api", 
       transformResponse: (response) => ({
         newBooks: response.newBooks.map((book) => ({
           ...book,
