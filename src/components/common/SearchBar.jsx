@@ -15,12 +15,12 @@ const SearchBar = () => {
 
 	const debouncedFetchBooks = debounce((value) => {
 		setDebouncedText(value)
-	}, 4500);
+	}, 500);
 
 	useEffect(() => {
 		axios.get('https://backend-o1yz.onrender.com/api').then(({ data }) => {
-			const { newBooks } = data
-			const combinedBooks = [...newBooks]
+			const { newBooks, salesBooks, bestsellerBooks} = data
+			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
 			setBooks(combinedBooks)
 			setFilteredBooks([])
 			console.log(combinedBooks)
