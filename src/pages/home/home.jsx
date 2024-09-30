@@ -18,7 +18,7 @@ const Home = () => {
 		<div>
 			{/* hero */}
 			<div
-				className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart}`}
+				className={` hero ${styles.paddingX} ${styles.paddingY} ${styles.flexStart}`}
 			>
 				<div className={`${styles.boxWidth}`}>
 					<Hero />

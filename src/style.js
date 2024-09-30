@@ -1,6 +1,6 @@
 ﻿const styles = {
 	boxWidth:
-		' xxl:max-w-[1200px] xl:max-w-[1040px] lg:max-w-[1004px] md:max-w-[704px] w-full',
+		' xxl:max-w-[1240px] xl:max-w-[1080px] lg:max-w-[1004px] md:max-w-[704px] w-full',
 
 	heading:
 		'font-montserrat text-2xl xl:text-[32px] text-black font-semibold uppercase',

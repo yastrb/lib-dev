@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -21,29 +20,6 @@ const ProductPage = () => {
 	const imageLightBoxStatus = useSelector(
 		state => state.imageLightBoxStatus.status
 	)
-=======
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from '/node_modules/axios';
-import FeaturedCarouselSection from '../../components/FeaturedCarouselSection/FeaturedCarouselSection.jsx';
-import ImageLightBox from '../../components/ImageLightbox/ImageLightbox';
-import img1 from '../../components/ProductImageGallery/imagesPrewiev/img1.webp';
-import img2 from '../../components/ProductImageGallery/imagesPrewiev/img2.jpg';
-import img3 from '../../components/ProductImageGallery/imagesPrewiev/img3.jpg';
-import ProductImageGallery from '../../components/ProductImageGallery/productImageGallery';
-import Button from '../../components/common/button/Button.jsx';
-import ProductDescription from './productDescription';
-import styles from '../../style.js';
-import IconStatusFalse from './ProductStatusItemFalse.svg';
-import IconStatusTrue from './ProductStatusItemTrue.svg';
-
-const ProductPage = () => {
-  const { bookId } = useParams();
-  const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
->>>>>>> ed6a3bd1f243bc8f55ec0ad86f94ca146444041e
 
 	if (isLoading) return <div className='h-screen'>Loading...</div>
 	if (error) return <div className='h-screen'>Error: {error.message}</div>

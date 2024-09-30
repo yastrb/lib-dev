@@ -61,7 +61,7 @@ const SearchBar = () => {
 
 	return (
 		<>
-			<div className='flex xl:min-w-[500px] lg:min-w-[400px] md:min-w-[208px] px-4 items-center h-12 bg-main border-[1px] rounded-md border-grey cursor-pointer'>
+			<div className=' flex w-[208px] xxl:min-w-[575px] xl:min-w-[575px] lg:min-w-[400px] md:max-w-[208px] px-4 items-center h-12 bg-main border-[1px] rounded-lg border-grey cursor-pointer'>
 				<img src={search} alt='search' className='flex-shrink-0 pr-[14px]' />
 
 				<input

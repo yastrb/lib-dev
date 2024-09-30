@@ -13,7 +13,7 @@ const Header = () => {
 
 	return (
 		<header className='w-full'>
-			<div className='bg-main pt-[44px]'>
+			<div className='bg-main'>
 				<div
 					className={`${styles.paddingX} ${styles.boxWidth} mx-auto justify-between flex py-5`}
 				>
@@ -25,7 +25,7 @@ const Header = () => {
 						</Link>
 					)}
 
-					<div className='hidden md:flex md:flex-col md:items-center md:justify-center relative'>
+					<div className='searchfield hidden md:flex md:flex-col md:items-center md:justify-center relative'>
 						<SearchBar />
 					</div>
 
