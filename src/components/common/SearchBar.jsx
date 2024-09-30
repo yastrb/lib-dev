@@ -4,12 +4,18 @@ import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
 import stock from '../../assets/stock.svg'
-import axios from '/node_modules/axios'
+import axios from 'axios'
+import { debounce } from "lodash";
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
 	const [filteredBooks, setFilteredBooks] = useState([])
 	const [wordEntered, setWordEntered] = useState('')
+	const [debouncedText, setDebouncedText] = useState('')
+
+	const debouncedFetchBooks = debounce((value) => {
+		setDebouncedText(value)
+	}, 4500);
 
 	useEffect(() => {
 		axios.get('https://backend-o1yz.onrender.com/api').then(({ data }) => {
@@ -21,38 +27,38 @@ const SearchBar = () => {
 		})
 	}, [])
 
+	// Виклик debounce при кожній зміні вводу користувача
 	const handleFilter = (event) => {
 		const searchWord = event.target.value.toLowerCase()
 		setWordEntered(searchWord)
+		debouncedFetchBooks(searchWord)
+	}
 
-		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(searchWord)
+	// Виконання фільтрації, коли оновлюється debouncedText
+	useEffect(() => {
+		if (debouncedText === '') {
+			setFilteredBooks([])
+			return
+		}
+
+		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(debouncedText)
 
 		const res = books.filter(b => {
 			if (isUkrainian) {
-				const hasTitleUkr = b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord) : false
-
-				const hasAuthorUkr = b && b.author && b.author.length > 0
-					? b.author.some(a => a.name_ukr.toLowerCase().includes(searchWord) || a.surname_ukr.toLowerCase().includes(searchWord))
-					: false
+				const hasTitleUkr = b?.title_ukr?.toLowerCase().includes(debouncedText) || false
+				const hasAuthorUkr = b?.author?.some(a => a.name_ukr.toLowerCase().includes(debouncedText) || a.surname_ukr.toLowerCase().includes(debouncedText)) || false
 
 				return hasTitleUkr || hasAuthorUkr
 			} else {
-				const hasTitleEng = b && b.title ? b.title.toLowerCase().includes(searchWord) : false
-
-				const hasAuthorEng = b && b.author && b.author.length > 0
-					? b.author.some(a => a.name.toLowerCase().includes(searchWord) || a.surname.toLowerCase().includes(searchWord))
-					: false
+				const hasTitleEng = b?.title?.toLowerCase().includes(debouncedText) || false
+				const hasAuthorEng = b?.author?.some(a => a.name.toLowerCase().includes(debouncedText) || a.surname.toLowerCase().includes(debouncedText)) || false
 
 				return hasTitleEng || hasAuthorEng
 			}
 		})
 
-		if (searchWord === '') {
-			setFilteredBooks([])
-		} else {
-			setFilteredBooks(res)
-		}
-	}
+		setFilteredBooks(res)
+	}, [debouncedText, books])
 
 	const clearInput = () => {
 		setFilteredBooks([])
@@ -61,7 +67,7 @@ const SearchBar = () => {
 
 	return (
 		<>
-			<div className=' flex w-[208px] xxl:min-w-[575px] xl:min-w-[575px] lg:min-w-[400px] md:max-w-[208px] px-4 items-center h-12 bg-main border-[1px] rounded-lg border-grey cursor-pointer'>
+			<div className='flex w-[208px] xxl:min-w-[575px] xl:min-w-[575px] lg:min-w-[400px] md:max-w-[208px] px-4 items-center h-12 bg-main border-[1px] rounded-lg border-grey cursor-pointer'>
 				<img src={search} alt='search' className='flex-shrink-0 pr-[14px]' />
 
 				<input
@@ -109,9 +115,7 @@ const SearchBar = () => {
 									<div className='flex flex-col'>
 										{/* title */}
 										<p className={`${styles.bodyRegular}`}>
-											{isUkrainian ?
-												<p >{item.title_ukr}</p> :
-												<p>{item.title}</p>}
+											{isUkrainian ? item.title_ukr : item.title}
 										</p>
 
 										{/* author */}
