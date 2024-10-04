@@ -6,6 +6,7 @@ import clear from '../../assets/xmark.svg'
 import stock from '../../assets/stock.svg'
 import axios from '/node_modules/axios'
 import { debounce } from "lodash";
+import { useTranslation } from 'react-i18next'
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
@@ -62,6 +63,8 @@ const SearchBar = () => {
 		setWordEntered('')
 	}
 
+	const { t, i18n } = useTranslation()
+
 	return (
 		<>
 			<div className='flex w-[208px] xxl:min-w-[575px] xl:min-w-[575px] lg:min-w-[400px] md:max-w-[208px] px-4 items-center h-12 bg-main border-[1px] rounded-lg border-grey cursor-pointer'>
@@ -69,7 +72,7 @@ const SearchBar = () => {
 
 				<input
 					type='text'
-					placeholder='Пошук'
+					placeholder={t('main.searchField')}
 					className='flex-grow bg-transparent outline-none'
 					onChange={handleFilter}
 					value={wordEntered}
@@ -100,8 +103,8 @@ const SearchBar = () => {
 								: price.original_price
 
 								const handleResultClick = () => {
-									setFilteredBooks([]); // Очищає список результатів
-									setWordEntered(''); // Очищає текст введення
+									setFilteredBooks([]); 
+									setWordEntered(''); 
 								  };
 
 							return (
