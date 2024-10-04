@@ -32,8 +32,6 @@ const SearchBar = () => {
 		setWordEntered(searchWord)
 		debouncedFetchBooks(searchWord)
 	}
-
-
 	useEffect(() => {
 		if (debouncedText === '') {
 			setFilteredBooks([])
@@ -101,8 +99,18 @@ const SearchBar = () => {
 								? price.discounted_price
 								: price.original_price
 
+								const handleResultClick = () => {
+									setFilteredBooks([]); // Очищає список результатів
+									setWordEntered(''); // Очищає текст введення
+								  };
+
 							return (
-								<Link to={`/${item._id}`} className='p-3 flex gap-2' key={item._id}>
+								<Link 
+								to={`/${item._id}`} 
+								className='p-3 flex gap-2' 
+								key={item._id}
+								onClick={handleResultClick}>
+									
 									{/* results img */}
 									<div>
 										{isUkrainian ?
