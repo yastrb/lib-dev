@@ -4,7 +4,7 @@ import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
 import stock from '../../assets/stock.svg'
-import axios from 'axios'
+import axios from '/node_modules/axios'
 import { debounce } from "lodash";
 
 const SearchBar = () => {
@@ -27,14 +27,13 @@ const SearchBar = () => {
 		})
 	}, [])
 
-	// Виклик debounce при кожній зміні вводу користувача
 	const handleFilter = (event) => {
 		const searchWord = event.target.value.toLowerCase()
 		setWordEntered(searchWord)
 		debouncedFetchBooks(searchWord)
 	}
 
-	// Виконання фільтрації, коли оновлюється debouncedText
+
 	useEffect(() => {
 		if (debouncedText === '') {
 			setFilteredBooks([])
