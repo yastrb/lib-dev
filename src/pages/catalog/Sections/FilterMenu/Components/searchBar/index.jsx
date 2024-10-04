@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { fetchSearchResults } from '../../../redux/searchBarSlice'
-import { useDebounce } from '../../../utils/hooks'
-import searchBar from './SearchBarFiltersMenu.svg'
-import './styles.css'
+import React, { useEffect, useState } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { fetchSearchResults } from '../../../../../../redux/searchBarSlice';
+import searchBar from './SearchBarFiltersMenu.svg';
+import './styles.css';
+import { useDebounce } from './utils/useDebounde.ts';
 
 const SearchBarFitresMenu = ({ title, placeholder, searchUrl, id }) => {
-	const [input, setInput] = useState('')
-	const dispatch = useDispatch()
+	const [input, setInput] = useState('');
+	const dispatch = useDispatch();
 
-	const selectSearchResults = state => state.search[id] || {}
+	const selectSearchResults = state => state.search[id] || {};
 	const { results, status, error } = useSelector(
 		selectSearchResults,
 		shallowEqual
-	)
+	);
 
-	const debouncedInput = useDebounce(input, 500)
+	const debouncedInput = useDebounce(input, 500);
 
 	useEffect(() => {
 		if (debouncedInput) {
@@ -25,9 +25,9 @@ const SearchBarFitresMenu = ({ title, placeholder, searchUrl, id }) => {
 					url: searchUrl,
 					params: { q: debouncedInput },
 				})
-			)
+			);
 		}
-	}, [debouncedInput, dispatch, searchUrl, id])
+	}, [debouncedInput, dispatch, searchUrl, id]);
 
 	return (
 		<div className='SearchBar'>
@@ -57,7 +57,7 @@ const SearchBarFitresMenu = ({ title, placeholder, searchUrl, id }) => {
 				</ul>
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default SearchBarFitresMenu
+export default SearchBarFitresMenu;

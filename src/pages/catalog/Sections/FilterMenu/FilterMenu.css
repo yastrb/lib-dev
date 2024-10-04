@@ -52,7 +52,10 @@
 	color: #000000;
 }
 .DesctopOnly {
-	visibility: hidden;
+	display: none;
+}
+.MobileOnly {
+	display: block;
 }
 @media screen and (min-width: 450px) {
 	.FiltersMenu_container {
@@ -90,7 +93,10 @@
 		visibility: hidden;
 	}
 	.DesctopOnly {
-		visibility: visible;
+		display: block;
+	}
+	.MobileOnly {
+		display: none;
 	}
 }
 @media screen and (min-width: 1282px) {
