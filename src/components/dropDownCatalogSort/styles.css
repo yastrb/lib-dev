@@ -1,0 +1,48 @@
+.catalogDropDownBtnSort {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.875rem 0;
+	color: #767676;
+	font-family: Montserrat;
+	font-size: 1rem;
+	font-weight: 500;
+	width: 12.2rem;
+}
+.catalogDropDownBtnSort > img {
+	padding: 0 1.3125rem 0 1.125rem;
+}
+.CatalogDropDownVariantsOfSort {
+	width: fit-content;
+	height: 176px;
+	padding: 0.5rem 0.9375rem 0.5rem 0.9375rem;
+	border-radius: 6px;
+	background-color: #ffffff;
+	position: absolute;
+	top: -100vh;
+	left: -20px;
+	z-index: 2;
+	opacity: 0;
+	transform: translateY(-5%);
+	transition: transform 150ms ease-in-out, opacity 100ms ease-in-out;
+}
+
+.variants-open {
+	opacity: 1;
+	top: 2.5rem;
+	transform: translateY(0);
+}
+
+.CatalogDropDownVariantsOfSort__item {
+	width: fit-content;
+	padding: 0.5rem;
+	font-family: Montserrat;
+	font-size: 1rem;
+	font-weight: 400;
+	color: #767676;
+	cursor: pointer;
+	transition: color 100ms ease-in-out;
+}
+.CatalogDropDownVariantsOfSort__item:hover {
+	color: #000;
+}
