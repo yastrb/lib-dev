@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import close from '../../assets/close.svg'
 import menu from '../../assets/menu.svg'
 import styles from '../../style.js'
-import SearchBar from './SearchBar.jsx'
+import SearchBar from '../../ui/SearchBar/index.jsx'
 import SelectLanguage from './SelectLanguage.jsx'
 
 const Nav = () => {

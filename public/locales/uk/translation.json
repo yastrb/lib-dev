@@ -8,6 +8,10 @@
             "aboutUs":"Про нас",
             "topBooks":"Топ книг",
             "stock":"Акції"
-        }
+        },
+        "searchField":"Пошук",
+        "newBooks":"Новинки",
+        "salesBooks":"Акції",
+        "bestellersBooks":"Бестселери"
     }
 }

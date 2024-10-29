@@ -3,9 +3,9 @@ import logo from '../../assets/logo.svg'
 import styles from '../../style'
 import CartIcon from '../common/Icons/CartIcon'
 import LoginIcon from '../common/Icons/LogInIcon'
-import Nav from './Nav'
-import SelectLanguage from './SelectLanguage'
-import SearchBar from './SearchBar'
+import Nav from '../common/Nav'
+import SelectLanguage from '../common/SelectLanguage'
+import SearchBar from '../../ui/SearchBar'
 
 const Header = () => {
 	const location = useLocation()

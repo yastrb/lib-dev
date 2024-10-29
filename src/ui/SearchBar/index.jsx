@@ -1,20 +1,27 @@
-﻿import { useEffect, useState } from 'react'
+﻿﻿import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
 import stock from '../../assets/stock.svg'
 import axios from '/node_modules/axios'
+import { debounce } from "lodash";
+import { useTranslation } from 'react-i18next'
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
 	const [filteredBooks, setFilteredBooks] = useState([])
 	const [wordEntered, setWordEntered] = useState('')
+	const [debouncedText, setDebouncedText] = useState('')
+
+	const debouncedFetchBooks = debounce((value) => {
+		setDebouncedText(value)
+	}, 500);
 
 	useEffect(() => {
 		axios.get('https://backend-o1yz.onrender.com/get-books').then(({ data }) => {
-			const { newBooks } = data
-			const combinedBooks = [...newBooks]
+			const { newBooks, salesBooks, bestsellerBooks} = data
+			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
 			setBooks(combinedBooks)
 			setFilteredBooks([])
 			console.log(combinedBooks)
@@ -24,49 +31,48 @@ const SearchBar = () => {
 	const handleFilter = (event) => {
 		const searchWord = event.target.value.toLowerCase()
 		setWordEntered(searchWord)
+		debouncedFetchBooks(searchWord)
+	}
+	useEffect(() => {
+		if (debouncedText === '') {
+			setFilteredBooks([])
+			return
+		}
 
-		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(searchWord)
+		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(debouncedText)
 
 		const res = books.filter(b => {
 			if (isUkrainian) {
-				const hasTitleUkr = b && b.title_ukr ? b.title_ukr.toLowerCase().includes(searchWord) : false
-
-				const hasAuthorUkr = b && b.author && b.author.length > 0
-					? b.author.some(a => a.name_ukr.toLowerCase().includes(searchWord) || a.surname_ukr.toLowerCase().includes(searchWord))
-					: false
+				const hasTitleUkr = b?.title_ukr?.toLowerCase().includes(debouncedText) || false
+				const hasAuthorUkr = b?.author?.some(a => a.name_ukr.toLowerCase().includes(debouncedText) || a.surname_ukr.toLowerCase().includes(debouncedText)) || false
 
 				return hasTitleUkr || hasAuthorUkr
 			} else {
-				const hasTitleEng = b && b.title ? b.title.toLowerCase().includes(searchWord) : false
-
-				const hasAuthorEng = b && b.author && b.author.length > 0
-					? b.author.some(a => a.name.toLowerCase().includes(searchWord) || a.surname.toLowerCase().includes(searchWord))
-					: false
+				const hasTitleEng = b?.title?.toLowerCase().includes(debouncedText) || false
+				const hasAuthorEng = b?.author?.some(a => a.name.toLowerCase().includes(debouncedText) || a.surname.toLowerCase().includes(debouncedText)) || false
 
 				return hasTitleEng || hasAuthorEng
 			}
 		})
 
-		if (searchWord === '') {
-			setFilteredBooks([])
-		} else {
-			setFilteredBooks(res)
-		}
-	}
+		setFilteredBooks(res)
+	}, [debouncedText, books])
 
 	const clearInput = () => {
 		setFilteredBooks([])
 		setWordEntered('')
 	}
 
+	const { t, i18n } = useTranslation()
+
 	return (
 		<>
-			<div className=' flex w-[208px] xxl:min-w-[575px] xl:min-w-[575px] lg:min-w-[400px] md:max-w-[208px] px-4 items-center h-12 bg-main border-[1px] rounded-lg border-grey cursor-pointer'>
+			<div className='flex w-[208px] xxl:min-w-[575px] xl:min-w-[575px] lg:min-w-[400px] md:max-w-[208px] px-4 items-center h-12 bg-main border-[1px] rounded-lg border-grey cursor-pointer'>
 				<img src={search} alt='search' className='flex-shrink-0 pr-[14px]' />
 
 				<input
 					type='text'
-					placeholder='Пошук'
+					placeholder={t('main.searchField')}
 					className='flex-grow bg-transparent outline-none'
 					onChange={handleFilter}
 					value={wordEntered}
@@ -90,13 +96,24 @@ const SearchBar = () => {
 						{filteredBooks.map(item => {
 
 							const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
+
 							const price = item.price[0]
 							const displayPrice = price.discounted_price > 0
 								? price.discounted_price
 								: price.original_price
 
+								const handleResultClick = () => {
+									setFilteredBooks([]); 
+									setWordEntered(''); 
+								  };
+
 							return (
-								<Link to={`/${item._id}`} className='p-3 flex gap-2' key={item._id}>
+								<Link 
+								to={`/${item._id}`} 
+								className='p-3 flex gap-2' 
+								key={item._id}
+								onClick={handleResultClick}>
+									
 									{/* results img */}
 									<div>
 										{isUkrainian ?
@@ -108,9 +125,7 @@ const SearchBar = () => {
 									<div className='flex flex-col'>
 										{/* title */}
 										<p className={`${styles.bodyRegular}`}>
-											{isUkrainian ?
-												<p >{item.title_ukr}</p> :
-												<p>{item.title}</p>}
+											{isUkrainian ? item.title_ukr : item.title}
 										</p>
 
 										{/* author */}

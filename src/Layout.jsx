@@ -1,14 +1,14 @@
 ﻿// import React from 'react'
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
-import ProductPage from '../../pages/ProductPage/productPage'
-import AboutUs from '../../pages/aboutUs/aboutUs'
-import Catalog from '../../pages/catalog/catalog.jsx'
-import Home from '../../pages/home/home'
-import Sales from '../../pages/sales/sales'
-import TopBooks from '../../pages/topBooks/topBooks'
-import styles from '../../style'
-import Footer from './Footer'
-import Header from './Header'
+import ProductPage from './pages/ProductPage/productPage'
+import AboutUs from './pages/aboutUs/aboutUs'
+import Catalog from './pages/catalog/catalog.jsx'
+import Home from './pages/home/home'
+import Sales from './pages/sales/sales'
+import TopBooks from './pages/topBooks/topBooks'
+import styles from './style'
+import Footer from './components/common/Footer'
+import Header from './components/Header'
 
 const AppWrapper = () => {
 	let routes = useRoutes([
