@@ -12,7 +12,7 @@ const SearchBar = () => {
 	const [wordEntered, setWordEntered] = useState('')
 
 	useEffect(() => {
-		axios.get('https://backend-o1yz.onrender.com/api').then(({ data }) => {
+		axios.get('https://backend-o1yz.onrender.com/get-books').then(({ data }) => {
 			const { newBooks } = data
 			const combinedBooks = [...newBooks]
 			setBooks(combinedBooks)
