@@ -7,7 +7,7 @@ export const booksDataApi = createApi({
   }),
   endpoints: (builder) => ({
     getNewBestsellersSalesBooks: builder.query({
-      query: () => "https://backend-o1yz.onrender.com/api", 
+      query: () => "https://backend-o1yz.onrender.com/get-books", 
       transformResponse: (response) => ({
         newBooks: response.newBooks.map((book) => ({
           ...book,
