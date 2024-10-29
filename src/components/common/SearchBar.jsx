@@ -19,7 +19,7 @@ const SearchBar = () => {
 	}, 500);
 
 	useEffect(() => {
-		axios.get('https://backend-o1yz.onrender.com/api').then(({ data }) => {
+		axios.get('https://backend-o1yz.onrender.com/get-books').then(({ data }) => {
 			const { newBooks, salesBooks, bestsellerBooks} = data
 			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
 			setBooks(combinedBooks)
