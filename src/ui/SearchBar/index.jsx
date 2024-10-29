@@ -1,12 +1,12 @@
 ﻿﻿import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import styles from '../../style'
 import search from '../../assets/search.svg'
 import clear from '../../assets/xmark.svg'
-import stock from '../../assets/stock.svg'
 import axios from '/node_modules/axios'
 import { debounce } from "lodash";
 import { useTranslation } from 'react-i18next'
+import SearchResults from '@components/SearchResults';
+
+
 
 const SearchBar = () => {
 	const [books, setBooks] = useState([])
@@ -63,7 +63,7 @@ const SearchBar = () => {
 		setWordEntered('')
 	}
 
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 
 	return (
 		<>
@@ -90,65 +90,7 @@ const SearchBar = () => {
 
 			{/* results */}
 			{filteredBooks.length !== 0 && (
-				<div className='search-results absolute top-20 z-50 rounded-md shadow bg-white'>
-					<p className='px-3 py-2 font-medium divider'>Результат пошуку</p>
-					<ul>
-						{filteredBooks.map(item => {
-
-							const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered)
-
-							const price = item.price[0]
-							const displayPrice = price.discounted_price > 0
-								? price.discounted_price
-								: price.original_price
-
-								const handleResultClick = () => {
-									setFilteredBooks([]); 
-									setWordEntered(''); 
-								  };
-
-							return (
-								<Link 
-								to={`/${item._id}`} 
-								className='p-3 flex gap-2' 
-								key={item._id}
-								onClick={handleResultClick}>
-									
-									{/* results img */}
-									<div>
-										{isUkrainian ?
-											<img className='w-[75px] h-[99px]' src={item.coverImageLink_ukr} alt={item.title_ukr} /> :
-											<img className='w-[75px] h-[99px]' src={item.coverImageLink} alt={item.title} />}
-									</div>
-
-									{/* results info */}
-									<div className='flex flex-col'>
-										{/* title */}
-										<p className={`${styles.bodyRegular}`}>
-											{isUkrainian ? item.title_ukr : item.title}
-										</p>
-
-										{/* author */}
-										<p className={`${styles.captionRegular} mb-2`}>
-											{isUkrainian ?
-												`${item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ')}` :
-												`${item.author.map(a => `${a.name} ${a.surname}`).join(', ')}`}
-										</p>
-
-										{/* price */}
-										<p className={`${styles.bodyMedium} mb-2`}>{displayPrice} грн</p>
-
-										{/* stock */}
-										<p className='flex gap-2 items-center'>
-											<img src={stock} alt="in stock" />
-											<span className={`${styles.bodyRegular} text-green`}>В наявності</span>
-										</p>
-									</div>
-								</Link>
-							)
-						})}
-					</ul>
-				</div>
+				<SearchResults filteredBooks={filteredBooks} wordEntered={wordEntered} />
 			)}
 		</>
 	)
