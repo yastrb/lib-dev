@@ -4,8 +4,8 @@ import styles from '../../style'
 import CartIcon from '../common/Icons/CartIcon'
 import LoginIcon from '../common/Icons/LogInIcon'
 import Nav from './Nav'
-import SearchBar from './SearchBar'
 import SelectLanguage from './SelectLanguage'
+import SearchBar from './SearchBar'
 
 const Header = () => {
 	const location = useLocation()
