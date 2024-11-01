@@ -26,7 +26,7 @@ const Header = () => {
 					)}
 
 					<div className='searchfield hidden md:flex md:flex-col md:items-center md:justify-center relative'>
-						<SearchBar />
+						<SearchBar searchType="books" />
 					</div>
 
 					<div className='flex md:items-center md:justify-center'>

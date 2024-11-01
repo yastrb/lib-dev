@@ -8,7 +8,7 @@ import SearchResults from '@components/SearchResults';
 
 
 
-const SearchBar = () => {
+const SearchBar = ({searchType}) => {
 	const [books, setBooks] = useState([])
 	const [filteredBooks, setFilteredBooks] = useState([])
 	const [wordEntered, setWordEntered] = useState('')
@@ -19,7 +19,8 @@ const SearchBar = () => {
 	}, 500);
 
 	useEffect(() => {
-		axios.get('https://backend-o1yz.onrender.com/get-books').then(({ data }) => {
+		axios.get('https://backend-o1yz.onrender.com/get-books')
+		.then(({ data }) => {
 			const { newBooks, salesBooks, bestsellerBooks} = data
 			const combinedBooks = [...newBooks, ...salesBooks, ...bestsellerBooks]
 			setBooks(combinedBooks)
@@ -41,19 +42,31 @@ const SearchBar = () => {
 
 		const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(debouncedText)
 
-		const res = books.filter(b => {
-			if (isUkrainian) {
-				const hasTitleUkr = b?.title_ukr?.toLowerCase().includes(debouncedText) || false
-				const hasAuthorUkr = b?.author?.some(a => a.name_ukr.toLowerCase().includes(debouncedText) || a.surname_ukr.toLowerCase().includes(debouncedText)) || false
+		let res = [];
+		if (searchType === 'books') {
 
-				return hasTitleUkr || hasAuthorUkr
-			} else {
-				const hasTitleEng = b?.title?.toLowerCase().includes(debouncedText) || false
-				const hasAuthorEng = b?.author?.some(a => a.name.toLowerCase().includes(debouncedText) || a.surname.toLowerCase().includes(debouncedText)) || false
+			res = books.filter(b => {
+				if (isUkrainian) {
+					const hasTitleUkr = b?.title_ukr?.toLowerCase().includes(debouncedText) || false
+					const hasAuthorUkr = b?.author?.some(a => a.name_ukr.toLowerCase().includes(debouncedText) || a.surname_ukr.toLowerCase().includes(debouncedText)) || false
+	
+					return hasTitleUkr || hasAuthorUkr
+				} else {
+					const hasTitleEng = b?.title?.toLowerCase().includes(debouncedText) || false
+					const hasAuthorEng = b?.author?.some(a => a.name.toLowerCase().includes(debouncedText) || a.surname.toLowerCase().includes(debouncedText)) || false
+	
+					return hasTitleEng || hasAuthorEng
+				}
+			});
+			
+		} else if (searchType === 'authors') {
 
-				return hasTitleEng || hasAuthorEng
-			}
-		})
+			res = books.filter(b => 
+				b.author && b.author.some(a => a.name.toLowerCase().includes(searchWord) || a.surname.toLowerCase().includes(searchWord))
+			);
+
+		}
+
 
 		setFilteredBooks(res)
 	}, [debouncedText, books])
