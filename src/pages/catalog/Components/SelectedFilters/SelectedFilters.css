@@ -1,0 +1,4 @@
+.SelectedFilters {
+	display: flex;
+	flex-wrap: wrap;
+}

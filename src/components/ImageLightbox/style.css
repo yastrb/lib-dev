@@ -1,0 +1,63 @@
+.ImageLightBox-btnClose {
+	/* position: absolute;
+	right: 10%;
+	top: 10%; */
+}
+
+.ImageLightBox-carouselContentWrapper {
+}
+
+.ImageLightBox-contentWrapper {
+	/* width: 15.75rem; */
+	width: 100%;
+	height: 23.125rem;
+}
+
+.carouselContentImage {
+	width: 15.75rem;
+	height: 20.875rem;
+}
+
+.ImageLightBox-carouselContent {
+}
+@media screen and (min-width: 450px) {
+	.ImageLightBox-contentWrapper {
+		width: 80%;
+		height: 41rem;
+		/* display: flex; */
+		/* justify-content: center; */
+		/* align-items: center; */
+		position: relative;
+		border-radius: 12px;
+		padding: 0px 30px;
+	}
+	.carouselLightBox {
+		margin: 15% 0;
+	}
+	.carouselContentImage {
+		width: 23.625rem;
+		height: 31.25rem;
+	}
+}
+@media screen and (min-width: 1024px) {
+	.ImageLightBox-contentWrapper {
+		width: 53.875rem;
+	}
+	.carouselLightBox {
+		margin: 10% 0;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.ImageLightBox-contentWrapper {
+		width: 62.25rem;
+		height: 49.4375rem;
+	}
+	.carouselLightBox {
+		margin: 10% 0;
+	}
+	.carouselContentImage {
+		width: 29.6875rem;
+		height: 39.6875rem;
+	}
+}
