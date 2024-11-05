@@ -3,7 +3,7 @@ import logo from '../../assets/logo.svg';
 import CartIcon from '../../components/CartIcon';
 import LoginIcon from '../../components/LoginRegisterIcon';
 import SelectLanguage from '../../components/LanguageSwitcher';
-import Nav from '../../components/Navbar';
+import Nav from './Navbar';
 import styles from '../../style';
 import SearchBar from '../../ui/SearchBar/index.js';
 

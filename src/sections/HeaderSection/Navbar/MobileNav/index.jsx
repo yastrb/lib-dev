@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import close from '../../assets/close.svg';
-import menu from '../../assets/menu.svg';
-import SearchBar from '../../ui/SearchBar/index.js';
-import SelectLanguage from '../LanguageSwitcher';
+import close from './images/close.svg';
+import menu from './images/menu.svg';
+import SearchBar from '../../../../ui/SearchBar/index.js';
+import SelectLanguage from '../../../../components/LanguageSwitcher/index.jsx';
 
 const MobileNav = ({ navLinks, menuOpen, toggleMenu }) => {
 	return (
