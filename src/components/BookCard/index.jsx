@@ -1,51 +1,47 @@
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../redux/cartSlice';
-import { useNavigate } from 'react-router-dom';
+import useAddToCart from './hooks/useAddToCart';
+import useNavigateToProduct from './hooks/useNavigateToProduct';
+import useModal from './hooks/useModal';
+import BookInfo from './BookInfo';
+import Modal from '@mui/material/Modal';
+import PopUp from '../../PopUp';
+const BookCard = ({ book } ) => {
 
-const BookCard = ({ book }) => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+  const handleAddToCart = useAddToCart(book);
+  const handleNavigate = useNavigateToProduct(book.price[0].book_id);
+  const { open, handleOpen, handleClose } = useModal();
 
-	const handleAddToCart = () => {
-	  dispatch(addToCart(book));
-	};
+  const handleAddToCartClick = () => {
+    handleAddToCart();
+    handleOpen();
+  };
 
-	const handleClick = () => {
-		navigate('/productpage', { state: { id: book.price[0].book_id } });
-		window.scroll(0, 0);
-	};
-
-	return (
-		<div className='book-card mx-8 border-solid w-44'>
-			<img
-				className='rounded-xl w-44 h-60 cursor-pointer'
-				src={book.coverImageLink_ukr}
-				alt={book.title_ukr}
-				onClick={handleClick}
-			/>
-
-			<h2 className='font-medium font-montserrat my-4 w-44 truncate'>
-				{book.title_ukr}
-			</h2>
-			<p className='font-montserrat truncate'>
-				{book.author
-					.map(author => `${author.name_ukr} ${author.surname_ukr}`)
-					.join(', ')}
-			</p>
-			<p className='font-montserrat my-4 font-medium'>
-				{book.price[0].discounted_price > 0
-					? `${book.price[0].discounted_price} грн`
-					: `${book.price[0].original_price} грн`}
-			</p>
-
-			<button
-				className='bg-button rounded-lg p-2 hover:bg-hover font-montserrat duration-300'
-				onClick={handleAddToCart}
-			>
-				Add to Cart
-			</button>
-		</div>
-	);
-}
+  return (
+    <div>
+      <BookInfo
+        title={book.title_ukr}
+        author={book.author}
+        price={book.price[0]}
+        onImageClick={handleNavigate}
+        imageSrc={book.coverImageLink_ukr}
+        altText={book.title_ukr}
+      />
+      <button
+        className="bg-button rounded-lg p-2 hover:bg-hover font-montserrat duration-300"
+        onClick={handleAddToCartClick}
+      >
+        Add to Cart
+      </button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+       <div className=' w-10 h-10 bg-blue-gray-100 '>modal</div>
+       {/* <PopUp></PopUp> */}
+      </Modal>
+    </div>
+  );
+};
 
 export default BookCard;
