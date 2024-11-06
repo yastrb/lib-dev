@@ -4,7 +4,8 @@ import useModal from './hooks/useModal';
 import BookInfo from './BookInfo';
 import Modal from '@mui/material/Modal';
 import PopUp from '../../PopUp';
-const BookCard = ({ book } ) => {
+
+const BookCard = ({ book }) => {
 
   const handleAddToCart = useAddToCart(book);
   const handleNavigate = useNavigateToProduct(book.price[0].book_id);
@@ -37,8 +38,9 @@ const BookCard = ({ book } ) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-       <div className=' w-10 h-10 bg-blue-gray-100 '>modal</div>
-       {/* <PopUp></PopUp> */}
+        <PopUp
+          handleClose={handleClose}
+        />
       </Modal>
     </div>
   );
