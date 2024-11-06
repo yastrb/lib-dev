@@ -12,8 +12,7 @@ const PopUp = ({handleClose}) => {
   useEffect(() => {
 		dispatch(calculateTotals())
 	}, [])
-
-
+ 
   return (
   <div className=" popup z-1000 ] fixed inset-0 flex items-center justify-center">
     <div className="w-[350px bg-white rounded-lg p-6 shadow-lg w-80 text-center">
