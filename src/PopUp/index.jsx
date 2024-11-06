@@ -1,8 +1,17 @@
+import { useEffect } from 'react'
 import cart from './image/cart.svg'
 import close from './image/close.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { calculateTotals} from '../redux/cartSlice'
 
 const PopUp = ({handleClose}) => {
+  const dispatch = useDispatch();
+  const amount = useSelector(state => state.cart.amount)
+	const total = useSelector(state => state.cart.total)
 
+  useEffect(() => {
+		dispatch(calculateTotals())
+	}, [])
 
 
   return (
@@ -18,8 +27,8 @@ const PopUp = ({handleClose}) => {
         </button>
       </div>
 
-      <p className="text-gray-500">Всього: {3} товари</p>
-      <p className="text-gray-500 mb-4">Сума товарів: {3} грн</p>
+      <p className="text-gray-500">Всього: {amount} товари</p>
+      <p className="text-gray-500 mb-4">Сума товарів: {total} грн</p>
 
       <button
         onClick={handleClose}
