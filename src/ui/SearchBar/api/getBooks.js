@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '/node_modules/axios';
 
 const getBooks = async () => {
 	const response = await axios.get(

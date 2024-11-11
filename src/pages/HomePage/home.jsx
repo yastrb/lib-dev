@@ -1,8 +1,8 @@
-import FeaturedCarouselSection from '../../sections/FeaturedCarouselSection/FeaturedCarouselSection'
-import AboutUsText from '../../sections/HeroSection/AboutUs'
-import Hero from '../../sections/HeroSection/Hero'
+import FeaturedCarouselSection from '../../sections/FeaturedCarouselSection/FeaturedCarouselSection.jsx'
+import AboutUsText from '../../sections/HeroSection/AboutUs.jsx'
+import Hero from '../../sections/HeroSection/Hero.jsx'
 import { useGetNewBestsellersSalesBooks } from '../../redux/booksSlice.js'
-import styles from '../../style'
+import styles from '../../style.js'
 import { useTranslation } from 'react-i18next'
 
 const Home = () => {
