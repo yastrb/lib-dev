@@ -1,4 +1,4 @@
-import BookCard from '../../components/product/BookCard';
+import BookCard from '../../components/BookCard';
 
 const Cataloglist = ({ books }) => {
     return (

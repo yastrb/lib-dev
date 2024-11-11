@@ -7,8 +7,8 @@ import Home from './pages/home/home'
 import Sales from './pages/sales/sales'
 import TopBooks from './pages/topBooks/topBooks'
 import styles from './style'
-import Footer from './components/common/Footer'
-import Header from './components/Header'
+import Footer from './sections/FooterSection'
+import Header from './sections/HeaderSection'
 
 const AppWrapper = () => {
 	let routes = useRoutes([
