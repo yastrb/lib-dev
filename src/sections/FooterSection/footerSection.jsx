@@ -22,7 +22,6 @@ const Footer = () => {
 							<Typography
 								as='p'
 								color='black'
-								
 								className={`flex gap-1 ${styles.footerLink}`}
 							>
 								<img src={el.icon} />
