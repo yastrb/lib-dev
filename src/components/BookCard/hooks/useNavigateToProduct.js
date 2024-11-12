@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const useNavigateToProduct = (bookId) => {
+export const useNavigateToProduct = (bookId) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -11,4 +11,3 @@ const useNavigateToProduct = (bookId) => {
   return handleNavigate;
 };
 
-export default useNavigateToProduct;

@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../redux/cartSlice';
 
-const useAddToCart = (book) => {
+export const useAddToCart = (book) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -11,4 +11,4 @@ const useAddToCart = (book) => {
   return handleAddToCart;
 };
 
-export default useAddToCart;
+
