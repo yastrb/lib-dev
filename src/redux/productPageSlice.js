@@ -7,7 +7,7 @@ export const productPageSlice = createApi({
 	}),
 	endpoints: builder => ({
 		getBookInfo: builder.query({
-			query: id => `https://backend-o1yz.onrender.com/api/${id}`,
+			query: id => `https://backend-o1yz.onrender.com/book/show/${id}`,
 		}),
 	}),
 })
