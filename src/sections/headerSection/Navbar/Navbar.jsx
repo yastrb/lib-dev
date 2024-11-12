@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import DesktopNav from './DesktopNav';
-import MobileNav from './MobileNav';
-import navLinksData from './navLinks.js';
+import DesktopNav from '../DesktopNav/DesktopNav.jsx';
+import MobileNav from '../MobileNav/MobileNav'
+import navLinksData from '../data/navLinks.js';
 
 const Nav = () => {
 	const [menuOpen, setMenuOpen] = useState(false);

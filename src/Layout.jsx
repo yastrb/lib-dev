@@ -3,12 +3,12 @@ import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
 import ProductPage from './pages/ProductPage/productPage'
 import AboutUs from './pages/aboutUs/aboutUs'
 import Catalog from './pages/catalog/catalog.jsx'
-import Home from './pages/HomePage/home'
+import Home from './pages/HomePage/HomePage.jsx'
 import Sales from './pages/sales/sales'
 import TopBooks from './pages/topBooks/topBooks'
 import styles from './style'
-import Footer from './sections/FooterSection'
-import Header from './sections/HeaderSection'
+import Footer from './sections/footerSection'
+import {HeaderSection} from './sections/headerSection'
 
 const AppWrapper = () => {
 	let routes = useRoutes([
@@ -27,7 +27,7 @@ const Layout = () => {
 		<Router>
 			<div className='overflow-x-hidden mx-auto min-h-[100vh] flex flex-col'>
 				<div className={`${styles.flexCenter} `}>
-					<Header />
+					<HeaderSection />
 				</div>
 
 				<AppWrapper />
@@ -45,3 +45,4 @@ const Layout = () => {
 }
 
 export default Layout
+

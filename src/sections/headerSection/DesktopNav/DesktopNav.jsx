@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import styles from '../../../../style.js';
+import styles from '../../../style';
 
 const DesktopNav = ({ navLinks }) => {
 	return (

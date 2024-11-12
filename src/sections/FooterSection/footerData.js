@@ -31,7 +31,7 @@ export const contactData = [
 	{
 		id: '2',
 		icon: phone,
-		text: '+380 053 088 3635',
+		text: '+38 053 088 3635',
 		link: 'tel:+',
 	},
 	{

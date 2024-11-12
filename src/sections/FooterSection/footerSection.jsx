@@ -20,10 +20,9 @@ const Footer = () => {
 					{contactData.map(el => (
 						<li key={el.id}>
 							<Typography
-								as='a'
+								as='p'
 								color='black'
-								target='_blank'
-								href={el.link}
+								
 								className={`flex gap-1 ${styles.footerLink}`}
 							>
 								<img src={el.icon} />

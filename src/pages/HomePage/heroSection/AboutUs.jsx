@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
-import bgImage from '../../assets/bgImage.jpg'
-import styles from '../../style'
+import bgImage from '../images/bgImage.jpg'
+import styles from '../../../style'
 
 function AboutUsText() {
 	const { t, i18n } = useTranslation()

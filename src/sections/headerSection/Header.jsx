@@ -1,10 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
-import CartIcon from '../../components/CartIcon';
-import LoginIcon from '../../components/LoginRegisterIcon';
-import SelectLanguage from '../../components/LanguageSwitcher';
-import Nav from './Navbar';
-import styles from '../../style';
+import CartIcon from '../../components/CartIcon/index.jsx';
+import LoginIcon from '../../components/LoginRegisterIcon/index.jsx';
+import SelectLanguage from '../../components/LanguageSwitcher/index.jsx';
+import Nav from './Navbar/Navbar.jsx';
+import styles from '../../style.js';
 import SearchBar from '../../ui/SearchBar/index.js';
 
 const Header = () => {
