@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import LoginModal from '../../modals/LoginModal';
-import RegisterModal from '../../modals/RegisterModal';
+import LoginModal from '../../../modals/LoginModal';
+import RegistrationModal from '../../../modals/RegistrationModal/RegistrationModal';
 
 const LogInIcon = () => {
 
@@ -8,14 +8,12 @@ const LogInIcon = () => {
     const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
-        console.log('Toggling modal');
         setModal(!modal);
 
     };
 
     const toggleForm = () => {
         setIsLogin(!isLogin);
-        console.log('Toggling form');
     };
 
     if (modal) {
@@ -49,7 +47,7 @@ const LogInIcon = () => {
             {modal && (isLogin ?
                 <LoginModal toggleModal={toggleModal} toggleForm={toggleForm} />
                 :
-                <RegisterModal toggleModal={toggleModal} toggleForm={toggleForm} />
+                <RegistrationModal toggleModal={toggleModal} toggleForm={toggleForm} />
             )}
 
         </>

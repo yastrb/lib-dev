@@ -4,7 +4,7 @@ import google from '../../assets/google.svg'
 import styles from '../../style'
 import Button from '../../ui/Button'
 
-const RegisterModal = ({ toggleModal, toggleForm }) => {
+const RegistrationModal = ({ toggleModal, toggleForm }) => {
 	return (
 		<div className='modal'>
 			<div onClick={toggleModal} className='overlay'></div>
@@ -69,4 +69,4 @@ const RegisterModal = ({ toggleModal, toggleForm }) => {
 	)
 }
 
-export default RegisterModal
+export default RegistrationModal
