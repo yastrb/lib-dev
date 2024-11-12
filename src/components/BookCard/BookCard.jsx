@@ -3,7 +3,7 @@ import {useNavigateToProduct} from './hooks/useNavigateToProduct';
 import {useModal} from './hooks/useModal';
 import BookInfo from './BookInfo';
 import Modal from '@mui/material/Modal';
-import PopUp from '../../PopUp';
+import PopUp from './AddToCartPopup/AddToCartPopup';
 
 const BookCard = ({ book }) => {
 

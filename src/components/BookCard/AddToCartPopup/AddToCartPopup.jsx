@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import cart from './image/cart.svg'
 import close from './image/close.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculateTotals } from '../redux/cartSlice'
-import Button from '../ui/Button'
-import styles from '../style'
+import { calculateTotals } from '../../../redux/cartSlice'
+import Button from '../../../ui/Button'
+import styles from '../../../style'
 
 const PopUp = ({ handleClose }) => {
   const dispatch = useDispatch();
