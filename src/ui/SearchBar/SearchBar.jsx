@@ -1,5 +1,5 @@
 import SearchResults from '@components/SearchResults';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import searchIcon from '../../assets/search.svg';
 import clearIcon from '../../assets/xmark.svg';
