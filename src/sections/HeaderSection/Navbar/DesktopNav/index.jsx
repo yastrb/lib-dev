@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import styles from '../../style.js';
+import styles from '../../../../style.js';
 
 const DesktopNav = ({ navLinks }) => {
 	return (
@@ -12,7 +12,7 @@ const DesktopNav = ({ navLinks }) => {
 				))}
 			</nav>
 			<span>
-				<a href="tel:+3">+3</a>
+				<a href="tel:+380530883635">+38 053 088 3635</a>
 			</span>
 		</div>
 	);
