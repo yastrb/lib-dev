@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DesktopNav from '../DesktopNav/DesktopNav.jsx';
-import MobileNav from '../MobileNav/MobileNav'
+import MobileNav from '../MobileNav/MobileNav.jsx'
 import navLinksData from '../data/navLinks.js';
 
 const Nav = () => {

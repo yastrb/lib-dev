@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
-import CartIcon from '../../components/CartIcon/index.jsx';
-import SelectLanguage from '../../components/LanguageSwitcher/index.jsx';
-import styles from '../../style.js';
+import CartIcon from '../../../../components/CartIcon/index.jsx';
+import SelectLanguage from '../../../../components/LanguageSwitcher/index.jsx';
+import styles from '../../../../style.js';
 import LogInIcon from './LoginRegisterIcon/LoginRegisterIcon.jsx';
 import Nav from './Navbar/Navbar.jsx';
 
-import SearchBar from '../../ui/SearchBar/index.js';
+import SearchBar from '../../../../ui/SearchBar/index.js';
 
 const Header = () => {
 	const location = useLocation();
