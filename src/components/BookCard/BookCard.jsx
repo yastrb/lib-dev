@@ -1,7 +1,7 @@
 import {useAddToCart} from './hooks/useAddToCart';
 import {useNavigateToProduct} from './hooks/useNavigateToProduct';
 import {useModal} from './hooks/useModal';
-import BookInfo from './BookInfo';
+import {BookInfo} from './index.js';
 import Modal from '@mui/material/Modal';
 import PopUp from './AddToCartPopup/AddToCartPopup';
 
