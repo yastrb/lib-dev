@@ -62,10 +62,10 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
 					{/* decrease */}
 					<button
 						onClick={() => {
-							if (qty >= 1) {
+							if (qty > 1) {
 								dispatch(decrease({ _id }))
-							} else {
-								cartItem.qty = 0
+							} else if (qty <= 1) {
+								dispatch(removeFromCart(_id))
 							}
 						}}
 						className='flex items-center justify-center w-12 h-12'
