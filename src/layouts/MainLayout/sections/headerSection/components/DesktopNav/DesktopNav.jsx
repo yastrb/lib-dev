@@ -3,7 +3,7 @@ import styles from '../../../../../../style';
 
 const DesktopNav = ({ navLinks }) => {
 	return (
-		<div className={`${styles.boxWidth} ${styles.paddingX} py-5 md:mx-auto hidden md:flex md:justify-between heading`}>
+		<div className={`${styles.boxWidth} ${styles.paddingX} ${styles.menuRegular} py-5 md:mx-auto hidden md:flex md:justify-between heading`}>
 			<nav className="flex gap-3">
 				{navLinks.map(link => (
 					<NavLink key={link.id} to={link.path}>

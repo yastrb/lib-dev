@@ -52,7 +52,7 @@ const SearchBar = ({ searchType }) => {
 				<input
 					type='text'
 					placeholder={t('main.searchField')}
-					className='flex-grow bg-transparent outline-none'
+					className='flex-grow bg-transparent outline-none font-montserrat'
 					onChange={handleFilter}
 					value={wordEntered}
 				/>
