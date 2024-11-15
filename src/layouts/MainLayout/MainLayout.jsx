@@ -5,7 +5,7 @@ import './MainLayout.css';
 
 export default function MainLayout() {
 	return (
-		<main className='MainLayout font-montserrat'>
+		<main className='MainLayout '>
 			<Header />
 			<div className='inner'>
 				<Outlet />
