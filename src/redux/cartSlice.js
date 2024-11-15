@@ -96,7 +96,7 @@ const cartSlice = createSlice({
 			if (cartItem && cartItem.qty > 1) {
 				cartItem.qty -= 1
 			} else if (cartItem && cartItem.qty === 1) {
-				cartItem.qty = 0
+				state.cartItems = state.cartItems.filter(item => item._id !== payload._id);
 			}
 			state.amount = state.cartItems.reduce(
 				(total, item) => total + item.qty,
