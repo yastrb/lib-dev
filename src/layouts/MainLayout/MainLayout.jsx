@@ -5,7 +5,7 @@ import './MainLayout.css';
 
 export default function MainLayout() {
 	return (
-		<main className='MainLayout '>
+		<main className='MainLayout'>
 			<Header />
 			<div className='inner'>
 				<Outlet />
