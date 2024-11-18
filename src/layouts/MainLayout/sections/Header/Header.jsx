@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../../../assets/logo.svg';
-import CartIcon from '../../../../components/common/Icons/CartIcon';
-import LoginIcon from '../../../../components/common/Icons/LogInIcon';
-import SelectLanguage from '../../../../components/common/SelectLanguage';
-import Nav from '../../../../components/Navbar';
-import styles from '../../../../style';
+import styles from '../../../../style.js';
 import SearchBar from '../../../../ui/SearchBar/index.js';
+import logo from './assets/logo.svg';
+import CartIcon from './components/CartIcon/CartIcon.jsx';
+import SelectLanguage from './components/LanguageSwitcher/LanguageSwitcher.jsx';
+import LogInIcon from './components/LoginRegisterIcon/LoginRegisterIcon.jsx';
+import { Nav } from './index.js';
 
 const Header = () => {
 	const location = useLocation();
@@ -35,7 +35,11 @@ const Header = () => {
 						</div>
 						<div className='flex items-center justify-center'>
 							<CartIcon />
+<<<<<<< HEAD
 							<LoginIcon />
+=======
+							<LogInIcon />
+>>>>>>> Jira-Book-18
 						</div>
 					</div>
 				</div>

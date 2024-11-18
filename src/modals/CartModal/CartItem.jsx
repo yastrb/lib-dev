@@ -1,23 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { decrease, increase, removeFromCart } from '../../redux/cartSlice'
-import styles from '../../style'
-import stock from '../../assets/stock.svg'
-import trash from '../../assets/trash.svg'
+import { useDispatch, useSelector } from 'react-redux';
+import stock from '../../assets/stock.svg';
+import trash from '../../assets/trash.svg';
+import { decrease, increase, removeFromCart } from '../../redux/cartSlice';
+import styles from '../../style';
 
 const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
 	const handleRemoveFromCart = () => {
-		dispatch(removeFromCart(_id))
-	}
+		dispatch(removeFromCart(_id));
+	};
 
 	const cartItem = useSelector(state =>
 		state.cart.cartItems.find(item => item._id === _id)
-	)
+	);
 
-	const qty = cartItem ? cartItem.qty : 1
+	const qty = cartItem ? cartItem.qty : 1;
 
-	const bookPrice = price && price.original_price ? price.original_price : 0
+	const bookPrice = price && price.original_price ? price.original_price : 0;
 
 	return (
 		<div className="cart-item w-full relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
@@ -62,10 +62,10 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
 					{/* decrease */}
 					<button
 						onClick={() => {
-							if (qty >= 1) {
-								dispatch(decrease({ _id }))
-							} else {
-								cartItem.qty = 0
+							if (qty > 1) {
+								dispatch(decrease({ _id }));
+							} else if (qty <= 1) {
+								dispatch(removeFromCart(_id));
 							}
 						}}
 						className='flex items-center justify-center w-12 h-12'
@@ -81,7 +81,7 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
 					{/* increase */}
 					<button
 						onClick={() => {
-							dispatch(increase({ _id }))
+							dispatch(increase({ _id }));
 						}}
 						className='flex items-center justify-center w-12 h-12'
 					>
@@ -98,7 +98,7 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
 				</h4>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default CartItem
+export default CartItem;

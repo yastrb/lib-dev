@@ -1,6 +1,3 @@
-// import Layout from "./Layout"
-// <Layout/>
-
 import { Route, Routes } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout/index.js';
 import NotFoundLayout from './layouts/NotFoundLayout/index.js';

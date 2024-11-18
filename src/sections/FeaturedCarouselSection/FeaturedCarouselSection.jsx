@@ -2,7 +2,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CustomLeftArrow from '../../assets/icons/ArrowCustomLeft.jsx';
 import CustomRightArrow from '../../assets/icons/ArrowCustomRight.jsx';
-import BookCard from '../../components/BookCard/BookCard.jsx';
+import { BookCard } from '../../components/BookCard/index.js';
 
 const FeaturedCarouselSection = ({ title, data, seeMoreStatus = true }) => {
 	const responsive = {

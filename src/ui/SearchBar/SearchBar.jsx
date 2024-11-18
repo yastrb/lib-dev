@@ -1,5 +1,5 @@
 import SearchResults from '@components/SearchResults';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import searchIcon from '../../assets/search.svg';
 import clearIcon from '../../assets/xmark.svg';
@@ -52,7 +52,11 @@ const SearchBar = ({ searchType }) => {
 				<input
 					type='text'
 					placeholder={t('main.searchField')}
+<<<<<<< HEAD
 					className='flex-grow bg-transparent outline-none'
+=======
+					className='flex-grow bg-transparent outline-none font-montserrat'
+>>>>>>> Jira-Book-18
 					onChange={handleFilter}
 					value={wordEntered}
 				/>
@@ -78,4 +82,8 @@ const SearchBar = ({ searchType }) => {
 	);
 };
 
+<<<<<<< HEAD
 export default SearchBar;
+=======
+export default SearchBar;
+>>>>>>> Jira-Book-18

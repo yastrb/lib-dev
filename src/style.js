@@ -5,13 +5,14 @@
 	heading:
 		'font-montserrat text-2xl xl:text-[32px] text-black font-semibold uppercase',
 	menu: 'font-montserrat text-base md:text-xl',
+	menuRegular: 'font-montserrat text-xl',
 	subtitleMain:
 		'font-montserrat font-semibold text-2xl lg:text-[32px] text-black',
 	subtitleSemibold: 'font-montserrat font-semibold text-2xl',
 	subtitleMedium: 'font-montserrat font-medium text-lg text-black leading-6',
 	bodyRegular: 'font-montserrat font-normal text-base leading-6',
 	bodyMedium: 'font-montserrat font-medium text-base leading-5',
-	captionRegular: "font-montserrat font-normal text-[12px] leading-[15px]",
+	captionRegular: 'font-montserrat font-normal text-[12px] leading-[15px]',
 	button: 'font-montserrat font-medium text-base ',
 
 	paddingX: 'lg:px-8 md:px-4 px-3  ',
@@ -41,6 +42,6 @@
 	footerGap: 'px-4, pb-4',
 
 	borderFooter: 'border-grey absolute bottom-50 w-full left-0',
-}
+};
 
-export default styles
+export default styles;
