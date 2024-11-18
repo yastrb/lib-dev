@@ -41,7 +41,7 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
 					<p
 						className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}
 					>
-						Код товару: 1234
+					Код товару: {_id}
 					</p>
 					<p className='flex gap-2 items-center'>
 						<img src={stock} alt='in stock' />
