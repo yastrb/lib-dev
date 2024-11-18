@@ -39,7 +39,9 @@ const BookCard = ({ book }) => {
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'
 			>
-				<PopUp>{/* Ваш контент */}</PopUp>
+				<div>
+					<PopUp handleClose={handleClose} />
+				</div>
 			</Modal>
 		</div>
 	);

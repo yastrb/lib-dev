@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { calculateTotals } from '../../../redux/cartSlice';
 import styles from '../../../style';
@@ -6,7 +6,7 @@ import Button from '../../../ui/Button';
 import cart from './image/cart.svg';
 import close from './image/close.svg';
 
-const PopUp = forwardRef((props, ref) => {
+const PopUp = ({ handleClose }) => {
 	const dispatch = useDispatch();
 	const amount = useSelector(state => state.cart.amount);
 	const total = useSelector(state => state.cart.total);
@@ -16,10 +16,7 @@ const PopUp = forwardRef((props, ref) => {
 	}, [dispatch]);
 
 	return (
-		<div
-			ref={ref}
-			className='popup z-1000 fixed inset-0 flex items-center justify-center'
-		>
+		<div className='popup z-1000 fixed inset-0 flex items-center justify-center'>
 			<div className='bg-white rounded-3xl py-3 px-4 shadow-lg w-80'>
 				<div className='flex justify-between items-center mb-5'>
 					<div className='flex items-center'>
@@ -29,7 +26,7 @@ const PopUp = forwardRef((props, ref) => {
 						</span>
 					</div>
 					<button
-						onClick={props.handleClose}
+						onClick={handleClose}
 						className='text-gray-500 hover:text-black'
 					>
 						<img src={close} alt='close' />
@@ -46,15 +43,13 @@ const PopUp = forwardRef((props, ref) => {
 				</p>
 
 				<Button
-					onClick={props.handleClose}
+					onClick={handleClose}
 					label={'Оформити замовлення'}
 					className={'bg-button w-full'}
 				/>
 			</div>
 		</div>
 	);
-});
-
-PopUp.displayName = 'PopUp';
+};
 
 export default PopUp;
