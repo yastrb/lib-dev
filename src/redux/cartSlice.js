@@ -111,7 +111,10 @@ const cartSlice = createSlice({
 			let total = 0;
 			state.cartItems.forEach(item => {
 				const priceObject = item.price && item.price[0];
-				if (priceObject && priceObject.original_price) {
+
+				if (priceObject && priceObject.discounted_price) {
+					total += item.qty * priceObject.discounted_price;
+				} else if (priceObject && priceObject.original_price) {
 					total += item.qty * priceObject.original_price;
 				} else {
 					console.warn(

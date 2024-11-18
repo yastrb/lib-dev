@@ -4,7 +4,7 @@ import trash from '../../assets/trash.svg';
 import { decrease, increase, removeFromCart } from '../../redux/cartSlice';
 import styles from '../../style';
 
-const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
+const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
 	const dispatch = useDispatch();
 
 	const handleRemoveFromCart = () => {
@@ -25,13 +25,13 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
 			<img
 				className=' cart-image h-full w-full bg-cover md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl'
 				src={coverImageLink[0]}
-				alt={title}
+				alt={title_ukr}
 			/>
 
 			{/* info */}
 			<div className=' cart-data flex items-start justify-between'>
 				<div>
-					<h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
+					<h4 className={`${styles.subtitleMedium} mb-2`}>{title_ukr}</h4>
 					<p className={`${styles.bodyRegular} mb-4`}>
 						Автор:{' '}
 						{author
@@ -41,7 +41,7 @@ const CartItem = ({ _id, title, author, coverImageLink = [], price }) => {
 					<p
 						className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}
 					>
-						Код товару: 1234
+						Код товару: {_id}
 					</p>
 					<p className='flex gap-2 items-center'>
 						<img src={stock} alt='in stock' />
