@@ -35,11 +35,7 @@ const Header = () => {
 						</div>
 						<div className='flex items-center justify-center'>
 							<CartIcon />
-<<<<<<< HEAD
-							<LoginIcon />
-=======
 							<LogInIcon />
->>>>>>> Jira-Book-18
 						</div>
 					</div>
 				</div>

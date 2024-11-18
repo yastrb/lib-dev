@@ -52,11 +52,7 @@ const SearchBar = ({ searchType }) => {
 				<input
 					type='text'
 					placeholder={t('main.searchField')}
-<<<<<<< HEAD
-					className='flex-grow bg-transparent outline-none'
-=======
 					className='flex-grow bg-transparent outline-none font-montserrat'
->>>>>>> Jira-Book-18
 					onChange={handleFilter}
 					value={wordEntered}
 				/>
@@ -82,8 +78,4 @@ const SearchBar = ({ searchType }) => {
 	);
 };
 
-<<<<<<< HEAD
 export default SearchBar;
-=======
-export default SearchBar;
->>>>>>> Jira-Book-18
