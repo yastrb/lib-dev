@@ -7,7 +7,6 @@ export default defineConfig({
   build: {
     manifest: true,
     rollupOptions: {
-      external: ['axios'], 
     },
   },
   resolve: {
