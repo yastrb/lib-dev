@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { calculateTotals } from '../../../redux/cartSlice';
 import styles from '../../../style';
-import Button from '../../../ui/Button';
+import Button from '../../../ui/Button/Button';
 import cart from './image/cart.svg';
 import close from './image/close.svg';
 
