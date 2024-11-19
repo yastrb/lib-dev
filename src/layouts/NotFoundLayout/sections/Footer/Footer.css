@@ -1,0 +1,22 @@
+.FooterNotFoundPage {
+	background-color: #fffbe9;
+	width: 100%;
+}
+.FooterNotFoundPage-Text {
+	font-family: Montserrat;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.63px;
+	padding: 16px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+@media (min-width: 768px) {
+	.FooterNotFoundPage-Text {
+		margin-left: 8.33%;
+		justify-content: flex-start;
+	}
+}
