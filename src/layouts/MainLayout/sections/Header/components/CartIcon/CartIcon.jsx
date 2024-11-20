@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import CartModal from '../../../../../../modals/CartModal/CartModal';
+import CartModal from '@modals/CartModal/CartModal.jsx';
 const CartIcon = () => {
     const amount = useSelector((store) => store.cart.amount)
     const cartItems = useSelector((state) => state.cart.cartItems);
