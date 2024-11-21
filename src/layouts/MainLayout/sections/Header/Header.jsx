@@ -3,7 +3,7 @@ import styles from '../../../../style.js';
 import SearchBar from '../../../../ui/SearchBar/index.js';
 import logo from './assets/logo.svg';
 import CartIcon from './components/CartIcon/CartIcon.jsx';
-import SelectLanguage from './components/LanguageSwitcher/LanguageSwitcher.jsx';
+// import SelectLanguage from './components/LanguageSwitcher/LanguageSwitcher.jsx';
 import LogInIcon from './components/LoginRegisterIcon/LoginRegisterIcon.jsx';
 import { Nav } from './index.js';
 
@@ -31,7 +31,7 @@ const Header = () => {
 
 					<div className='flex md:items-center md:justify-center'>
 						<div className='hidden md:flex h-12'>
-							<SelectLanguage />
+							{/* <SelectLanguage /> */}
 						</div>
 						<div className='flex items-center justify-center'>
 							<CartIcon />

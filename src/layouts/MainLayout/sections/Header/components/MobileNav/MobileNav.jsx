@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
+import SearchBar from '../../../../../../ui/SearchBar';
 import close from '../../assets/close.svg';
 import menu from '../../assets/menu.svg';
-import SearchBar from '../../../../../../ui/SearchBar';
-import {SelectLanguage} from '../../index.js';
+// import {SelectLanguage} from '../../index.js';
 
 const MobileNav = ({ navLinks, menuOpen, toggleMenu }) => {
 	return (
@@ -49,9 +49,9 @@ const MobileNav = ({ navLinks, menuOpen, toggleMenu }) => {
 							</NavLink>
 						))}
 					</nav>
-					<div className='mb-[38px]'>
+					{/* <div className='mb-[38px]'>
 						<SelectLanguage />
-					</div>
+					</div> */}
 					<span>+380 053 088 3635</span>
 				</div>
 			</div>

@@ -1,10 +1,10 @@
-import { Suspense } from 'react'
-import { useTranslation } from 'react-i18next'
-import bgImage from '../images/bgImage.jpg'
-import styles from '../../../style'
+import { Suspense } from 'react';
+// import { useTranslation } from 'react-i18next'
+import styles from '../../../style';
+import bgImage from '../images/bgImage.jpg';
 
 function AboutUsText() {
-	const { t, i18n } = useTranslation()
+	// const { t, i18n } = useTranslation()
 
 	return (
 		<Suspense fallback='loading'>
@@ -18,12 +18,17 @@ function AboutUsText() {
 					<article
 						className={`${styles.boxWidth} ${styles.paddingX} ${styles.paddingY} text-[12px] md:text-base lg:text-2xl text-center leading-[1.6]`}
 					>
-						{t('main.hero')}
+						Book Shop - ваш провідник у світі незабутніх пригод та неповторних
+						історій. У нашому асортименті ви знайдете все: від класичних
+						шедеврів до найсвіжіших бестселерів. Дозвольте словам стати вашими
+						компаньйонами, а книгам - вашими найкращими друзями. Ласкаво просимо
+						до нас, де кожна сторінка - це нова можливість відкрити для себе
+						щось неймовірне!
 					</article>
 				</div>
 			</div>
 		</Suspense>
-	)
+	);
 }
 
-export default AboutUsText
+export default AboutUsText;
