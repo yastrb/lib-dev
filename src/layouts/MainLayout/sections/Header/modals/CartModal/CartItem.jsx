@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import stock from '../../assets/stock.svg';
 import trash from '../../assets/trash.svg';
-import { decrease, increase, removeFromCart } from '../../redux/cartSlice';
-import styles from '../../style';
+import { decrease, increase, removeFromCart } from '@redux/cartSlice';
+import styles from '@styles';
 
 const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
 	const dispatch = useDispatch();

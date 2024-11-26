@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculateTotals, clearCart } from '../../redux/cartSlice'
-import styles from '../../style'
+import { calculateTotals, clearCart } from '@redux/cartSlice'
+import styles from '@styles'
 import CartItem from './CartItem'
 
 const CartModal = ({ toggleModal }) => {

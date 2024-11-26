@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from '../../../../style.js';
-import SearchBar from '../../../../ui/SearchBar/index.js';
+import SearchBar from '@ui/SearchBar/index.js';
 import logo from './assets/logo.svg';
 import CartIcon from './components/CartIcon/CartIcon.jsx';
 import SelectLanguage from './components/LanguageSwitcher/LanguageSwitcher.jsx';

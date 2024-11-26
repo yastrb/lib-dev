@@ -1,4 +1,4 @@
-import SearchResults from '@components/SearchResults';
+import SearchResults from '@components/SearchResults/SearchResults.jsx';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import searchIcon from '../../assets/search.svg';

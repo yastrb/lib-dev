@@ -1,4 +1,4 @@
-const navLinks = [
+ const navLinks = [
 	{ id: '1', displayKey: 'main.navlinks.home', path: '/' },
 	{ id: '2', displayKey: 'main.navlinks.catalog', path: '/catalog' },
 	{ id: '3', displayKey: 'main.navlinks.aboutUs', path: '/about' },

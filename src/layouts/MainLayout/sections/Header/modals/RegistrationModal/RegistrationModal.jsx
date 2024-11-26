@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import facebook from '../../assets/facebook.svg'
 import google from '../../assets/google.svg'
-import styles from '../../style'
-import Button from '../../ui/Button/Button'
+import styles from '@styles'
+import Button from '@ui/Button/Button.jsx'
 
 const RegistrationModal = ({ toggleModal, toggleForm }) => {
 	return (
