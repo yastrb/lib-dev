@@ -1,6 +1,6 @@
  import { Link } from 'react-router-dom'
-import facebook from '../../assets/facebook_2.svg'
-import google from '../../assets/google.svg'
+import facebook from './../assets/facebook_2.svg'
+import google from './../assets/google.svg'
 import styles from '@styles'
 import Button from '@ui/Button/Button'
 

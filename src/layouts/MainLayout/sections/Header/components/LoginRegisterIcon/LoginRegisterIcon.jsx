@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LoginModal, RegistrationModal} from '../../modals/index.js';
+import { LoginModal, RegistrationModal} from '@modals/index.js';
 
 
 const LogInIcon = () => {
