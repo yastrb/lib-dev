@@ -6,38 +6,45 @@ import clearIcon from '../../assets/xmark.svg';
 import getBooks from './api/getBooks';
 import useDebounce from './hooks/useDebounce';
 import './SearchBar.css';
-import { filterBooks } from './utils/filterBooks';
-const SearchBar = ({ searchType }) => {
+
+const SearchBar = () => {
 	const { t } = useTranslation();
-	const [books, setBooks] = useState([]);
-	const [filteredBooks, setFilteredBooks] = useState([]);
-	const [wordEntered, setWordEntered] = useState('');
-	const debouncedText = useDebounce(wordEntered, 500);
+	const [results, setResults] = useState([]);
+	const [searchTerm, setSearchTerm] = useState('');
+	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
 	useEffect(() => {
-		const fetchBooks = async () => {
+		const handleSearch = async () => {
 			try {
-				const newBooks = await getBooks();
-				setBooks(newBooks);
-				console.log(newBooks);
+				if (searchTerm.trim() !== '') {
+					const books = await getBooks(debouncedSearchTerm);
+					console.log('Books from API:', books);
+					if (Array.isArray(books)) {
+						setResults(books);
+					} else {
+						setResults([]);
+						console.error('Unexpected data format:', books);
+					}
+				} 
+				else {
+					setResults([]);
+				}
 			} catch (error) {
-				console.error('Error fetching books:', error);
+				console.error('Error during search:', error);
+				setResults([]);
 			}
 		};
-		fetchBooks();
-	}, []);
+		handleSearch();
+	}, [debouncedSearchTerm]);
 
-	useEffect(() => {
-		setFilteredBooks(filterBooks(books, debouncedText, searchType));
-	}, [debouncedText, books, searchType]);
 
 	const handleFilter = event => {
-		setWordEntered(event.target.value);
+		setSearchTerm(event.target.value);
 	};
 
 	const clearInput = () => {
-		setFilteredBooks([]);
-		setWordEntered('');
+		setResults([]);
+		setSearchTerm('');
 	};
 
 	return (
@@ -54,10 +61,10 @@ const SearchBar = ({ searchType }) => {
 					placeholder={t('main.searchField')}
 					className='flex-grow bg-transparent outline-none font-montserrat'
 					onChange={handleFilter}
-					value={wordEntered}
+					value={searchTerm}
 				/>
 
-				{wordEntered.length > 0 && (
+				{searchTerm.length > 0 && (
 					<img
 						src={clearIcon}
 						alt='clear'
@@ -68,10 +75,10 @@ const SearchBar = ({ searchType }) => {
 			</div>
 
 			{/* results */}
-			{filteredBooks.length !== 0 && (
+			{results.length !== 0 && (
 				<SearchResults
-					filteredBooks={filteredBooks}
-					wordEntered={wordEntered}
+					results={results}
+					searchTerm={searchTerm}
 				/>
 			)}
 		</>

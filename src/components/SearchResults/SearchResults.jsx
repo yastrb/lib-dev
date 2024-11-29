@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import stock from '../../assets/stock.svg';
 import styles from '../../style';
 
-const SearchResults = ({ filteredBooks, wordEntered }) => {
-	const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered);
+const SearchResults = ({ results, searchTerm }) => {
+	const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(searchTerm);
 
 	return (
 		<div className='search-results absolute top-20 z-50 rounded-md shadow bg-white'>
 			<p className='px-3 py-2 font-medium divider'>Результат пошуку</p>
 			<ul>
-				{filteredBooks.map(item => {
+				{results.map(item => {
 					const price = item.price[0];
 					const displayPrice = price.discounted_price > 0
 						? price.discounted_price
