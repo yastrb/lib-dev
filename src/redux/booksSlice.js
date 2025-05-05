@@ -6,38 +6,51 @@ export const booksDataApi = createApi({
     baseUrl: "https://biblioteka-backend-btd3.onrender.com",
   }),
   endpoints: (builder) => ({
-    getNewBestsellersSalesBooks: builder.query({
-      query: () => "https://biblioteka-backend-btd3.onrender.com", 
-      transformResponse: (response) => ({
-        newBooks: response.newBooks.map((book) => ({
+
+    getNewBooks: builder.query({
+      query: () => "/new",
+      transformResponse: (response) =>
+        response.map((book) => ({
           ...book,
-          title: book.title || 'Назва недоступна',
-          summary: book.summary || 'Опис недоступний',
-          coverImageLink: book.coverImageLink && book.coverImageLink.length > 0 ? book.coverImageLink : ['default-image.jpg'],
-          price: book.price.length > 0 ? book.price : [{ original_price: 0, discounted_price: 0 }],
-          author: book.author.length > 0 ? book.author : [{ name_ukr: 'Невідомий автор', surname_ukr: '' }],
+          title: book.title || "Unknown Title",
+          coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+          price: book.price || 0,
+          author: book.author || "Unknown Author",
+          summary: book.description || "No summary available",
         })),
-        salesBooks: response.salesBooks.map((book) => ({
+    }),
+
+    getBestsellers: builder.query({
+      query: () => "/bestseller",
+
+      transformResponse: (response) =>
+        response.map((book) => ({
           ...book,
-          title: book.title || 'Назва недоступна',
-          summary: book.summary || 'Опис недоступний',
-          coverImageLink: book.coverImageLink && book.coverImageLink.length > 0 ? book.coverImageLink : ['default-image.jpg'],
-          price: book.price.length > 0 ? book.price : [{ original_price: 0, discounted_price: 0 }],
-          author: book.author.length > 0 ? book.author : [{ name_ukr: 'Невідомий автор', surname_ukr: '' }],
+          title: book.title || "Unknown Title",
+          coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+          price: book.price || 0,
+          author: book.author || "Unknown Author",
+          summary: book.description || "No summary available",
         })),
-        bestsellerBooks: response.bestsellerBooks.map((book) => ({
+    }),
+
+    getPromotionBooks: builder.query({
+      query: () => "/promotion",
+      transformResponse: (response) =>
+        response.map((book) => ({
           ...book,
-          title: book.title || 'Назва недоступна',
-          summary: book.summary || 'Опис недоступний',
-          coverImageLink: book.coverImageLink && book.coverImageLink.length > 0 ? book.coverImageLink : ['default-image.jpg'],
-          price: book.price.length > 0 ? book.price : [{ original_price: 0, discounted_price: 0 }],
-          author: book.author.length > 0 ? book.author : [{ name_ukr: 'Невідомий автор', surname_ukr: '' }],
+          title: book.title || "Unknown Title",
+          coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+          price: book.price || 0,
+          author: book.author || "Unknown Author",
+          summary: book.description || "No summary available",
         })),
-      }),
     }),
   }),
 });
 
-
-export const useGetNewBestsellersSalesBooks = booksDataApi.endpoints.getNewBestsellersSalesBooks.useQuery;
-
+export const {
+  useGetNewBooksQuery,
+  useGetBestsellersQuery,
+  useGetPromotionBooksQuery,
+} = booksDataApi;
