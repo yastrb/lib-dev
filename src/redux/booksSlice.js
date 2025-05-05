@@ -3,11 +3,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const booksDataApi = createApi({
   reducerPath: "booksDataApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "/",
+    baseUrl: "https://biblioteka-backend-btd3.onrender.com",
   }),
   endpoints: (builder) => ({
     getNewBestsellersSalesBooks: builder.query({
-      query: () => "https://backend-o1yz.onrender.com/get-books", 
+      query: () => "https://biblioteka-backend-btd3.onrender.com", 
       transformResponse: (response) => ({
         newBooks: response.newBooks.map((book) => ({
           ...book,
