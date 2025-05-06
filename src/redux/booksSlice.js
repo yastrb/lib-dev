@@ -6,56 +6,65 @@ export const booksDataApi = createApi({
     baseUrl: "https://biblioteka-backend-btd3.onrender.com/api",
   }),
   endpoints: (builder) => ({
+    // Fetch all books from the API
     getAllBooks: builder.query({
       query: () => "/books",
-      transformResponse: (response) =>
-        response.map((book) => ({
+      transformResponse: (response) => {
+        const books = response.content || [];
+        return books.map((book) => ({
           ...book,
           title: book.title || "Unknown Title",
           coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
           price: book.price || 0,
           author: book.author || "Unknown Author",
           summary: book.description || "No summary available",
-        })),
+        }));
+      },
     }),
 
     getNewBooks: builder.query({
       query: () => "books/new",
-      transformResponse: (response) =>
-        response.map((book) => ({
+      transformResponse: (response) => {
+        const newBooks = response.content || [];
+        return newBooks.map((book) => ({
           ...book,
           title: book.title || "Unknown Title",
           coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
           price: book.price || 0,
           author: book.author || "Unknown Author",
           summary: book.description || "No summary available",
-        })),
+        }));
+      },
     }),
 
     getBestsellers: builder.query({
       query: () => "books/bestseller",
-      transformResponse: (response) =>
-        response.map((book) => ({
+      transformResponse: (response) => {
+        const bestsellers = response.content || [];
+        return bestsellers.map((book) => ({
           ...book,
           title: book.title || "Unknown Title",
           coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
           price: book.price || 0,
           author: book.author || "Unknown Author",
           summary: book.description || "No summary available",
-        })),
+        }));
+      },
     }),
 
     getPromotionBooks: builder.query({
       query: () => "books/promotion",
-      transformResponse: (response) =>
-        response.map((book) => ({
+      transformResponse: (response) => {
+        const promotionBooks = response.content || [];
+        return promotionBooks.map((book) => ({
           ...book,
           title: book.title || "Unknown Title",
           coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
           price: book.price || 0,
           author: book.author || "Unknown Author",
           summary: book.description || "No summary available",
-        })),
+        }));
+      },
     }),
   }),
 });

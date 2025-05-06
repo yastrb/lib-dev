@@ -9,7 +9,7 @@ import {
 
 const BookCard = ({ book }) => {
 	const handleAddToCart = useAddToCart(book);
-	const handleNavigate = useNavigateToProduct(book.price[0].book_id);
+	const handleNavigate = useNavigateToProduct(book.id);
 	const { open, handleOpen, handleClose } = useModal();
 
 	const handleAddToCartClick = () => {
@@ -20,12 +20,12 @@ const BookCard = ({ book }) => {
 	return (
 		<div>
 			<BookInfo
-				title={book.title_ukr}
-				author={book.author}
-				price={book.price[0]}
+				title={book.title || "No title"}
+				author={book.author || "No author"}
+				price={book.price ?? 0}
 				onImageClick={handleNavigate}
-				imageSrc={book.coverImageLink_ukr}
-				altText={book.title_ukr}
+				imageSrc={book.images?.[0]?.url || "No image"}
+				altText={book.title || "No title"}
 			/>
 			<button
 				className='bg-button rounded-lg p-2 hover:bg-hover font-montserrat duration-300'

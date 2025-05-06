@@ -1,4 +1,4 @@
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
 	useGetNewBooksQuery,
 	useGetBestsellersQuery,
@@ -15,6 +15,7 @@ const HomePage = () => {
 		isLoading: isLoadingNew,
 		error: errorNew,
 	} = useGetNewBooksQuery();
+	
 
 	const {
 		data: bestsellers,
@@ -28,7 +29,7 @@ const HomePage = () => {
 		error: errorPromo,
 	} = useGetPromotionBooksQuery();
 
-	// const { t, i18n } = useTranslation();
+	const { t, i18n } = useTranslation();
 
 	if (errorNew || errorBestsellers || errorPromo) {
 		return <div>Сталася помилка при завантаженні книжок </div>;
