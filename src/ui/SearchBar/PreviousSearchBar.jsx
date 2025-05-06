@@ -1,5 +1,5 @@
 ﻿﻿import SearchResults from '@components/SearchResults';
-import axios from 'axios';
+import axios from '/node_modules/axios';
 import { debounce } from 'lodash';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
