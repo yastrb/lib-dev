@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const booksDataApi = createApi({
   reducerPath: "booksDataApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://biblioteka-backend-btd3.onrender.com",
+    baseUrl: "https://biblioteka-backend-btd3.onrender.com/api",
   }),
   endpoints: (builder) => ({
     getAllBooks: builder.query({
