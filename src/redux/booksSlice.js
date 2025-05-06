@@ -17,53 +17,52 @@ export const booksDataApi = createApi({
           author: book.author || "Unknown Author",
           summary: book.description || "No summary available",
         })),
+    }),
 
-      getNewBooks: builder.query({
-        query: () => "/new",
-        transformResponse: (response) =>
-          response.map((book) => ({
-            ...book,
-            title: book.title || "Unknown Title",
-            coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
-            price: book.price || 0,
-            author: book.author || "Unknown Author",
-            summary: book.description || "No summary available",
-          })),
-      }),
+    getNewBooks: builder.query({
+      query: () => "books/new",
+      transformResponse: (response) =>
+        response.map((book) => ({
+          ...book,
+          title: book.title || "Unknown Title",
+          coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+          price: book.price || 0,
+          author: book.author || "Unknown Author",
+          summary: book.description || "No summary available",
+        })),
+    }),
 
-      getBestsellers: builder.query({
-        query: () => "/bestseller",
+    getBestsellers: builder.query({
+      query: () => "books/bestseller",
+      transformResponse: (response) =>
+        response.map((book) => ({
+          ...book,
+          title: book.title || "Unknown Title",
+          coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+          price: book.price || 0,
+          author: book.author || "Unknown Author",
+          summary: book.description || "No summary available",
+        })),
+    }),
 
-        transformResponse: (response) =>
-          response.map((book) => ({
-            ...book,
-            title: book.title || "Unknown Title",
-            coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
-            price: book.price || 0,
-            author: book.author || "Unknown Author",
-            summary: book.description || "No summary available",
-          })),
-      }),
-
-      getPromotionBooks: builder.query({
-        query: () => "/promotion",
-        transformResponse: (response) =>
-          response.map((book) => ({
-            ...book,
-            title: book.title || "Unknown Title",
-            coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
-            price: book.price || 0,
-            author: book.author || "Unknown Author",
-            summary: book.description || "No summary available",
-          })),
-      }),
+    getPromotionBooks: builder.query({
+      query: () => "books/promotion",
+      transformResponse: (response) =>
+        response.map((book) => ({
+          ...book,
+          title: book.title || "Unknown Title",
+          coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+          price: book.price || 0,
+          author: book.author || "Unknown Author",
+          summary: book.description || "No summary available",
+        })),
     }),
   }),
 });
 
 export const {
+  useGetAllBooksQuery,
   useGetNewBooksQuery,
   useGetBestsellersQuery,
   useGetPromotionBooksQuery,
-  useGetAllBooksQuery,
 } = booksDataApi;

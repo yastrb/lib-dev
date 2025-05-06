@@ -1,20 +1,39 @@
-import { useTranslation } from 'react-i18next';
-import { useGetNewBestsellersSalesBooks } from '../../redux/booksSlice.js';
+// import { useTranslation } from 'react-i18next';
+import {
+	useGetNewBooksQuery,
+	useGetBestsellersQuery,
+	useGetPromotionBooksQuery,
+} from '../../redux/booksSlice.js';
 import FeaturedCarouselSection from '../../sections/FeaturedCarouselSection/FeaturedCarouselSection.jsx';
 import styles from '../../style.js';
 import AboutUsText from './heroSection/AboutUs.jsx';
 import Hero from './heroSection/Hero.jsx';
 
 const HomePage = () => {
-	const { data, error, isLoading } = useGetNewBestsellersSalesBooks();
+	const {
+		data: newBooks,
+		isLoading: isLoadingNew,
+		error: errorNew,
+	} = useGetNewBooksQuery();
 
-	const { t, i18n } = useTranslation();
+	const {
+		data: bestsellers,
+		isLoading: isLoadingBestsellers,
+		error: errorBestsellers,
+	} = useGetBestsellersQuery();
 
-	if (error) return <div>Error loading data: {error.message}</div>;
+	const {
+		data: promoBooks,
+		isLoading: isLoadingPromo,
+		error: errorPromo,
+	} = useGetPromotionBooksQuery();
 
-	const newBooks = data?.newBooks || [];
-	const salesBooks = data?.salesBooks || [];
-	const bestsellerBooks = data?.bestsellerBooks || [];
+	// const { t, i18n } = useTranslation();
+
+	if (errorNew || errorBestsellers || errorPromo) {
+		return <div>Сталася помилка при завантаженні книжок </div>;
+	}
+
 
 	return (
 		<div>
@@ -31,7 +50,7 @@ const HomePage = () => {
 
 			{/* main */}
 			<div className={`${styles.paddingX} ${styles.flexStart} flex grow`}>
-				{isLoading ? (
+				{isLoadingNew || isLoadingBestsellers || isLoadingPromo ? (
 					<div>Loading...</div>
 				) : (
 					<div className={`${styles.boxWidth}`}>
@@ -40,11 +59,11 @@ const HomePage = () => {
 							title={t('main.newBooks')}
 						/>
 						<FeaturedCarouselSection
-							data={salesBooks}
+							data={promoBooks}
 							title={t('main.salesBooks')}
 						/>
 						<FeaturedCarouselSection
-							data={bestsellerBooks}
+							data={bestsellers}
 							title={t('main.bestellersBooks')}
 						/>
 					</div>
