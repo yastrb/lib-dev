@@ -41,18 +41,6 @@ const SearchResults = ({ filteredBooks }) => {
                     {item.quantity > 0 ? 'В наявності' : 'Немає в наявності'}
                   </span>
                 </p>
-
-                {/* Категорія */}
-                <p className={`${styles.captionRegular} text-sm`}>
-                  Категорія: {item.category}
-                </p>
-
-                {/* Підкатегорії */}
-                {item.subcategories?.length > 0 && (
-                  <p className={`${styles.captionRegular} text-sm`}>
-                    Підкатегорії: {item.subcategories.join(', ')}
-                  </p>
-                )}
               </div>
             </Link>
           );
