@@ -1,62 +1,65 @@
-// SearchResults.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import stock from '../../assets/stock.svg';
 import styles from '../../style';
 
-const SearchResults = ({ filteredBooks, wordEntered }) => {
-	const isUkrainian = /[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ]/.test(wordEntered);
+const SearchResults = ({ filteredBooks }) => {
+  return (
+    <div className="search-results absolute top-20 z-50 rounded-md shadow bg-white">
+      <p className="px-3 py-2 font-medium divider">Результат пошуку</p>
+      <ul>
+        {filteredBooks.map((item) => {
+          const displayPrice = item.price > 0 ? item.price : 'Ціна недоступна';
+          const imageUrl = item.images && item.images.length > 0 ? item.images[0].url : '';
 
-	return (
-		<div className='search-results absolute top-20 z-50 rounded-md shadow bg-white'>
-			<p className='px-3 py-2 font-medium divider'>Результат пошуку</p>
-			<ul>
-				{filteredBooks.map(item => {
-					const price = item.price[0];
-					const displayPrice = price.discounted_price > 0
-						? price.discounted_price
-						: price.original_price;
+          return (
+            <Link to={`/${item.id}`} className="p-3 flex gap-2" key={item.id}>
+              {/* Зображення */}
+              <div>
+                <img
+                  className="w-[75px] h-[99px] object-cover"
+                  src={imageUrl}
+                  alt={item.title}
+                />
+              </div>
 
-					return (
-						<Link to={`/${item._id}`} className='p-3 flex gap-2' key={item._id}>
-							{/* results img */}
-							<div>
-								<img
-									className='w-[75px] h-[99px]'
-									src={isUkrainian ? item.coverImageLink_ukr : item.coverImageLink}
-									alt={isUkrainian ? item.title_ukr : item.title}
-								/>
-							</div>
+              {/* Інформація про книжку */}
+              <div className="flex flex-col">
+                {/* Назва */}
+                <p className={`${styles.bodyRegular}`}>{item.title}</p>
 
-							{/* results info */}
-							<div className='flex flex-col'>
-								{/* title */}
-								<p className={`${styles.bodyRegular}`}>
-									{isUkrainian ? item.title_ukr : item.title}
-								</p>
+                {/* Автор */}
+                <p className={`${styles.captionRegular} mb-2`}>{item.author}</p>
 
-								{/* author */}
-								<p className={`${styles.captionRegular} mb-2`}>
-									{isUkrainian ? 
-										item.author.map(a => `${a.name_ukr} ${a.surname_ukr}`).join(', ') :
-										item.author.map(a => `${a.name} ${a.surname}`).join(', ')}
-								</p>
+                {/* Ціна */}
+                <p className={`${styles.bodyMedium} mb-2`}>{displayPrice} грн</p>
 
-								{/* price */}
-								<p className={`${styles.bodyMedium} mb-2`}>{displayPrice} грн</p>
+                {/* Наявність */}
+                <p className="flex gap-2 items-center">
+                  <img src={stock} alt="in stock" />
+                  <span className={`${styles.bodyRegular} text-green`}>
+                    {item.quantity > 0 ? 'В наявності' : 'Немає в наявності'}
+                  </span>
+                </p>
 
-								{/* stock */}
-								<p className='flex gap-2 items-center'>
-									<img src={stock} alt="in stock" />
-									<span className={`${styles.bodyRegular} text-green`}>В наявності</span>
-								</p>
-							</div>
-						</Link>
-					);
-				})}
-			</ul>
-		</div>
-	);
+                {/* Категорія */}
+                <p className={`${styles.captionRegular} text-sm`}>
+                  Категорія: {item.category}
+                </p>
+
+                {/* Підкатегорії */}
+                {item.subcategories?.length > 0 && (
+                  <p className={`${styles.captionRegular} text-sm`}>
+                    Підкатегорії: {item.subcategories.join(', ')}
+                  </p>
+                )}
+              </div>
+            </Link>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
 export default SearchResults;
