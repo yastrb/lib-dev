@@ -19,7 +19,7 @@ const SearchBar = ({ searchType }) => {
 			try {
 				const Books = await getBooks();
 				setBooks(Books);
-				console.log("all boooks",Books);
+				// console.log("all boooks",Books);
 			} catch (error) {
 				console.error('Error fetching books:', error);
 			}

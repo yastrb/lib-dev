@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import stock from '../../assets/stock.svg';
 import styles from '../../style';
@@ -13,7 +12,9 @@ const SearchResults = ({ filteredBooks }) => {
           const imageUrl = item.images && item.images.length > 0 ? item.images[0].url : '';
 
           return (
-            <Link to={`/${item.id}`} className="p-3 flex gap-2" key={item.id}>
+            <Link to={`/${item.id}`}
+            className="p-3 flex gap-2 border-b border-gray-200 last:border-b-0 hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
+            key={item.id}>
               {/* Зображення */}
               <div>
                 <img
@@ -43,6 +44,7 @@ const SearchResults = ({ filteredBooks }) => {
                 </p>
               </div>
             </Link>
+            
           );
         })}
       </ul>
