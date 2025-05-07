@@ -1,13 +1,12 @@
-import { useTranslation } from 'react-i18next';
-import { useGetNewBestsellersSalesBooks } from '../../redux/booksSlice.js';
-import FeaturedCarouselSection from '../../sections/FeaturedCarouselSection/FeaturedCarouselSection.jsx';
-import styles from '../../style.js';
-import AboutUsText from './heroSection/AboutUs.jsx';
-import Hero from './heroSection/Hero.jsx';
+import { useTranslation } from 'react-i18next'
+import { useGetNewBestsellersSalesBooks } from '../../redux/booksSlice.js'
+import FeaturedCarouselSection from '../../sections/FeaturedCarouselSection/FeaturedCarouselSection.jsx'
+import styles from '../../style.js'
+import AboutUsText from './heroSection/AboutUs.jsx'
+import Hero from './heroSection/Hero.jsx'
 
 const HomePage = () => {
 	const { data, error, isLoading } = useGetNewBestsellersSalesBooks();
-
 	const { t, i18n } = useTranslation();
 
 	if (error) return <div>Error loading data: {error.message}</div>;
@@ -16,6 +15,7 @@ const HomePage = () => {
 	const salesBooks = data?.salesBooks || [];
 	const bestsellerBooks = data?.bestsellerBooks || [];
 
+ 
 	return (
 		<div>
 			{/* hero */}

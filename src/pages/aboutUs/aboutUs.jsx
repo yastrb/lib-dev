@@ -1,11 +1,11 @@
-import Photo1 from '../../assets/images/AboutUs-Photo1.jpg';
-import Photo2 from '../../assets/images/AboutUs-Photo2.jpg';
-import Photo3 from '../../assets/images/AboutUs-Photo3.jpg';
-import Photo4 from '../../assets/images/AboutUs-Photo4.jpg';
-
-import './AboutUs.css';
+import Photo1 from '../../assets/images/AboutUs-Photo1.jpg'
+import Photo2 from '../../assets/images/AboutUs-Photo2.jpg'
+import Photo3 from '../../assets/images/AboutUs-Photo3.jpg'
+import Photo4 from '../../assets/images/AboutUs-Photo4.jpg'
+import './AboutUs.css'
 
 const AboutUs = () => {
+	
 	return (
 		<div className='AboutUS-container'>
 			<div className='AboutUs-Header'>
