@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import IconBtn from '../../assets/icons/btnCatalogOpenMobileMenu.svg';
 import DropDownCatalogSort from '../../components/dropDownCatalogSort';
-import { useGetNewBestsellersSalesBooks } from '../../redux/booksSlice';
+import { useGetAllBooksQuery } from '../../redux/booksSlice';
 import styles from '../../style.js';
 import SelectedFilters from '././Components/SelectedFilters/index.js';
 import Cataloglist from './cataloglist.jsx';
@@ -10,7 +10,7 @@ import './styles.css';
 
 const Catalog = () => {
 	const [menuStatus, setMenuStatus] = useState(false);
-	const { data, error, isLoading } = useGetNewBestsellersSalesBooks();
+	const { data, error, isLoading } = useGetAllBooksQuery();
 	const [sortedBooks, setSortedBooks] = useState([]);
 
 	const handleChangeMenuStatus = () => {

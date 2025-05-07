@@ -17,9 +17,9 @@ const SearchBar = ({ searchType }) => {
 	useEffect(() => {
 		const fetchBooks = async () => {
 			try {
-				const newBooks = await getBooks();
-				setBooks(newBooks);
-				console.log(newBooks);
+				const Books = await getBooks();
+				setBooks(Books);
+				// console.log("all boooks",Books);
 			} catch (error) {
 				console.error('Error fetching books:', error);
 			}

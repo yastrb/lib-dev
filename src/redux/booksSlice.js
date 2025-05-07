@@ -3,41 +3,86 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const booksDataApi = createApi({
   reducerPath: "booksDataApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "/",
+    baseUrl: "https://biblioteka-backend-btd3.onrender.com/api/",
   }),
   endpoints: (builder) => ({
-    getNewBestsellersSalesBooks: builder.query({
-      query: () => "https://backend-o1yz.onrender.com/get-books", 
-      transformResponse: (response) => ({
-        newBooks: response.newBooks.map((book) => ({
-          ...book,
-          title: book.title || 'Назва недоступна',
-          summary: book.summary || 'Опис недоступний',
-          coverImageLink: book.coverImageLink && book.coverImageLink.length > 0 ? book.coverImageLink : ['default-image.jpg'],
-          price: book.price.length > 0 ? book.price : [{ original_price: 0, discounted_price: 0 }],
-          author: book.author.length > 0 ? book.author : [{ name_ukr: 'Невідомий автор', surname_ukr: '' }],
-        })),
-        salesBooks: response.salesBooks.map((book) => ({
-          ...book,
-          title: book.title || 'Назва недоступна',
-          summary: book.summary || 'Опис недоступний',
-          coverImageLink: book.coverImageLink && book.coverImageLink.length > 0 ? book.coverImageLink : ['default-image.jpg'],
-          price: book.price.length > 0 ? book.price : [{ original_price: 0, discounted_price: 0 }],
-          author: book.author.length > 0 ? book.author : [{ name_ukr: 'Невідомий автор', surname_ukr: '' }],
-        })),
-        bestsellerBooks: response.bestsellerBooks.map((book) => ({
-          ...book,
-          title: book.title || 'Назва недоступна',
-          summary: book.summary || 'Опис недоступний',
-          coverImageLink: book.coverImageLink && book.coverImageLink.length > 0 ? book.coverImageLink : ['default-image.jpg'],
-          price: book.price.length > 0 ? book.price : [{ original_price: 0, discounted_price: 0 }],
-          author: book.author.length > 0 ? book.author : [{ name_ukr: 'Невідомий автор', surname_ukr: '' }],
-        })),
-      }),
+    getAllBooks: builder.query({
+      query: () => "/books",
+      transformResponse: (response) => {
+        const books = response.content || [];
+        return books.map((item) => {
+          const book = item.book || item; // на всякий випадок — fallback
+          return {
+            ...book,
+            title: book.title || "Unknown Title",
+            coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+            price: book.price || 0,
+            author: book.author || "Unknown Author",
+            summary: book.description || "No summary available",
+          };
+        });
+      },
+    }),
+
+    getNewBooks: builder.query({
+      query: () => "books/new",
+      transformResponse: (response) => {
+        const newBooks = response.content || [];
+        return newBooks.map((item) => {
+          const book = item.book || item;
+          return {
+            ...book,
+            title: book.title || "Unknown Title",
+            coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+            price: book.price || 0,
+            author: book.author || "Unknown Author",
+            summary: book.description || "No summary available",
+          };
+        });
+      },
+    }),
+
+    getBestsellers: builder.query({
+      query: () => "books/bestseller",
+      transformResponse: (response) => {
+        const bestsellers = response.content || [];
+        return bestsellers.map((item) => {
+          const book = item.book || item;
+          return {
+            ...book,
+            title: book.title || "Unknown Title",
+            coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+            price: book.price || 0,
+            author: book.author || "Unknown Author",
+            summary: book.description || "No summary available",
+          };
+        });
+      },
+    }),
+
+    getPromotionBooks: builder.query({
+      query: () => "books/promotion",
+      transformResponse: (response) => {
+        const promotionBooks = response.content || [];
+        return promotionBooks.map((item) => {
+          const book = item.book || item;
+          return {
+            ...book,
+            title: book.title || "Unknown Title",
+            coverImageLink: book.images?.length > 0 ? [book.images[0].url] : [],
+            price: book.price || 0,
+            author: book.author || "Unknown Author",
+            summary: book.description || "No summary available",
+          };
+        });
+      },
     }),
   }),
 });
 
-
-export const useGetNewBestsellersSalesBooks = booksDataApi.endpoints.getNewBestsellersSalesBooks.useQuery;
-
+export const {
+  useGetAllBooksQuery,
+  useGetNewBooksQuery,
+  useGetBestsellersQuery,
+  useGetPromotionBooksQuery,
+} = booksDataApi;
