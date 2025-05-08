@@ -1,11 +1,11 @@
-import { Link, useLocation } from 'react-router-dom';
-import styles from '../../../../style.js';
-import SearchBar from '../../../../ui/SearchBar/index.js';
-import logo from './assets/logo.svg';
-import CartIcon from './components/CartIcon/CartIcon.jsx';
+import { Link, useLocation } from 'react-router-dom'
+import styles from '../../../../style.ts'
+import SearchBar from '../../../../ui/SearchBar/index.js'
+import logo from './assets/logo.svg'
+import CartIcon from './components/CartIcon/CartIcon.jsx'
 // import SelectLanguage from './components/LanguageSwitcher/LanguageSwitcher.jsx';
-import LogInIcon from './components/LoginRegisterIcon/LoginRegisterIcon.jsx';
-import { Nav } from './index.js';
+import LogInIcon from './components/LoginRegisterIcon/LoginRegisterIcon.jsx'
+import { Nav } from './index.js'
 
 const Header = () => {
 	const location = useLocation();

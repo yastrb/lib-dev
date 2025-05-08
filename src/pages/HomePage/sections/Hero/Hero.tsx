@@ -1,11 +1,21 @@
-﻿import React from 'react'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { data } from '../images/index.js';
 
-const Carousel = () => {
- 
+import React from 'react'
+import Slider from "react-slick"
+import "slick-carousel/slick/slick-theme.css"
+import "slick-carousel/slick/slick.css"
+import { data } from '../../images/index'
+
+interface Props {
+  className?: string
+}
+
+/**
+ *  Hero
+ *  @param className
+ */
+//TODO: add cn ClassNames and remove TAILWIND
+
+export default function Hero({ className = '' }: Props) {
   const settings = {
     dots: true,
     infinite: true,
@@ -39,25 +49,23 @@ const Carousel = () => {
         }
       }
     ]
-  };
+  }
 
-  
+
   return (
     <div className="slider-container md:px-0 px-5 ">
       <Slider {...settings}>
         {data.map((item) => {
-          const { id, img } = item;
+          const { id, img } = item
           return (
             <div key={id}>
-                <img className=' mx-auto' src={img} alt="img" />
+              <img className=' mx-auto' src={img} alt="img" />
             </div>
           )
         }
         )}
       </Slider>
     </div>
-
   )
 }
 
-export default Carousel

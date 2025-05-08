@@ -1,20 +1,19 @@
+import FeaturedCarouselSection from 'components/FeaturedCarouselSection'
 import { useTranslation } from 'react-i18next'
 import {
 	useGetBestsellersQuery,
-	useGetNewBooksQuery,
-	useGetPromotionBooksQuery,
+	useGetPromotionBooksQuery
 } from '../../redux/booksSlice.js'
-import FeaturedCarouselSection from '../../sections/FeaturedCarouselSection/FeaturedCarouselSection.jsx'
-import styles from '../../style.js'
-import AboutUsText from './heroSection/AboutUs.jsx'
-import Hero from './heroSection/Hero.jsx'
-
+import styles from '../../style.ts'
+import Hero from './sections/Hero'
+import NewArrival from './sections/NewArrival'
+import StoreDescription from './sections/StoreDescription'
 const HomePage = () => {
-	const {
-		data: newBooks,
-		isLoading: isLoadingNew,
-		error: errorNew,
-	} = useGetNewBooksQuery();
+	// const {
+	// 	data: newBooks,
+	// 	isLoading: isLoadingNew,
+	// 	error: errorNew,
+	// } = useGetNewBooksQuery();
 	
 
 	const {
@@ -31,7 +30,7 @@ const HomePage = () => {
 
 	const { t, i18n } = useTranslation();
 
-	if (errorNew || errorBestsellers || errorPromo) {
+	if (errorBestsellers || errorPromo) {
 		return <div>Сталася помилка при завантаженні книжок </div>;
 	}
 
@@ -47,19 +46,16 @@ const HomePage = () => {
 					<Hero />
 				</div>
 			</div>
-			<AboutUsText />
+			<StoreDescription />
 			{/* hero end */}
 
 			{/* main */}
 			<div className={`${styles.paddingX} ${styles.flexStart} flex grow`}>
-				{isLoadingNew || isLoadingBestsellers || isLoadingPromo ? (
+				{isLoadingBestsellers || isLoadingPromo ? (
 					<div>Loading...</div>
 				) : (
 					<div className={`${styles.boxWidth}`}>
-						<FeaturedCarouselSection
-							data={newBooks}
-							title={t('main.newBooks')}
-						/>
+						<NewArrival />
 						<FeaturedCarouselSection
 							data={promoBooks}
 							title={t('main.salesBooks')}

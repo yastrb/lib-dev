@@ -1,12 +1,12 @@
-import SearchResults from '@components/SearchResults';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import searchIcon from '../../assets/search.svg';
-import clearIcon from '../../assets/xmark.svg';
-import getBooks from './api/getBooks';
-import useDebounce from './hooks/useDebounce';
-import './SearchBar.css';
-import { filterBooks } from './utils/filterBooks';
+import SearchResults from 'components/SearchResults'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import searchIcon from '../../assets/search.svg'
+import clearIcon from '../../assets/xmark.svg'
+import getBooks from './api/getBooks'
+import useDebounce from './hooks/useDebounce'
+import './SearchBar.css'
+import { filterBooks } from './utils/filterBooks'
 const SearchBar = ({ searchType }) => {
 	const { t } = useTranslation();
 	const [books, setBooks] = useState([]);

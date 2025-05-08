@@ -1,0 +1,35 @@
+@use 'react-responsive-tools' as b;
+
+.MainLayout {
+  // --main-footer-height: 600px;
+  --main-header-height: 65px;
+  --main-padding-h: 15px;
+  --main-padding-v: 15px;
+
+  min-height: 100vh;
+  background: var(--bg-10);
+
+	.inner {
+		flex: 1;
+		padding: var(--main-padding-v) var(--main-padding-h);
+	}
+  @include b.for-lg {
+    --main-padding-h: 20px;
+    --main-padding-v: 20px;
+  }
+
+  @include b.for-lt {
+    --main-padding-h: 30px;
+    --main-padding-v: 30px;
+  }
+
+  @include b.for-ltm {
+    --main-header-height: 80px;
+    --main-padding-h: 5vw;
+    --main-padding-v: 10vh;
+  }
+
+  @include b.for-xl {
+    --main-padding-h: 8vw;
+  }
+}

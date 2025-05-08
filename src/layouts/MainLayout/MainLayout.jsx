@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom';
-import './MainLayout.css';
-import Footer from './sections/Footer';
-import { Header } from './sections/Header/index.js';
+import { Outlet } from 'react-router-dom'
+import './MainLayout.module.scss'
+import Footer from './sections/Footer'
+import { Header } from './sections/Header/index.js'
 
 export default function MainLayout() {
 	return (
