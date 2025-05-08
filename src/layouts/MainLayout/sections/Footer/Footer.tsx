@@ -1,8 +1,8 @@
-import { Button, Typography } from '@material-tailwind/react';
-import arrowUp from '../../../../assets/icons/arrowUp.svg';
-import logo from '../../../../assets/images/logo.svg';
-import styles from '../../../../style';
-import { contactData, footerData, socialData } from './helpers/footerData.js';
+import { Button, Typography } from '@material-tailwind/react'
+import arrowUp from '../../../../assets/icons/arrowUp.svg'
+import logo from '../../../../assets/images/logo.svg'
+import styles from '../../../../style.js'
+import { contactData, footerData, socialData } from './helpers/footerData.js'
 
 const Footer = () => {
 	const toTop = () => {

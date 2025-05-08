@@ -6,11 +6,11 @@ import { TCredentials } from 'api/RESTClient/types/TUsers'
 import { TJWT } from 'api/types'
 
 /**
- * Виконує аутентифікацію користувача та отримує JWT-токени.
+ * Виконує реєстрацію нового користувача.
  *
- * @function login
+ * @function register
  * @this {BaseRESTClient} - Екземпляр REST-клієнта для виконання запиту.
- * @param {TCredentials} payload - Облікові дані користувача (email & password).
+ * @param {TRegisterPayload} payload - Дані для реєстрації користувача.
  * @param {AbortSignal} - Сигнал для можливості скасування запиту.
  * @param {AxiosRequestConfig} [config] - Додаткові налаштування для запиту.
  * @returns {Promise<TResponseSuccess<TJWT>>} - Об'єкт із токенами доступу та оновлення.
@@ -18,39 +18,55 @@ import { TJWT } from 'api/types'
  *
  * @example
  * try {
- *   const { data } = await client.api.auth.login({ email: 'test@example.com', password: '123456' });
- *   console.log('Успішний вхід:', data);
+ *   const { data } = await client.api.auth.register({
+ *     email: 'test@example.com',
+ *     password: '123456',
+ *     name: 'John Doe',
+ *   });
+ *   console.log('Успішна реєстрація:', data);
  * } catch (error) {
- *   console.error('Помилка входу:', error);
+ *   console.error('Помилка реєстрації:', error);
  * }
  */
 
-export interface TAPILogin {
+export interface TAPIRegister {
   TError: TResponseError;
   TSuccess: TResponseSuccess<TJWT>;
-  TPayload: TCredentials;
+  TPayload: TRegisterPayload;
 }
 
-export type TError = TAPILogin['TError'];
-export type TSuccess = TAPILogin['TSuccess'];
-export type TPayload = TAPILogin['TPayload'];
+export interface TRegisterPayload extends TCredentials {
+  name: string;
+}
 
-export async function login(
+export type TError = TAPIRegister['TError'];
+export type TSuccess = TAPIRegister['TSuccess'];
+export type TPayload = TAPIRegister['TPayload'];
+
+export async function register(
   this: BaseRESTClient,
   payload: TPayload,
   { signal }: { signal?: AbortSignal } = {},
   config?: AxiosRequestConfig
 ): Promise<TSuccess> {
   try {
-    const response = await this.client.post<TSuccess>('/auth/login/', payload, {
+    const response = await this.client.post<TSuccess>('/auth/register', payload, {
       ...config,
       signal,
     });
-    (this as any).AM.login(response.data);
+    
+    if (response.data?.data) {
+      // Зберігаємо токен через AuthManager
+      (this as any).AM.login(response.data.data);
+      
+      // Встановлюємо токен в заголовки для наступних запитів
+      this.client.defaults.headers.common.Authorization = `Bearer ${response.data.data.access}`;
+    }
+    
     return {
       message: response.statusText,
       status: 'OK',
-      data: response.data as unknown as TJWT,
+      data: response.data.data,
     };
   } catch (error: any | TError) {
     throw {

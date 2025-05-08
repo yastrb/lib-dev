@@ -2,9 +2,23 @@
 
 // 📌 Базовий тип Книги
 export interface TBook {
-  id: number;
-  slug: string;
-  created_at: string;
-  updated_at: string;
+  id: string
+  title: string
+  author: string
+  publisher: string
+  year: number
+  description: string
+  category: string
+  subcategories: string[]
+  ageRestriction: number
+  price: number
+  quantity: number
+  language: string
+  images: TImage[]
+}
 
+export interface TImage {
+  id: string
+  url: string
+  publicId: string
 }

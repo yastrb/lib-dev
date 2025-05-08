@@ -10,17 +10,6 @@ export interface TListUsers {
   results: TUser[];
 }
 
-// 📌 Запит на скидання пароля користувача
-export type TEmailUser = Pick<TCredentials, 'email'>;
-
-// 📌 Запит на підтвердження пароля користувача
-export interface TPasswordResetConfirm {
-  new_password: string;
-  confirm_password: string;
-  token: string;
-  uidb64: string;
-}
-
 // 📌 Дані для реєстрації та входу
 export interface TCredentials {
   email: string;

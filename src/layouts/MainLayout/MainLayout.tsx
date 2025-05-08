@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom'
-import './MainLayout.module.scss'
+import s from './MainLayout.module.scss'
 import Footer from './sections/Footer'
-import { Header } from './sections/Header/index.js'
+import Header from './sections/Header'
 
 export default function MainLayout() {
 	return (
-		<main className='MainLayout'>
+		<main className={s.MainLayout}>
 			<Header />
-			<div className='inner'>
+			<div className={s.inner}>
 				<Outlet />
 			</div>
 			<Footer />

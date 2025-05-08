@@ -7,11 +7,8 @@ export const bindAllApi = (thisArg: RESTClient) => {
     // Об'єкт для роботи з аутентифікацією
     auth: {
       login: routes.auth.login.bind(thisArg), // Логін
-      refresh: routes.auth.tokenRefresh.bind(thisArg), // Оновлення токену.
-      verify: routes.auth.tokenVerify.bind(thisArg), // Перевірка токену.
       logout: routes.auth.logout.bind(thisArg), // Вихід з системи.
-      passwordReset: routes.auth.passwordReset.bind(thisArg), // Скидання паролю користувача.
-      passwordResetConfirm: routes.auth.passwordResetConfirm.bind(thisArg), // Підтвердження скидання паролю.
+      register: routes.auth.register.bind(thisArg), // Реєстрація
     },
     // Об'єкт для роботи з користувачем
     users: {
@@ -24,11 +21,11 @@ export const bindAllApi = (thisArg: RESTClient) => {
     books: {
       getAll: routes.books.getAllBooks.bind(thisArg), // Отримання всіх Книг.
       getById: routes.books.getBookById.bind(thisArg), // Отримання Книги по ID.
-      getAllPromotion: routes.books.getAllBooks.bind(thisArg), // Отримання всіх Книг типу Promotion.
+      getAllPromotion: routes.books.getAllBooksPromotions.bind(thisArg), // Отримання всіх Книг типу Promotion.
       getPromotionById: routes.books.getBookById.bind(thisArg), // Отримання Книги типу Promotion по ID.
-      getAllBestSellers: routes.books.getAllBooks.bind(thisArg), // Отримання всіх Книг типу BestSellers.
+      getAllBestSellers: routes.books.getAllBooksBestSellers.bind(thisArg), // Отримання всіх Книг типу BestSellers.
       getBestSellersById: routes.books.getBookById.bind(thisArg), // Отримання Книги типу BestSellers по ID.
-      getAllNewArrivals: routes.books.getAllBooks.bind(thisArg), // Отримання всіх Книг типу NewArrivals.
+      getAllNewArrivals: routes.books.getAllBooksNewArrivals.bind(thisArg), // Отримання всіх Книг типу NewArrivals.
       getNewArrivalsById: routes.books.getBookById.bind(thisArg), // Отримання Книги типу NewArrivals по ID.
     },
 

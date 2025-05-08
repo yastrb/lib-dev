@@ -2,18 +2,17 @@ import { Link, useLocation } from 'react-router-dom'
 import styles from '../../../../style.ts'
 import SearchBar from '../../../../ui/SearchBar/index.js'
 import logo from './assets/logo.svg'
-import CartIcon from './components/CartIcon/CartIcon.jsx'
-// import SelectLanguage from './components/LanguageSwitcher/LanguageSwitcher.jsx';
-import LogInIcon from './components/LoginRegisterIcon/LoginRegisterIcon.jsx'
-import { Nav } from './index.js'
-
+import CartIcon from './components/CartIcon/CartIcon.js'
+import LogInIcon from './components/LoginRegisterIcon'
+import NavBar from './components/Navbar'
+import s from './Header.module.scss'
 const Header = () => {
-	const location = useLocation();
-	const isHomePage = location.pathname === '/';
+	const location = useLocation()
+	const isHomePage = location.pathname === '/'
 
 	return (
 		<header className='w-full'>
-			<div className='bg-main'>
+			<div className={`${s.Header} bg-main`}>
 				<div
 					className={`${styles.paddingX} ${styles.boxWidth} mx-auto justify-between flex py-5`}
 				>
@@ -31,7 +30,6 @@ const Header = () => {
 
 					<div className='flex md:items-center md:justify-center'>
 						<div className='hidden md:flex h-12'>
-							{/* <SelectLanguage /> */}
 						</div>
 						<div className='flex items-center justify-center'>
 							<CartIcon />
@@ -41,11 +39,11 @@ const Header = () => {
 				</div>
 			</div>
 
-			<div className='bg-secondary'>
-				<Nav />
+			<div className={`${s.Header} bg-secondary`}>
+				<NavBar />
 			</div>
 		</header>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header

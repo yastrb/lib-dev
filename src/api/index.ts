@@ -1,11 +1,10 @@
 import RESTClient from './RESTClient/RESTClient'
 
-const API_URL = 'https://biblioteka-backend-btd3.onrender.com/api/'
-
+const API_URL = 'https://biblioteka-backend-btd3.onrender.com'
 const client = new RESTClient(
   API_URL,
   'BibliotekaKey',
-  'v1',
+  'api',
   '/auth'
 );
 

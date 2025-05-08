@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
         router: path.resolve(__dirname, './src/router'),
         services: path.resolve(__dirname, './src/services'),
         store: path.resolve(__dirname, './src/store'),
-        styles: path.resolve(__dirname, './src/styles'),
+        // styles: path.resolve(__dirname, './src/style.ts'),
         translation: path.resolve(__dirname, './src/translation'),
         types: path.resolve(__dirname, './src/types'),
         ui: path.resolve(__dirname, './src/ui'),
@@ -62,7 +62,7 @@ export default defineConfig(({ mode }) => {
     },
     preview: {
       host: true,
-      port: 5173,
+      port: 8080,
     },
     optimizeDeps: {
       esbuildOptions: {

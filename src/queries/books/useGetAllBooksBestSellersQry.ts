@@ -22,9 +22,9 @@ export type TGetAllBooksOpts = Omit<
  *
  * @returns {Array<string>} - Унікальний ключ запиту.
  */
-export const getGetAllBooksKey = (): Array<string> => [
+export const getGetAllBooksBestSellersKey = (): Array<string> => [
   'books',
-  'getAllBooks',
+  'getAllBestSellers',
 ];
 
 /**
@@ -40,8 +40,8 @@ export function getGetAllBooksOpts(
 ): UndefinedInitialDataOptions<TSuccess, TError> {
   return {
     ...options,
-    queryKey: getGetAllBooksKey(),
-    queryFn: ({ signal }) => client.api.books.getAll(params, { signal }),
+    queryKey: getGetAllBooksBestSellersKey(),
+    queryFn: ({ signal }) => client.api.books.getAllBestSellers(params, { signal }),
   };
 }
 
@@ -64,7 +64,7 @@ export function getGetAllBooksOpts(
  *   },
  * });
  */
-export default function useGetAllBooksQry(
+export default function useGetAllBooksBestSellersQry(
   params?: TListMeta<TBook>,
   options?: TGetAllBooksOpts
 ): TGetAllBooksQry {

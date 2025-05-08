@@ -1,7 +1,7 @@
-import { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios'
 
-import BaseRESTClient from 'api/BaseRESTClient';
-import { TResponseError, TResponseSuccess } from 'api/RESTClient/types';
+import BaseRESTClient from 'api/BaseRESTClient'
+import { TResponseError, TResponseSuccess } from 'api/RESTClient/types'
 
 /**
  * Виконує вихід користувача з системи, відкликаючи refresh-токен.
@@ -45,7 +45,7 @@ export async function logout(
 ): Promise<TSuccess> {
   try {
     const response = await this.client.post<TSuccess>(
-      '/auth/logout/',
+      '/auth/logout',
       payload,
       {
         ...config,

@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import {DesktopNav} from '../../index.js';
-import {MobileNav} from '../../index.js'
-import navLinksData from '../../data/navLinks.js';
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import navLinksData from '../../data/navLinks.ts'
+import DesktopNav from '../DesktopNav'
+import MobileNav from '../MobileNav'
 
-const Nav = () => {
+
+const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const toggleMenu = () => setMenuOpen(!menuOpen);
 	const { t } = useTranslation();
@@ -22,5 +23,5 @@ const Nav = () => {
 	);
 };
 
-export default Nav;
+export default Navbar;
 

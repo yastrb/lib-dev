@@ -1,16 +1,17 @@
 
 import FeaturedCarouselSection from 'components/FeaturedCarouselSection'
-import useGetAllBooksQry from 'queries/books/useGetAllBooksQry'
+import useGetAllBooksNewArrivalQry from 'queries/books/useGetAllBooksNewArrivalQry'
 import s from './NewArrival.module.scss'
 
 export default function NewArrival() {
-  const {data} = useGetAllBooksQry();
-  console.log('NewArrival', data);
-  
+  const { data, isLoading } = useGetAllBooksNewArrivalQry()
+  if (isLoading) {
+    return <div className={s.NewArrival}>Loading...</div>
+  }
   return <section className={s.NewArrival}>
     <FeaturedCarouselSection
-							data={data}
-							title={"Новинки"}
-						/>
-  </section>;
+      data={data?.data.content}
+      title={"Новинки"}
+    />
+  </section>
 }
