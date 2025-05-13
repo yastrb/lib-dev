@@ -27,7 +27,7 @@ export interface TAPIGetBookById {
   TError: TResponseError;
   TSuccess: TResponseSuccess<TBook>;
   TParams: {
-    book_id: number;
+    book_id: string;
   };
 }
 
@@ -42,7 +42,7 @@ export async function getBookById(
   config?: AxiosRequestConfig
 ): Promise<TSuccess> {
   try {
-    const response = await this.client.get<TSuccess>(`/books/${book_id}/`, {
+    const response = await this.client.get<TSuccess>(`/books/${book_id}`, {
       ...config,
       signal,
     });

@@ -6,6 +6,7 @@ import NewArrival from './sections/NewArrival'
 import Promotion from './sections/Promotion'
 import StoreDescription from './sections/StoreDescription/index.ts'
 const HomePage = () => {
+	
 	return (
 		<div>
 			<div
