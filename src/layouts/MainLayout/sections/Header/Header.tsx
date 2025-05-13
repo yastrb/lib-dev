@@ -1,6 +1,6 @@
+import { useBreakpointMF } from 'react-responsive-tools'
 import { Link, useLocation } from 'react-router-dom'
-import styles from '../../../../style.ts'
-import SearchBar from '../../../../ui/SearchBar/index.js'
+import SearchBar from "ui/SearchBar"
 import logo from './assets/logo.svg'
 import CartIcon from './components/CartIcon/CartIcon.js'
 import LogInIcon from './components/LoginRegisterIcon'
@@ -9,40 +9,28 @@ import s from './Header.module.scss'
 const Header = () => {
 	const location = useLocation()
 	const isHomePage = location.pathname === '/'
-
+	const isMedium = useBreakpointMF('md')
 	return (
-		<header className='w-full'>
-			<div className={`${s.Header} bg-main`}>
-				<div
-					className={`${styles.paddingX} ${styles.boxWidth} mx-auto justify-between flex py-5`}
-				>
+		<>
+			<header className={s.Header}>
+				<div className={s.wrapper}>
 					{isHomePage ? (
-						<img src={logo} alt='BookShop' className='w-[180px] h-[80px]' />
+						<img src={logo} alt='BookShop' className={s.logo} />
 					) : (
 						<Link to='/'>
-							<img src={logo} alt='BookShop' className='w-[180px] h-[80px]' />
+							<img src={logo} alt='BookShop' className={s.logo} />
 						</Link>
 					)}
-
-					<div className='searchfield hidden md:flex md:flex-col md:items-center md:justify-center relative'>
-						<SearchBar searchType='books' />
-					</div>
-
-					<div className='flex md:items-center md:justify-center'>
-						<div className='hidden md:flex h-12'>
-						</div>
-						<div className='flex items-center justify-center'>
-							<CartIcon />
-							<LogInIcon />
-						</div>
+					{isMedium &&
+						<SearchBar searchType='books' />}
+					<div className={s.icons}>
+						<CartIcon />
+						<LogInIcon />
 					</div>
 				</div>
-			</div>
-
-			<div className={`${s.Header} bg-secondary`}>
+			</header>
 				<NavBar />
-			</div>
-		</header>
+		</>
 	)
 }
 

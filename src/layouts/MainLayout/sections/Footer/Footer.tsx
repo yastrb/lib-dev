@@ -1,82 +1,82 @@
-import { Button, Typography } from '@material-tailwind/react'
+import { useBreakpointMF } from 'react-responsive-tools'
+import { Link } from 'react-router-dom'
+import address from '../../../../assets/icons/address.svg'
 import arrowUp from '../../../../assets/icons/arrowUp.svg'
+import facebook from '../../../../assets/icons/facebook.svg'
+import instagram from '../../../../assets/icons/instagram.svg'
+import mail from '../../../../assets/icons/mail.svg'
+import phone from '../../../../assets/icons/telephone.svg'
 import logo from '../../../../assets/images/logo.svg'
-import styles from '../../../../style.js'
-import { contactData, footerData, socialData } from './helpers/footerData.js'
+import s from './Footer.module.scss'
 
 const Footer = () => {
+	const isMedium = useBreakpointMF('md')
+
 	const toTop = () => {
 		window.scroll({
 			top: 0,
 			behavior: 'smooth',
-		});
-	};
+		})
+	}
+
+	const BtnToTop = (
+		<button
+			onClick={toTop}
+			className={s.ScrollToTop}
+		>
+			ВГОРУ <img src={arrowUp} alt='arrow up icon' />
+		</button>
+	)
 
 	return (
-		<footer className='realtive bottom-0 p-4'>
-			<div className={` ${styles.footerTop} py-10`}>
-				<img src={logo} alt='logo-book' />
-				<ul className={`${styles.footerList} ${styles.footerContacts}`}>
-					{contactData.map(el => (
-						<li key={el.id}>
-							<Typography
-								as='a'
-								color='black'
-								target='_blank'
-								href={el.link}
-								className={`flex gap-1 ${styles.footerLink}`}
-							>
-								<img src={el.icon} />
-								{el.text}
-							</Typography>
-						</li>
-					))}
-				</ul>
-				<div className={`${styles.footerColumns}`}>
-					{footerData.map(({ id, links }) => (
-						<ul key={id} className={`${styles.footerList}`}>
-							{links.map(link => (
-								<li key={link.id}>
-									<Typography
-										as='a'
-										color='black'
-										href={link.link}
-										className={styles.footerLink}
-									>
-										{link.text}
-									</Typography>
-								</li>
-							))}
-						</ul>
-					))}
+		<footer className={s.Footer}>
+			<div className={s.content}>
+				<div className={s.Brand}>
+					<img src={logo} alt='Biblioteka logo' className={s.footerLogo} />
 				</div>
-				<ul className={styles.footerSocialList}>
-					{socialData.map(el => (
-						<li key={el.id} className={styles.footerGap}>
-							<Typography className='cursor-pointer'>
-								<a href={el.url} target='_blank' rel='noopener noreferrer'>
-									<img src={el.image} alt={el.alt} />
-								</a>
-							</Typography>
-						</li>
-					))}
-				</ul>
+				<nav className={s.Nav}>
+					<div className={s.NavPrimary}>
+						<Link to="/">Головна</Link>
+						<Link to="/catalog">Каталог</Link>
+						<Link to="/about">Про нас</Link>
+					</div>
+					<div className={s.NavSecondary}>
+						<Link to="/top-books">Топ книг</Link>
+						<Link to="/sales">Акції</Link>
+					</div>
+				</nav>
+
+				<address className={s.Contacts}>
+					<a href="mailto:biblioteka.gmail.com">
+						<img src={mail} alt="Email" />
+						biblioteka.gmail.com
+					</a>
+					<a href="tel:+380530883635">
+						<img src={phone} alt="Phone" />
+						+380 053 088 3635
+					</a>
+					<p>
+						<img src={address} alt="Address" />
+						м. Київ, вул.Шевченка, 22
+					</p>
+				</address>
+				<div className={s.Socials}>
+					<Link
+						to="/"><img src={instagram} /></Link>
+					<Link
+						to="/"><img src={facebook} /></Link>
+				</div>
+
+				{!isMedium && BtnToTop}
 			</div>
-			<hr className={`${styles.borderFooter}`} />
-			<div className={`${styles.footerBottom}`}>
-				<Typography className='text-center font-normal'>
+			<div className={s.footerBottom}>
+				<p>
 					&copy; BIBLIOTEKA 2024. Усі права захищено
-				</Typography>
-				<Button
-					onClick={toTop}
-					variant='text'
-					className={`${styles.textButtonWithIcon}`}
-				>
-					ВГОРУ <img src={arrowUp} alt='arrow up icon' />
-				</Button>
+				</p>
+				{isMedium && BtnToTop}
 			</div>
 		</footer>
-	);
-};
+	)
+}
 
-export default Footer;
+export default Footer

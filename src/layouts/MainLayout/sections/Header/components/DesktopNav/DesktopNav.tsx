@@ -1,21 +1,19 @@
-import { NavLink } from 'react-router-dom';
-import styles from '../../../../../../style';
+import { Link } from 'react-router-dom'
+import s from './DesktopNav.module.scss'
 
-const DesktopNav = ({ navLinks }) => {
+const DesktopNav = () => {
 	return (
-		<div className={`${styles.boxWidth} ${styles.paddingX} ${styles.menuRegular} py-5 md:mx-auto hidden md:flex md:justify-between heading`}>
-			<nav className="flex gap-3">
-				{navLinks.map(link => (
-					<NavLink key={link.id} to={link.path}>
-						{link.display}
-					</NavLink>
-				))}
+		<div className={s.DesktopNav}>
+			<nav className={s.links}>
+				<Link to={'/'}>Головна</Link>
+				<Link to={'/catalog'}>Каталог</Link>
+				<Link to={'/about'}>Про нас</Link>
+				<Link to={'/top-books'}>Топ книг</Link>
+				<Link to={'/special-offers'}>Акції</Link>
 			</nav>
-			<span>
-				<a href="tel:+380530883635">+38 053 088 3635</a>
-			</span>
+			<span>+380 053 088 3635</span>
 		</div>
-	);
-};
+	)
+}
 
-export default DesktopNav;
+export default DesktopNav

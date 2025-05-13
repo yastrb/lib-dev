@@ -1,25 +1,17 @@
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import navLinksData from '../../data/navLinks.ts'
+import { useBreakpointMF } from 'react-responsive-tools'
 import DesktopNav from '../DesktopNav'
 import MobileNav from '../MobileNav'
 
+import s from './NavBar.module.scss'
 
 const Navbar = () => {
-	const [menuOpen, setMenuOpen] = useState(false);
-	const toggleMenu = () => setMenuOpen(!menuOpen);
-	const { t } = useTranslation();
-
-
-	const navLinks = navLinksData.map(link => ({
-		...link, display: t(link.displayKey),
-	}));
-
+  const isMedium = useBreakpointMF('md');
 	return (
-		<>
-			<DesktopNav navLinks={navLinks} />
-			<MobileNav navLinks={navLinks} menuOpen={menuOpen} toggleMenu={toggleMenu} />
-		</>
+		<div className={s.NavBar}>
+		{!isMedium ?
+			<MobileNav/>:
+			<DesktopNav/>}
+		</div>
 	);
 };
 
