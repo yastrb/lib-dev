@@ -1,18 +1,43 @@
+import { BookCard } from 'components/BookCard'
+import MainSlider from 'components/MainSlider'
+import { useBreakpointMF } from 'react-responsive-tools'
+import { Link } from 'react-router-dom'
 import s from './Promotion.module.scss'
 
-import FeaturedCarouselSection from 'components/FeaturedCarouselSection'
 import useGetAllBooksPromotionQry from 'queries/books/useGetAllBooksPromotionQry'
 export default function Promotion() {
   const { data, isLoading } = useGetAllBooksPromotionQry()
+  const isMedium = useBreakpointMF("md")
+  const isLarge = useBreakpointMF("lg")
+  const isExtraLarge = useBreakpointMF("ltm")
 
+  const getItemsToShow = () => {
+    if (isExtraLarge) return 5
+    if (isLarge) return 4
+    if (isMedium) return 3
+    return 1
+  }
+  const getGap = () => {
+    if (isExtraLarge) return 60
+    if (isMedium) return 36
+    return 0
+  }
   if (isLoading) {
     return <div className={s.Promotion}>Loading...</div>
   }
   return <section className={s.Promotion}>
-    <FeaturedCarouselSection
-      data={data?.data.content}
-      title={"Акції"}
-    />
+    <div className={s.header}>
+      <h3 className={s.title}>Акції</h3>
+      {isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
+    </div>
+    <MainSlider itemsToShow={getItemsToShow()} gap={getGap()}>
+      {data?.data.content.map(el => (
+        <>
+          <BookCard key={el.id} book={el} />
+        </>
+      ))}
+    </MainSlider>
+    {!isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
   </section>
 }
 

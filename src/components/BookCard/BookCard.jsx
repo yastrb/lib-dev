@@ -1,11 +1,11 @@
-import Modal from '@mui/material/Modal';
-import PopUp from './AddToCartPopup/AddToCartPopup';
+import Modal from '@mui/material/Modal'
+import PopUp from './AddToCartPopup/AddToCartPopup'
 import {
 	BookInfo,
 	useAddToCart,
 	useModal,
 	useNavigateToProduct,
-} from './index.js';
+} from './index.js'
 
 const BookCard = ({ book }) => {
 	const handleAddToCart = useAddToCart(book);
@@ -18,7 +18,7 @@ const BookCard = ({ book }) => {
 	};
 
 	return (
-		<div>
+		<div 	className='bg-blue-gray-50'>
 			<BookInfo
 				title={book.title || "No title"}
 				author={book.author || "No author"}

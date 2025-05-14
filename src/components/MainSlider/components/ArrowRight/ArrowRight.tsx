@@ -1,14 +1,20 @@
-const CustomRightArrow = ({ onClick, ...rest }) => {
-	const {
-		onMove,
-		carouselState: { currentSlide, deviceType },
-	} = rest
-	// onMove means if dragging or swiping in progress.
-	return (
-		<button
-			// onClick={() => onClick()}
-			className='absolute bottom-2/3 top: 25% right-0'
-		>
+import cn from 'classnames'
+import s from './ArrowRight.module.scss'
+
+interface Props {
+	className?: string;
+  onClick?: () => void;
+}
+
+/**
+ *  ArrowRight
+ *  @param className
+ */
+
+export default function ArrowRight({ className = '',onClick}: Props) {
+  return (
+    <button onClick={onClick} className={cn(s.ArrowRight, className)}> 
+
 			<svg
 				width='16'
 				height='28'
@@ -26,6 +32,5 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
 				/>
 			</svg>
 		</button>
-	)
+  );
 }
-export default CustomRightArrow
