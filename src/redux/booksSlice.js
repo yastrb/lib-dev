@@ -11,7 +11,7 @@ export const booksDataApi = createApi({
       transformResponse: (response) => {
         const books = response.content || [];
         return books.map((item) => {
-          const book = item.book || item; // на всякий випадок — fallback
+          const book = item.book || item;
           return {
             ...book,
             title: book.title || "Unknown Title",

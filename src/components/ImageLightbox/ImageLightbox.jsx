@@ -27,7 +27,7 @@ const responsive = {
 	},
 }
 
-const ImageLightBox = ({ images }) => {
+const ImageLightBox = ({ imageSrc }) => {
 	const dispatch = useDispatch()
 	const status = useSelector(state => state.imageLightBoxStatus.status)
 
@@ -62,7 +62,7 @@ const ImageLightBox = ({ images }) => {
 					removeArrowOnDeviceType={['mobile']}
 					className='mx-2 carouselLightBox'
 				>
-					{images.map((el, index) => (
+					{imageSrc.map((el, index) => (
 						<div key={index} className='flex justify-center pb-8'>
 							<img
 								className='rounded-xl carouselContentImage'
