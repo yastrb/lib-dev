@@ -11,7 +11,6 @@ import IconStatusTrue from './ProductStatusItemTrue.svg'
 import ProductDescription from './productDescription'
 const ProductPage = () => {
 	const {id} = useParams()
-  // console.log(id);
 	const { data, error, isLoading } = useGetBookInfoQuery(id)
 	const imageLightBoxStatus = useSelector(
 		state => state.imageLightBoxStatus.status
@@ -21,7 +20,7 @@ const ProductPage = () => {
 	if (error) return <div className='h-screen'>Error: {error.message}</div>
 
 	const book = data
-	// console.log('book', book.images?.[0]?.url)
+	console.log('book', book)
 
   let infoObj = {
 		'Мова видання': book.language,
@@ -34,12 +33,13 @@ const ProductPage = () => {
 
 	return (
 		<div className={`${styles.boxWidth} mt-14 mx-auto`}>
-			{imageLightBoxStatus && <ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />
-}
+
+			{/* {imageLightBoxStatus && <ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />} */}
+
 			<div className='product-item'>
 				{/* title */}
 				<div className='product-title'>
-					<p className='font-semibold text-2xl whitespace-nowrap mb-2  px-3'>
+					<p className='font-semibold text-2xl mb-2  px-3'>
 						{book.title}
 					</p>
 					<p className='font-normal text-base px-3'>
@@ -49,7 +49,8 @@ const ProductPage = () => {
 
 				{/* image */}
 				<div className='product-img'>
-					{!imageLightBoxStatus && <ProductImageGallery imageSrc={book.images?.map(img => img.url) || []}/>}
+					
+          <ProductImageGallery imageSrc={book.images?.map(img => img.url) || []}/>
 				</div>
 
 				{/* info */}

@@ -60,7 +60,7 @@ const ImageLightBox = ({ imageSrc }) => {
 					customLeftArrow={<CustomLeftArrow />}
 					customRightArrow={<CustomRightArrow />}
 					removeArrowOnDeviceType={['mobile']}
-					className='mx-2 carouselLightBox'
+					className='mx-2 carouselLightBox'и
 				>
 					{imageSrc.map((el, index) => (
 						<div key={index} className='flex justify-center pb-8'>
