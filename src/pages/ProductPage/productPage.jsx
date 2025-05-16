@@ -1,28 +1,32 @@
 import FeaturedCarouselSection from 'components/FeaturedCarouselSection'
-import ImageLightBox from 'components/ImageLightbox/ImageLightbox'
 import ProductImageGallery from 'components/ProductImageGallery/productImageGallery'
-import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import { useGetBookInfoQuery } from '../../redux/productPageSlice'
 import styles from '../../style.ts'
 import Button from '../../ui/Button/index.jsx'
 import IconStatusFalse from './ProductStatusItemFalse.svg'
 import IconStatusTrue from './ProductStatusItemTrue.svg'
+import IconClose from './close.svg'
 import ProductDescription from './productDescription'
+import Modal from 'react-modal'
 const ProductPage = () => {
-	const {id} = useParams()
+	const { id } = useParams()
 	const { data, error, isLoading } = useGetBookInfoQuery(id)
-	const imageLightBoxStatus = useSelector(
-		state => state.imageLightBoxStatus.status
-	)
-
+	const [isOpen, setIsOpen] = useState(false)
+	const handleOpenModal = () => {
+		setIsOpen(true)
+	}
+	const handleCloseModal = () => {
+		setIsOpen(false)
+	}
 	if (isLoading) return <div className='h-screen'>Loading...</div>
 	if (error) return <div className='h-screen'>Error: {error.message}</div>
 
 	const book = data
 	console.log('book', book)
 
-  let infoObj = {
+	let infoObj = {
 		'Мова видання': book.language,
 		'Рік видання': book.year,
 		'Видавництво': book.publisher,
@@ -34,7 +38,16 @@ const ProductPage = () => {
 	return (
 		<div className={`${styles.boxWidth} mt-14 mx-auto`}>
 
-			{/* {imageLightBoxStatus && <ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />} */}
+			<Modal
+				isOpen={isOpen}
+				onRequestClose={handleCloseModal}
+				className='modal'
+				overlayClassName='overlay'>
+				<button onClick={handleCloseModal}>
+					<img src={IconClose} alt="close" />
+				</button>
+				<ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />
+			</Modal>
 
 			<div className='product-item'>
 				{/* title */}
@@ -48,9 +61,9 @@ const ProductPage = () => {
 				</div>
 
 				{/* image */}
-				<div className='product-img'>
-					
-          <ProductImageGallery imageSrc={book.images?.map(img => img.url) || []}/>
+				<div onClick={handleOpenModal} className='product-img'>
+
+					<ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />
 				</div>
 
 				{/* info */}
