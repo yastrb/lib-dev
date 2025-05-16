@@ -1,7 +1,37 @@
 @use 'react-responsive-tools' as *;
 
-@layer components {
-  .StoreDescription {
-    
+.StoreDescription {
+  margin-top: 20px;
+  background-image: url("../../images/bgImage.jpg");
+  padding: 20px 28px;
+  text-align: center;
+
+  @include for-md {
+    padding: 40px 60px;
+    margin-top: 40px;
+  }
+
+  @include for-lg {
+    padding: 60px 75px;
+    margin-top: 60px;
+  }
+
+  @include for-ltm {
+    padding: 80px 155px;
+  }
+
+  .article {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+
+    @include for-lg {
+      font-size: 24px;
+    }
+
+    span {
+      font-weight: 500;
+    }
+
   }
 }
