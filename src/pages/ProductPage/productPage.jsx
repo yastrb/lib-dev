@@ -3,13 +3,15 @@ import ProductImageGallery from 'components/ProductImageGallery/productImageGall
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { useGetBookInfoQuery } from '../../redux/productPageSlice'
-import styles from '../../style.ts'
+import globalStyles from '../../style.ts'
 import Button from '../../ui/Button/index.jsx'
 import IconStatusFalse from './ProductStatusItemFalse.svg'
 import IconStatusTrue from './ProductStatusItemTrue.svg'
 import IconClose from './close.svg'
 import ProductDescription from './productDescription'
 import Modal from 'react-modal'
+import styles from './productPage.module.scss'
+
 const ProductPage = () => {
 	const { id } = useParams()
 	const { data, error, isLoading } = useGetBookInfoQuery(id)
@@ -36,78 +38,52 @@ const ProductPage = () => {
 	let statusIcon = false
 
 	return (
-		<div className={`${styles.boxWidth} mt-14 mx-auto`}>
+		<div className={`${globalStyles.boxWidth} mt-14 mx-auto`}>
 
 			<Modal
 				isOpen={isOpen}
 				onRequestClose={handleCloseModal}
-				className='modal'
-				overlayClassName='overlay'>
+				className={styles.modal}
+				overlayClassName={styles.overlay}>
 				<button onClick={handleCloseModal}>
 					<img src={IconClose} alt="close" />
 				</button>
 				<ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />
 			</Modal>
 
-			<div className='product-item'>
-				{/* title */}
-				<div className='product-title'>
-					<p className='font-semibold text-2xl mb-2  px-3'>
-						{book.title}
-					</p>
-					<p className='font-normal text-base px-3'>
-						{book.author}
-					</p>
-				</div>
+			<div className={styles.productItem } >
+				<div className={styles.productTitle}>{book.title}</div>
+				<div className={styles.productAuthor}>{book.author}</div>
 
-				{/* image */}
-				<div onClick={handleOpenModal} className='product-img'>
-
+				<div onClick={handleOpenModal} className={styles.productImg}>
 					<ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />
 				</div>
 
-				{/* info */}
-				<div className='product-info px-3 py-8 mx-auto'>
+				<div className={styles.productInfo}>
 					{Object.entries(infoObj).map(([key, value]) => (
-						<div
-							key={key}
-							className='flex items-center justify-between w-auto pb-3'
-						>
-							<p className='text-base leading-5 font-semibold'>{key}:</p>
-							<p className='text-base leading-6 font-normal p-3 bg-skyblue rounded-xl'>
-								{value}
-							</p>
+						<div key={key} className={styles.infoRow}>
+							<p>{key}:</p>
+							<p>{value}</p>
 						</div>
 					))}
 				</div>
 
-				{/* price */}
-				<div className='product-price pl-4'>
-					<p className=' text-hover text-2xl flex md:justify-center  lg:justify-end font-semibold'>
-						<span className=' text-4xl pr-2'>
-							{book.price > 0 ? book.price : 'Ціну уточнюйте'}
-						</span>
-						грн
+				<div className={styles.productPrice}>
+					<p className={styles.price}>
+						<span>{book.price > 0 ? book.price : 'Ціну уточнюйте'}</span> грн
 					</p>
-					{statusIcon ? (
-						<p className=' text-green flex text-base md:justify-center  lg:justify-end font-normal  gap-x-2 mt-2'>
-							<img src={IconStatusTrue} alt='' /> {'В наявності'}
-						</p>
-					) : (
-						<p className='text-red flex text-base font-normal md:justify-center lg:justify-end gap-x-2 mt-2'>
-							<img src={IconStatusFalse} alt='' />
-							{'Немає в наявності'}
-						</p>
-					)}
+					<p className={`${styles.status} ${statusIcon ? styles.available : styles.unavailable}`}>
+						<img src={statusIcon ? IconStatusTrue : IconStatusFalse} alt="" />
+						{statusIcon ? 'В наявності' : 'Немає в наявності'}
+					</p>
 				</div>
 
-				{/* buttons */}
-				<div className={`product-btns`}>
+				<div className={styles.productBtns}>
 					<Button label='В кошик' className='bg-button' />
 					<Button label='Оплатити' className='bg-buttonB border-none' />
 				</div>
 
-				<div className='product-summary'>
+				<div className={styles.productSummary}>
 					<ProductDescription description={book.description} />
 				</div>
 			</div>
