@@ -1,6 +1,6 @@
 
 // import FeaturedCarouselSection from 'components/FeaturedCarouselSection'
-import { BookCard } from 'components/BookCard'
+import BookPreview from 'components/BookPreview'
 import MainSlider from 'components/MainSlider'
 import useGetAllBooksNewArrivalQry from 'queries/books/useGetAllBooksNewArrivalQry'
 import { useBreakpointMF } from 'react-responsive-tools'
@@ -25,23 +25,27 @@ export default function NewArrival() {
     if (isMedium) return 36
     return 0
   }
-  
+
   if (isLoading) {
     return <div className={s.NewArrival}>Loading...</div>
   }
 
   return <section className={s.NewArrival}>
     <div className={s.header}>
-  <h3 className={s.title}>Новинки</h3>
-  {isMedium &&<Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
-</div>
-     <MainSlider itemsToShow={getItemsToShow()} gap={getGap()}>
+      <h3 className={s.title}>Новинки</h3>
+      {isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
+    </div>
+    <MainSlider itemsToShow={getItemsToShow()} gap={getGap()}>
       {data?.data.content.map(el => (
-        <>
-        <BookCard key={el.id} book={el} />
-        </>
+        <BookPreview key={el.id} contextValue={{ offer: el.book }}>
+          <BookPreview.Image className={s.image} />
+          <BookPreview.Title className={s.bookTitle} />
+          <BookPreview.Author className={s.author} />
+          <BookPreview.Price className={s.price} />
+          <BookPreview.AddToCartButton className={s.addToCartBtn} />
+        </BookPreview>
       ))}
     </MainSlider>
-    {!isMedium &&<Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
+    {!isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
   </section>
 }

@@ -1,0 +1,12 @@
+@use 'react-responsive-tools' as *;
+
+
+.Price {
+  font-weight: 500;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 1);
+
+  span {
+    margin-left: 4px;
+  }
+}

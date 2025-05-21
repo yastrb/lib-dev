@@ -1,4 +1,4 @@
-import { BookCard } from 'components/BookCard'
+import BookPreview from 'components/BookPreview'
 import MainSlider from 'components/MainSlider'
 import useGetAllBooksBestSellersQry from 'queries/books/useGetAllBooksBestSellersQry'
 import { useBreakpointMF } from 'react-responsive-tools'
@@ -31,9 +31,13 @@ export default function BestSellers() {
   </div>
     <MainSlider itemsToShow={getItemsToShow()} gap={getGap()}>
       {data?.data.content.map(el => (
-        <>
-          <BookCard key={el.id} book={el} />
-        </>
+        <BookPreview key={el.id} contextValue={{ offer: el.book }}>
+          <BookPreview.Image className={s.image} />
+          <BookPreview.Title className={s.bookTitle} />
+          <BookPreview.Author className={s.author} />
+          <BookPreview.Price className={s.price} />
+          <BookPreview.AddToCartButton className={s.addToCartBtn} />
+        </BookPreview>
       ))}
     </MainSlider>
     {!isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}</section>
