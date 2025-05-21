@@ -1,0 +1,47 @@
+.MainSlider {
+  position: relative;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.sliderWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+
+  & > * {
+    flex: 0 0 calc((100% - (var(--gap) * (var(--items-to-show) - 1))) / var(--items-to-show));
+    scroll-snap-align: start;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.arrowLeft, 
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.arrowLeft {
+  left: -40px;
+}
+
+.arrowRight {
+  right: -40px;
+}

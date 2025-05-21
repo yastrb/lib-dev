@@ -1,0 +1,21 @@
+@use 'react-responsive-tools' as *;
+@use '../styles/CarouselSectionsMixins.scss' as *;
+//TODO: Remove Important from the code, add layer configuration to the project
+@layer section {
+  .NewArrival {
+   @include section-wrapper;
+
+    .viewAll {
+       @include section-view-all;
+    }
+
+    .header {
+       @include section-header;
+    }
+
+    .title {
+      @include section-title;
+    }
+
+  }
+}

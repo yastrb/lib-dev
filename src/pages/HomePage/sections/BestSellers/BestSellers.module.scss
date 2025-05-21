@@ -1,0 +1,20 @@
+@use 'react-responsive-tools' as *;
+@use '../styles/CarouselSectionsMixins.scss' as *;
+
+@layer section {
+  .BestSellers {
+     @include section-wrapper;
+
+    .viewAll {
+       @include section-view-all;
+    }
+
+    .header {
+       @include section-header;
+    }
+
+    .title {
+      @include section-title;
+    }
+  }
+}

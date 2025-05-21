@@ -1,0 +1,22 @@
+@use "react-responsive-tools" as *;
+
+.DesktopNav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.links,span{
+	font-weight: 400;
+	font-size: 20px;
+	}
+
+	.links{
+		display: flex;
+		align-items: center;
+		gap: 12px;
+
+		@include for-md{
+			gap: 24px;
+		}
+	}
+}

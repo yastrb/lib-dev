@@ -6,7 +6,7 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
 	// onMove means if dragging or swiping in progress.
 	return (
 		<button
-			onClick={() => onClick()}
+			// onClick={() => onClick()}
 			className='absolute bottom-2/3 top: 25% right-0'
 		>
 			<svg
