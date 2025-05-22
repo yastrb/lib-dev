@@ -55,7 +55,7 @@ const cartSlice = createSlice({
 		addToCart: (state, action) => {
 			const item = action.payload;
 			const existingItem = state.cartItems.find(
-				cartItem => cartItem._id === item._id
+				cartItem => cartItem.id === item.id
 			);
 			if (existingItem) {
 				existingItem.qty += 1;
@@ -70,9 +70,9 @@ const cartSlice = createSlice({
 		},
 		removeFromCart: (state, action) => {
 			const itemId = action.payload;
-			const itemToRemove = state.cartItems.find(item => item._id === itemId);
+			const itemToRemove = state.cartItems.find(item => item.id === itemId);
 			if (itemToRemove) {
-				state.cartItems = state.cartItems.filter(item => item._id !== itemId);
+				state.cartItems = state.cartItems.filter(item => item.id !== itemId);
 			}
 			state.amount = state.cartItems.reduce(
 				(total, item) => total + item.qty,
@@ -81,7 +81,7 @@ const cartSlice = createSlice({
 			saveCartToLocalStorage(state.cartItems, state.amount);
 		},
 		increase: (state, { payload }) => {
-			const cartItem = state.cartItems.find(item => item._id === payload._id);
+			const cartItem = state.cartItems.find(item => item.id === payload.id);
 			if (cartItem) {
 				cartItem.qty += 1;
 			}
@@ -92,12 +92,12 @@ const cartSlice = createSlice({
 			saveCartToLocalStorage(state.cartItems, state.amount);
 		},
 		decrease: (state, { payload }) => {
-			const cartItem = state.cartItems.find(item => item._id === payload._id);
+			const cartItem = state.cartItems.find(item => item.id === payload.id);
 			if (cartItem && cartItem.qty > 1) {
 				cartItem.qty -= 1;
 			} else if (cartItem && cartItem.qty === 1) {
 				state.cartItems = state.cartItems.filter(
-					item => item._id !== payload._id
+					item => item.id !== payload.id
 				);
 			}
 			state.amount = state.cartItems.reduce(
@@ -110,15 +110,13 @@ const cartSlice = createSlice({
 		calculateTotals: state => {
 			let total = 0;
 			state.cartItems.forEach(item => {
-				const priceObject = item.price && item.price[0];
+				const priceObject = item.price;
 
-				if (priceObject && priceObject.discounted_price) {
-					total += item.qty * priceObject.discounted_price;
-				} else if (priceObject && priceObject.original_price) {
-					total += item.qty * priceObject.original_price;
+				if (priceObject) {
+					total += item.qty * priceObject;
 				} else {
 					console.warn(
-						`Item with id ${item._id} does not have a valid original_price`
+						`Item with id ${item.id} does not have a valid original_price`
 					);
 				}
 			});
