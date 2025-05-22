@@ -51,6 +51,12 @@
       }
     }
 
+    .input {
+      @include for-md {
+        width: 384px;
+      }
+    }
+
     .errorText {
       color: #ff4d4f;
       font-size: 12px;
@@ -161,6 +167,9 @@
       justify-content: center;
       align-items: center;
     }
+
+
+
 
     //CkeckBox
     .CheckboxContainer {

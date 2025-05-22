@@ -49,12 +49,14 @@ export default function RegistrationModal({ className = '', toggleModal, toggleF
             value={formik.values.name}
             onChange={(value) => formik.setFieldValue('name', value)}
             errorText={formik.touched.name && formik.errors.name ? formik.errors.name : undefined}
+            className={s.input}
           />
           <InputText
             placeholder="Ваша пошта"
             value={formik.values.email}
             onChange={(value) => formik.setFieldValue('email', value)}
             errorText={formik.touched.email && formik.errors.email ? formik.errors.email : undefined}
+            className={s.input}
           />
 
           <InputText
@@ -62,6 +64,8 @@ export default function RegistrationModal({ className = '', toggleModal, toggleF
             value={formik.values.phone}
             onChange={(value) => formik.setFieldValue('phone', value)}
             errorText={formik.touched.phone && formik.errors.phone ? formik.errors.phone : undefined}
+            className={s.input}
+
           />
 
           <InputPassword
@@ -69,6 +73,8 @@ export default function RegistrationModal({ className = '', toggleModal, toggleF
             value={formik.values.password}
             onChange={(value) => formik.setFieldValue('password', value)}
             errorText={formik.touched.password && formik.errors.password ? formik.errors.password : undefined}
+            className={s.input}
+
           />
 
           <p className={s.passwordHint}>Пароль має містити не менше 6 символів</p>

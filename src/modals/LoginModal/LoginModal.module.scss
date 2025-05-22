@@ -1,0 +1,169 @@
+@use 'react-responsive-tools' as *;
+
+.LoginModal {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+
+	.overLay {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(45, 45, 45, 0.62);
+	}
+
+	.content {
+		position: relative;
+		padding: 24px 16px;
+		border-radius: 12px;
+		z-index: 101;
+		background-color: rgba(252, 251, 255, 1);
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		@include for-md {
+			padding: 24px 102px 60px 102px;
+		}
+	}
+
+	.title {
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 100%;
+		margin-bottom: 32px;
+
+		@include for-md {
+			font-size: 24px;
+			margin-bottom: 40px;
+		}
+	}
+
+	.inputEmail {
+		margin-top: 32px;
+		margin-bottom: 12px;
+		width: 384px;
+
+		@include for-md {
+			margin-top: 40px;
+		}
+	}
+
+	.inputPassword {
+		margin-bottom: 12px;
+		width: 384px;
+
+
+		@include for-md {
+			margin-bottom: 24px;
+		}
+	}
+
+	.forgotPassword {
+		font-weight: 400;
+		font-size: 12px;
+		color: rgba(118, 118, 118, 1);
+	}
+
+	.btnContainer {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		width: 100%;
+		padding: 32px 0;
+
+		.btnReg,
+		.btnLog {
+			width: 100%;
+			padding: 14px 0;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 100%;
+			border-radius: 12px;
+		}
+
+		.btnLog {
+			background-color: rgba(255, 217, 90, 1);
+
+		}
+
+		.btnReg {
+			border: 1px solid rgba(255, 217, 90, 1);
+		}
+	}
+
+	.alternativeContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		width: 100%;
+
+		.lineBox {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			margin-bottom: 24px;
+			padding: 8px 0px;
+
+			.line {
+				width: 100%;
+				height: 1px;
+				background-color: rgba(171, 171, 171, 1);
+			}
+
+			.alternative {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 24px;
+				color: rgba(118, 118, 118, 1);
+				white-space: nowrap;
+				padding: 0 12.5px;
+
+				@include for-md {
+					padding: 0 36px;
+				}
+			}
+		}
+
+		.googleBtn {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			span {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 24px;
+			}
+		}
+	}
+
+	.BtnClose {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		cursor: pointer;
+		z-index: 102;
+		width: 48px;
+		height: 48px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
