@@ -29,15 +29,18 @@ export default function BestSellers() {
     <h3 className={s.title}>Бестселери</h3>
     {isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
   </div>
-    <MainSlider itemsToShow={getItemsToShow()} gap={getGap()}>
+    <MainSlider itemsToShow={getItemsToShow()} gap={getGap()} className={s.Slider}>
       {data?.data.content.map(el => (
-        <BookPreview key={el.id} contextValue={{ offer: el.book }}>
-          <BookPreview.Image className={s.image} />
-          <BookPreview.Title className={s.bookTitle} />
-          <BookPreview.Author className={s.author} />
-          <BookPreview.Price className={s.price} />
-          <BookPreview.AddToCartButton className={s.addToCartBtn} />
-        </BookPreview>
+        <div className={s.sliderItem} key={el.id}>
+          <BookPreview key={el.id} contextValue={{ offer: el.book }}>
+            <BookPreview.Image className={s.image} />
+            <BookPreview.Title className={s.bookTitle} />
+            <BookPreview.Author className={s.author} />
+            <BookPreview.Price className={s.price} />
+            <BookPreview.AddToCartButton className={s.addToCartBtn} />
+          </BookPreview>
+        </div>
+
       ))}
     </MainSlider>
     {!isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}</section>

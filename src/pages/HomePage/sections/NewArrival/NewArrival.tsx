@@ -1,5 +1,4 @@
 
-// import FeaturedCarouselSection from 'components/FeaturedCarouselSection'
 import BookPreview from 'components/BookPreview'
 import MainSlider from 'components/MainSlider'
 import useGetAllBooksNewArrivalQry from 'queries/books/useGetAllBooksNewArrivalQry'
@@ -9,6 +8,7 @@ import s from './NewArrival.module.scss'
 
 export default function NewArrival() {
   const { data, isLoading } = useGetAllBooksNewArrivalQry()
+
 
   const isMedium = useBreakpointMF("md")
   const isLarge = useBreakpointMF("lg")
@@ -35,15 +35,17 @@ export default function NewArrival() {
       <h3 className={s.title}>Новинки</h3>
       {isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
     </div>
-    <MainSlider itemsToShow={getItemsToShow()} gap={getGap()}>
+    <MainSlider itemsToShow={getItemsToShow()} gap={getGap()} className={s.Slider}>
       {data?.data.content.map(el => (
-        <BookPreview key={el.id} contextValue={{ offer: el.book }}>
-          <BookPreview.Image className={s.image} />
-          <BookPreview.Title className={s.bookTitle} />
-          <BookPreview.Author className={s.author} />
-          <BookPreview.Price className={s.price} />
-          <BookPreview.AddToCartButton className={s.addToCartBtn} />
-        </BookPreview>
+        <div className={s.sliderItem} key={el.id}>
+          <BookPreview key={el.id} contextValue={{ offer: el.book }}>
+            <BookPreview.Image className={s.image} />
+            <BookPreview.Title className={s.bookTitle} />
+            <BookPreview.Author className={s.author} />
+            <BookPreview.Price className={s.price} />
+            <BookPreview.AddToCartButton className={s.addToCartBtn} />
+          </BookPreview>
+        </div>
       ))}
     </MainSlider>
     {!isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
