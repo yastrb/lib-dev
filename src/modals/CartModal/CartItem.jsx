@@ -4,44 +4,42 @@ import trash from '../../assets/trash.svg';
 import { decrease, increase, removeFromCart } from '../../redux/cartSlice';
 import styles from '../../style';
 
-const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
+const CartItem = ({ id, title, author, images, price }) => {
+
+	const coverImageUrl = images && images.length > 0 ? images[0].url : '';
 	const dispatch = useDispatch();
 
 	const handleRemoveFromCart = () => {
-		dispatch(removeFromCart(_id));
+		dispatch(removeFromCart(id));
 	};
 
 	const cartItem = useSelector(state =>
-		state.cart.cartItems.find(item => item._id === _id)
+		state.cart.cartItems.find(item => item.id === id)
 	);
 
 	const qty = cartItem ? cartItem.qty : 1;
-
-	const bookPrice = price && price.original_price ? price.original_price : 0;
 
 	return (
 		<div className="cart-item w-full relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
 			{/* image */}
 			<img
 				className=' cart-image h-full w-full bg-cover md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl'
-				src={coverImageLink[0]}
-				alt={title_ukr}
+				src={coverImageUrl}
+				alt={title}
 			/>
 
 			{/* info */}
 			<div className=' cart-data flex items-start justify-between'>
 				<div>
-					<h4 className={`${styles.subtitleMedium} mb-2`}>{title_ukr}</h4>
+					<h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
 					<p className={`${styles.bodyRegular} mb-4`}>
 						Автор:{' '}
-						{author
-							.map(author => `${author.name_ukr} ${author.surname_ukr}`)
-							.join(', ')}
+						{author}
 					</p>
 					<p
 						className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}
 					>
-						Код товару: {_id}
+						Код товару: {id}
 					</p>
 					<p className='flex gap-2 items-center'>
 						<img src={stock} alt='in stock' />
@@ -63,9 +61,9 @@ const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
 					<button
 						onClick={() => {
 							if (qty > 1) {
-								dispatch(decrease({ _id }));
+								dispatch(decrease({ id }));
 							} else if (qty <= 1) {
-								dispatch(removeFromCart(_id));
+								dispatch(removeFromCart(id));
 							}
 						}}
 						className='flex items-center justify-center w-12 h-12'
@@ -81,7 +79,7 @@ const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
 					{/* increase */}
 					<button
 						onClick={() => {
-							dispatch(increase({ _id }));
+							dispatch(increase({ id }));
 						}}
 						className='flex items-center justify-center w-12 h-12'
 					>
@@ -92,9 +90,7 @@ const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
 				<h4
 					className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}
 				>
-					{price[0].discounted_price > 0
-						? `${price[0].discounted_price} грн`
-						: `${price[0].original_price} грн`}
+					{price * qty} {price > 0 ? `грн` : `Ціну уточнюйте`}
 				</h4>
 			</div>
 		</div>
