@@ -56,8 +56,7 @@ export function getRegisterMutOpts(
  *   { 
  *     email: 'user@example.com', 
  *     password: 'password123',
- *     firstName: 'John',
- *     lastName: 'Doe' 
+ *     name: 'John Doe',
  *   },
  *   {
  *     onSuccess: (data) => console.log('Registration success:', data),
@@ -69,8 +68,7 @@ export function getRegisterMutOpts(
  * mutate({ 
  *   email: 'user@example.com', 
  *   password: 'password123',
- *   firstName: 'John',
- *   lastName: 'Doe'
+ *   name: 'John Doe',
  * });
  */
 export default function useRegisterMut(

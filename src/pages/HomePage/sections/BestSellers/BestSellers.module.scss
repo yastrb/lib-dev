@@ -3,18 +3,26 @@
 
 @layer section {
   .BestSellers {
-     @include section-wrapper;
+    @include section-wrapper;
 
     .viewAll {
-       @include section-view-all;
+      @include section-view-all;
     }
 
     .header {
-       @include section-header;
+      @include section-header;
     }
 
     .title {
       @include section-title;
+    }
+
+    .Slider {
+      @include section-slider;
+    }
+
+    .sliderItem {
+      @include section-slider-item;
     }
   }
 }

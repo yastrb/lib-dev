@@ -7,10 +7,14 @@
 
   min-height: 100vh;
   background: var(--bg-10);
-	.inner {
-		padding: var(--main-padding-v) var(--main-padding-h);
-	}
-  
+
+
+  .inner {
+    padding: var(--main-padding-v) var(--main-padding-h);
+    max-width: 2560px;
+    margin: 0 auto;
+  }
+
   @include for-lg {
     --main-padding-h: 20px;
     --main-padding-v: 20px;
