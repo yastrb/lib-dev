@@ -1,5 +1,7 @@
+import client from 'api/index'
 import cn from 'classnames'
 import { useFormik } from 'formik'
+import useRegisterMut from 'queries/auth/useRegisterMut'
 import { Link } from 'react-router-dom'
 import InputPassword from 'ui/InputPassword'
 import InputText from 'ui/InputText'
@@ -22,6 +24,27 @@ interface Props {
 
 
 export default function RegistrationModal({ className = '', toggleModal, toggleForm }: Props) {
+
+
+  const { mutate, isPending, isError, isSuccess } = useRegisterMut(
+    {
+      email: '',
+      password: '',
+      name: '',
+    },
+    {
+      onSuccess: (data) => {
+        console.log('Registration success:', data)
+        console.log('client.AM.token', client.AM.token)
+
+        setTimeout(() => {
+          toggleModal()
+        }, 2000)
+      },
+      onError: (error) => console.error('Registration error:', error),
+    }
+  )
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -32,9 +55,11 @@ export default function RegistrationModal({ className = '', toggleModal, toggleF
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values)
-      toggleModal()
-      // submission
+      mutate({
+        email: values.email,
+        password: values.password,
+        name: values.name,
+      })
     },
   })
 
@@ -65,7 +90,6 @@ export default function RegistrationModal({ className = '', toggleModal, toggleF
             onChange={(value) => formik.setFieldValue('phone', value)}
             errorText={formik.touched.phone && formik.errors.phone ? formik.errors.phone : undefined}
             className={s.input}
-
           />
 
           <InputPassword
@@ -96,11 +120,35 @@ export default function RegistrationModal({ className = '', toggleModal, toggleF
             </label>
           </div>
 
-          <div className={s.btnContainer}>
+          {/* <div className={s.btnContainer}>
             <button type="submit" className={s.btnReg}>
               Зареєструватися
             </button>
             <button type="button" className={s.btnLog} onClick={toggleForm}>
+              Увійти
+            </button>
+          </div> */}
+          <div className={s.btnContainer}>
+            <button
+              type="submit"
+              className={cn(s.btnReg, {
+                [s.loading]: isPending,
+                [s.success]: isSuccess,
+                [s.error]: isError
+              })}
+              disabled={isPending || !formik.isValid}
+            >
+              {isPending && 'Реєстрація...'}
+              {!isPending && !isSuccess && !isError && 'Зареєструватися'}
+              {isSuccess && 'Успішно зареєстровано!'}
+              {isError && 'Помилка реєстрації'}
+            </button>
+            <button
+              type="button"
+              className={s.btnLog}
+              onClick={toggleForm}
+              disabled={isPending}
+            >
               Увійти
             </button>
           </div>

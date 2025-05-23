@@ -25,6 +25,9 @@ import { TJWT } from 'api/types'
  * }
  */
 
+// Update the JWT type to match server response
+
+
 export interface TAPILogin {
   TError: TResponseError;
   TSuccess: TResponseSuccess<TJWT>;
@@ -42,21 +45,35 @@ export async function login(
   config?: AxiosRequestConfig
 ): Promise<TSuccess> {
   try {
-    const response = await this.client.post<TSuccess>('/auth/login/', payload, {
+    const response = await this.client.post('/auth/login', payload, {
       ...config,
       signal,
     });
-    (this as any).AM.login(response.data);
+
+    // Debug the response
+    console.log('Login response:', response);
+
+    // Check if response has token
+    if (!response.data || !response.data.token) {
+      throw new Error('Invalid response structure');
+    }
+
+    // Store token in headers
+    this.setHeader('Authorization', `Bearer ${response.data.token}`);
+
     return {
-      message: response.statusText,
-      status: 'OK',
-      data: response.data as unknown as TJWT,
+      data: {
+        token: response.data.token
+      },
+      message: 'Success',
+      status: response.status === 200 ? 'OK' : 'Error'
     };
-  } catch (error: any | TError) {
+  } catch (error: any) {
+    console.error('Login error:', error);
     throw {
-      message: error.message,
+      message: error.message || 'Login failed',
       status: 'Error',
-      errors: error.response?.data || {},
+      errors: error.response?.data || {}
     };
   }
 }

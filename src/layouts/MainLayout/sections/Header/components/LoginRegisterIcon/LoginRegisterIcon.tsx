@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import LoginModal from '../../../../../../modals/LoginModal/LoginModal'
+import LoginModal from '../../../../../../modals/LoginModal'
 import RegistrationModal from '../../../../../../modals/RegistrationModal'
 
 const LogInIcon = () => {

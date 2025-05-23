@@ -1,5 +1,7 @@
+import client from 'api/index'
 import cn from 'classnames'
 import { useFormik } from 'formik'
+import useLoginMut from 'queries/auth/useLoginMut'
 import { Link } from 'react-router-dom'
 import InputPassword from 'ui/InputPassword'
 import InputText from 'ui/InputText'
@@ -14,20 +16,58 @@ interface Props {
 }
 
 const LoginModal = ({ className = '', toggleModal, toggleForm }: Props) => {
+	const { mutate, isPending, isError } = useLoginMut(
+		{ email: '', password: '' },
+		{
+			onSuccess: (response) => {
+				const token = response.data.token
+				if (token) {
+					// Save token to AuthManager
+					client.AM.login({
+						access: token,
+						refresh: token
+					})
+
+					// Verify token was saved
+					console.log('Saved token:', client.AM.token)
+
+					// Set authorization header
+					client.setHeader('Authorization', `Bearer ${token}`)
+
+					setTimeout(() => {
+						toggleModal()
+						window.location.reload()
+					}, 2000)
+				}
+			},
+			onError: (error) => {
+				console.error('Login error:', error)
+				client.AM.logout()
+			},
+		}
+	)
+
+	// Check token on mount
+	// useEffect(() => {
+	// 	const currentToken = client.AM.token
+	// 	console.log('Current token:', currentToken)
+	// }, [])
 
 	const formik = useFormik({
 		initialValues: {
-			name: '',
 			email: '',
-			phone: '',
 			password: '',
-			agreement: false
 		},
 		validationSchema,
 		onSubmit: (values) => {
-			console.log(values)
-			toggleModal()
-			// submission
+			try {
+				mutate({
+					email: values.email,
+					password: values.password,
+				})
+			} catch (error) {
+				console.error('Form submission error:', error)
+			}
 		},
 	})
 
@@ -57,8 +97,12 @@ const LoginModal = ({ className = '', toggleModal, toggleForm }: Props) => {
 					</Link>
 
 					<div className={s.btnContainer}>
-						<button className={s.btnLog}>
-							Увійти
+						<button
+							type="submit"
+							className={cn(s.btnLog, { [s.loading]: isPending })}
+							disabled={isPending}
+						>
+							{isPending ? 'Вхід...' : 'Увійти'}
 						</button>
 						<button className={s.btnReg} onClick={toggleForm} >
 							Зареєструватися

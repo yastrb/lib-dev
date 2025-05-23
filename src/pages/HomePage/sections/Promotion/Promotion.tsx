@@ -12,8 +12,6 @@ export default function Promotion() {
   const isLarge = useBreakpointMF("lg")
   const isExtraLarge = useBreakpointMF("ltm")
 
-  console.log("Promotion", data)
-
   const getItemsToShow = () => {
     if (isExtraLarge) return 5
     if (isLarge) return 4

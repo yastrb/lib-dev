@@ -1,3 +1,5 @@
+import client from 'api/index.js'
+import { useState } from 'react'
 import { useBreakpointMF } from 'react-responsive-tools'
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from "ui/SearchBar"
@@ -5,11 +7,14 @@ import logo from './assets/logo.svg'
 import CartIcon from './components/CartIcon/CartIcon.js'
 import LogInIcon from './components/LoginRegisterIcon'
 import NavBar from './components/Navbar'
+import UserDropDown from './components/UserDropDown/UserDropDown.js'
 import s from './Header.module.scss'
 const Header = () => {
 	const location = useLocation()
 	const isHomePage = location.pathname === '/'
 	const isMedium = useBreakpointMF('md')
+	const [isLogin, setIsLogin] = useState<boolean>(!!client.AM.token)
+
 	return (
 		<>
 			<header className={s.Header}>
@@ -25,11 +30,12 @@ const Header = () => {
 						<SearchBar searchType='books' />}
 					<div className={s.icons}>
 						<CartIcon />
-						<LogInIcon />
+						{isLogin ? <UserDropDown /> : (<LogInIcon />
+						)}
 					</div>
 				</div>
 			</header>
-				<NavBar />
+			<NavBar />
 		</>
 	)
 }
