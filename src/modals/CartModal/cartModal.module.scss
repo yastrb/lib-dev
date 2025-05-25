@@ -1,0 +1,54 @@
+@import './mixins.scss';
+
+.modal {
+	background-color: white;
+	padding: 2rem;
+	border-radius: 1rem;
+	max-width: 90%;
+	margin: auto;
+}
+
+.overlay {
+	background: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cartModal {
+    @include flexCol;
+    width: 300px;
+    height: 80vh;
+    max-height: 90vh;
+    padding-bottom: 50px;
+
+    @include respond(md) {
+        width: 600px;
+    }
+
+    @include respond(xl) {
+        width: 996px;
+    }
+}
+
+.cartHeading {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.cartItems {
+    @include flexCol;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.cartAmount {
+    @include flexBetween;
+    color: #ababab;
+}
+

@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import stock from '../../assets/stock.svg';
 import trash from '../../assets/trash.svg';
 import { decrease, increase, removeFromCart } from '../../redux/cartSlice';
-import styles from '../../style';
+import stylesGlobal from '../../style';
+
 
 const CartItem = ({ id, title, author, images, price }) => {
 
@@ -31,19 +32,19 @@ const CartItem = ({ id, title, author, images, price }) => {
 			{/* info */}
 			<div className=' cart-data flex items-start justify-between'>
 				<div>
-					<h4 className={`${styles.subtitleMedium} mb-2`}>{title}</h4>
-					<p className={`${styles.bodyRegular} mb-4`}>
+					<h4 className={`${stylesGlobal.subtitleMedium} mb-2`}>{title}</h4>
+					<p className={`${stylesGlobal.bodyRegular} mb-4`}>
 						Автор:{' '}
 						{author}
 					</p>
 					<p
-						className={`${styles.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}
+						className={`${stylesGlobal.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}
 					>
 						Код товару: {id}
 					</p>
 					<p className='flex gap-2 items-center'>
 						<img src={stock} alt='in stock' />
-						<span className={`${styles.bodyRegular} text-green`}>
+						<span className={`${stylesGlobal.bodyRegular} text-green`}>
 							В наявності
 						</span>
 					</p>
@@ -56,7 +57,7 @@ const CartItem = ({ id, title, author, images, price }) => {
 
 			{/* price */}
 			<div className='cart-price flex gap-8 justify-between xl:justify-end'>
-				<div className={`${styles.flexCenter}`}>
+				<div className={`${stylesGlobal.flexCenter}`}>
 					{/* decrease */}
 					<button
 						onClick={() => {
@@ -88,7 +89,7 @@ const CartItem = ({ id, title, author, images, price }) => {
 				</div>
 
 				<h4
-					className={`flex items-center justify-center text-[20px] ${styles.subtitleMedium}`}
+					className={`flex items-center justify-center text-[20px] ${stylesGlobal.subtitleMedium}`}
 				>
 					{price * qty} {price > 0 ? `грн` : `Ціну уточнюйте`}
 				</h4>

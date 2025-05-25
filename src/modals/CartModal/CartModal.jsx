@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { calculateTotals, clearCart } from '../../redux/cartSlice'
-import styles from '../../style'
+import stylesGlobal from '../../style'
 import CartItem from './CartItem'
+import styles from './cartModal.module.scss';
 
 const CartModal = ({ toggleModal }) => {
 	const dispatch = useDispatch()
@@ -21,16 +22,17 @@ const CartModal = ({ toggleModal }) => {
 	return (
 		<div className='modal'>
 			<div onClick={toggleModal} className='overlay'></div>
-			<div className='modal-content w-[300px] md:w-[600px] xl:w-[996px] flex flex-col h-[80vh] max-h-[90vh] pb-[50px]'>
-				<h1 className={`${styles.heading} text-center mb-6`}>Кошик</h1>
+
+			<div className={styles.cartModal + ' modal-content'}>
+				<h1 className={`${stylesGlobal.heading} ${styles.cartHeading}`}>Кошик</h1>
 
 				{/* cart items container */}
-				<div className='cart-items flex flex-col flex-grow overflow-hidden'>
+				<div className={styles.cartItems}>
 					{cartItems.length > 0 ? (
 						<>
 							{/* cart heading */}
 							<div
-								className={`${styles.menu} cart-heading flex justify-between block-with-divider text-grey`}
+								className={`${stylesGlobal.menu} cart-heading flex justify-between block-with-divider text-grey`}
 							>
 								<div>{amount} шт</div>
 								<button onClick={handleClearCart}>Видалити все</button>
@@ -46,8 +48,8 @@ const CartModal = ({ toggleModal }) => {
 							<div className='cart-total mt-4'>
 								{/* total */}
 								<div className='flex justify-between px-6 mb-8'>
-									<p className={`${styles.subtitleSemibold}`}>Разом</p>
-									<div className={`${styles.subtitleSemibold}`}>
+									<p className={`${stylesGlobal.subtitleSemibold}`}>Разом</p>
+									<div className={`${stylesGlobal.subtitleSemibold}`}>
 										{total} грн
 									</div>
 								</div>
@@ -55,12 +57,12 @@ const CartModal = ({ toggleModal }) => {
 								{/* cart action buttons */}
 								<div className='flex flex-col md:flex-row gap-3 md:gap-[6px] lg:gap-10 px-6 items-center justify-center'>
 									<button
-										className={`${styles.button} py-[14px]  w-[240px] border border-button rounded-xl`}
+										className={`${stylesGlobal.button} py-[14px]  w-[240px] border border-button rounded-xl`}
 									>
 										Продовжити покупки
 									</button>
 									<button
-										className={`${styles.button} py-[14px] px-12 w-[240px] border border-button bg-button rounded-xl `}
+										className={`${stylesGlobal.button} py-[14px] px-12 w-[240px] border border-button bg-button rounded-xl `}
 									>
 										До сплати
 									</button>
@@ -68,7 +70,7 @@ const CartModal = ({ toggleModal }) => {
 							</div>
 						</>
 					) : (
-						<p className={`${styles.subtitleMain} cart-info text-grey`}>
+						<p className={`${stylesGlobal.subtitleMain} cart-info text-grey`}>
 							Кошик поки що порожній :)
 						</p>
 					)}
