@@ -4,6 +4,7 @@ import { calculateTotals, clearCart } from '../../redux/cartSlice'
 import stylesGlobal from '../../style'
 import CartItem from './CartItem'
 import styles from './cartModal.module.scss';
+import Button from '../../ui/Button';
 
 const CartModal = ({ toggleModal }) => {
 	const dispatch = useDispatch()
@@ -57,16 +58,15 @@ const CartModal = ({ toggleModal }) => {
 
 								{/* cart action buttons */}
 								<div className={`${stylesGlobal.flexCenter} ${styles.cartButtonContainer}`}>
-									<button
-										className={`${stylesGlobal.button}    border-button `}
-									>
-										Продовжити покупки
-									</button>
-									<button
-										className={`${stylesGlobal.button}   border-button bg-button  `}
-									>
-										До сплати
-									</button>
+									<Button
+										label={"Продовжити покупки"}
+										onClick={toggleModal}
+										className={`${stylesGlobal.button} ${styles.cartButton}`}
+										/>	
+									<Button
+										label='До сплати'
+										onClick={handleClearCart}
+										className={`${stylesGlobal.button} ${styles.cartButton}`}	/>
 								</div>
 							</div>
 						</>
