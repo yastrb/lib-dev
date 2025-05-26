@@ -20,7 +20,7 @@
   -ms-overflow-style: none;
   width: 100%;
 
-  & > * {
+  &>* {
     flex: 0 0 calc((100% - (var(--gap) * (var(--items-to-show) - 1))) / var(--items-to-show));
     scroll-snap-align: start;
   }
@@ -30,7 +30,7 @@
   }
 }
 
-.arrowLeft, 
+.arrowLeft,
 .arrowRight {
   position: absolute;
   top: 50%;
@@ -39,9 +39,9 @@
 }
 
 .arrowLeft {
-  left: -40px;
+  left: -15px;
 }
 
 .arrowRight {
-  right: -40px;
+  right: -15px;
 }

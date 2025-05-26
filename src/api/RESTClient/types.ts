@@ -1,6 +1,6 @@
 export interface TResponseSuccess<T = null> {
   message: string;
-  status: 'OK';
+  status: string;
   data: T;
 }
 

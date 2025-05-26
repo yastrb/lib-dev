@@ -3,6 +3,11 @@
 // 📌 Базовий тип Книги
 export interface TBook {
   id: string
+  discountPercentage: number
+  book: TBookBook
+}
+export interface TBookBook {
+    id: string
   title: string
   author: string
   publisher: string

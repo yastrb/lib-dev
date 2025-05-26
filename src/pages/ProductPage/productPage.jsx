@@ -1,7 +1,8 @@
-import FeaturedCarouselSection from 'components/FeaturedCarouselSection'
+
 import ProductImageGallery from 'components/ProductImageGallery/productImageGallery'
-import { useParams } from 'react-router-dom'
 import { useState } from 'react'
+import Modal from 'react-modal'
+import { useParams } from 'react-router-dom'
 import { useGetBookInfoQuery } from '../../redux/productPageSlice'
 import Button from '../../ui/Button/index.jsx'
 import IconStatusFalse from './ProductStatusItemFalse.svg'
@@ -88,11 +89,7 @@ const ProductPage = () => {
 				</div>
 			</div>
 
-			<FeaturedCarouselSection
-				title='Вас може зацікавити'
-				data={data.recommendation}
-				seeMoreStatus={false}
-			/>
+			
 		</div>
 	)
 }

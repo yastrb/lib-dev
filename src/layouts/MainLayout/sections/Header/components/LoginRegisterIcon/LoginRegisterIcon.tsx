@@ -1,20 +1,20 @@
-import RegistrationModal from 'components/RegistrationModal'
 import { useState } from 'react'
-import LoginModal from '../../../../../../modals/LoginModal/LoginModal'
+import LoginModal from '../../../../../../modals/LoginModal'
+import RegistrationModal from '../../../../../../modals/RegistrationModal'
 
 const LogInIcon = () => {
 
-    const [isLogin, setIsLogin] = useState(true);
-    const [modal, setModal] = useState(false);
+    const [isLogin, setIsLogin] = useState(true)
+    const [modal, setModal] = useState(false)
 
     const toggleModal = () => {
-        setModal(!modal);
+        setModal(!modal)
 
-    };
+    }
 
     const toggleForm = () => {
-        setIsLogin(!isLogin);
-    };
+        setIsLogin(!isLogin)
+    }
 
     if (modal) {
         document.body.classList.add('active-modal')
