@@ -44,11 +44,52 @@
 .cartItems {
     @include flexCol;
     overflow-y: auto;
+    overflow-x: hidden;
     flex-grow: 1;
 }
 
 .cartAmount {
     @include flexBetween;
     color: #ababab;
+}
+
+.cartList {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 100vh;
+    margin-inline: 1rem;
+    margin-top: 1rem;
+    @include respond(md) {
+        margin-inline: 1,5rem;
+    }
+}
+
+.cartTotalContainer {
+    margin-top: 1rem;
+}
+
+.cartTotal {
+    @include flexBetween;
+    padding-inline: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cartButtonContainer {
+    gap: 12px;
+    padding-inline: 1.5rem;
+    @include flexCol;
+    @include respond(md) {
+        flex-direction: row;
+    }
+    @include respond(lg) {
+        gap: 40px;
+    }
+}
+
+.cartButton {
+    width: 240px;
+    padding-block: 14px;
+    border-width: 1px;
+    border-radius: 0.75rem;
 }
 

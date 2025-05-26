@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-$font-main: 'Montserrat', sans-serif;
+$font-main: "Montserrat", sans-serif;
 
 * {
 	scroll-behavior: smooth;
 }
-body {
-	background-color: pink;
-}
+
 .box-width {
 	max-width: 1240px;
 	width: 100%;
@@ -42,7 +40,7 @@ body {
 .subtitle-semibold {
 	font-family: $font-main;
 	font-weight: 600;
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 
 .subtitle-medium {
@@ -182,11 +180,10 @@ body {
 	border-top: 1px solid grey;
 }
 
-
-
-
 .icon path {
-	transition: fill 0.3s, stroke 0.3s;
+	transition:
+		fill 0.3s,
+		stroke 0.3s;
 }
 
 .icon:hover path {
@@ -208,9 +205,9 @@ body.active-modal {
 	display: grid;
 	gap: 8px;
 	grid-template-areas:
-		'img'
-		'info'
-		'price';
+		"img"
+		"info"
+		"price";
 }
 
 .cart-image {
@@ -229,8 +226,8 @@ body.active-modal {
 	.cart-item {
 		grid-template-columns: 128px 2fr;
 		grid-template-areas:
-			'img info'
-			'price price';
+			"img info"
+			"price price";
 	}
 }
 
@@ -239,8 +236,8 @@ body.active-modal {
 		gap: 16px;
 		grid-template-columns: 180px 2fr;
 		grid-template-areas:
-			'img info'
-			'img price';
+			"img info"
+			"img price";
 	}
 }
 
@@ -249,12 +246,12 @@ body.active-modal {
 	display: grid;
 	gap: 8px;
 	grid-template-areas:
-		'title'
-		'img'
-		'info'
-		'price'
-		'buttons'
-		'summary';
+		"title"
+		"img"
+		"info"
+		"price"
+		"buttons"
+		"summary";
 }
 
 .product-title {
@@ -264,7 +261,6 @@ body.active-modal {
 .product-img {
 	grid-area: img;
 }
-
 
 .product-info {
 	grid-area: info;
@@ -296,11 +292,11 @@ body.active-modal {
 	.product-item {
 		grid-template-columns: 1fr 1fr;
 		grid-template-areas:
-			'img title'
-			'img info'
-			'img price'
-			'buttons buttons'
-			'summary summary';
+			"img title"
+			"img info"
+			"img price"
+			"buttons buttons"
+			"summary summary";
 	}
 	.product-price {
 		padding-bottom: 40px;
@@ -315,9 +311,9 @@ body.active-modal {
 	.product-item {
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-areas:
-			'img title price'
-			'img info buttons'
-			'img summary summary';
+			"img title price"
+			"img info buttons"
+			"img summary summary";
 	}
 	.product-btns {
 		display: flex;
@@ -339,7 +335,7 @@ body.active-modal {
 .modal,
 .overlay {
 	width: 100vw;
-	height: 100vh;
+	height: 931px;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -374,14 +370,14 @@ body.active-modal {
 .modal-content {
 	position: absolute;
 	z-index: 60;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	line-height: 1.4;
 	background: #f1f1f1;
 	padding-top: 24px;
 	border-radius: 12px;
-	height: 80vh;
+	height: 100vh;
 }
 
 @media (max-width: 767px) {
@@ -421,7 +417,7 @@ body.active-modal {
 
 .block-with-divider::before,
 .block-with-divider::after {
-	content: '';
+	content: "";
 	position: absolute;
 	width: 100%;
 	height: 1px;
@@ -438,7 +434,7 @@ body.active-modal {
 
 .login-links::after,
 .login-links::before {
-	content: '';
+	content: "";
 	position: absolute;
 	height: 1px;
 	background-color: grey;
@@ -468,7 +464,7 @@ body.active-modal {
 
 .slick-arrow.slick-prev::before,
 .slick-arrow.slick-next::before {
-	content: '';
+	content: "";
 	display: inline-block;
 	width: 14px;
 	height: 24px;

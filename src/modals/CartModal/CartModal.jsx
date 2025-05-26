@@ -20,8 +20,8 @@ const CartModal = ({ toggleModal }) => {
 	}, [cartItems])
 
 	return (
-		<div className='modal'>
-			<div onClick={toggleModal} className='overlay'></div>
+		<div className= 'modal'>
+			<div onClick={toggleModal} className={styles.overlay}></div>
 
 			<div className={styles.cartModal + ' modal-content'}>
 				<h1 className={`${stylesGlobal.heading} ${styles.cartHeading}`}>Кошик</h1>
@@ -32,37 +32,38 @@ const CartModal = ({ toggleModal }) => {
 						<>
 							{/* cart heading */}
 							<div
-								className={`${stylesGlobal.menu} cart-heading flex justify-between block-with-divider text-grey`}
+								className={`${stylesGlobal.menu} ${styles.cartAmount}  block-with-divider`}
 							>
 								<div>{amount} шт</div>
 								<button onClick={handleClearCart}>Видалити все</button>
 							</div>
 
 							{/* items list */}
-							<div className='cart-list overflow-y-auto max-h-[560px] mx-3 mt-4 md:mx-6 flex-grow'>
+							<div className={styles.cartList} >
 								{cartItems.map(item => {
-									return <CartItem key={item._id} {...item} />
+									return <CartItem key={item.id} {...item} />
+									
 								})}
 							</div>
 
-							<div className='cart-total mt-4'>
+							<div className={styles.cartTotalContainer}>
 								{/* total */}
-								<div className='flex justify-between px-6 mb-8'>
-									<p className={`${stylesGlobal.subtitleSemibold}`}>Разом</p>
-									<div className={`${stylesGlobal.subtitleSemibold}`}>
+								<div className={`${styles.cartTotal} ${stylesGlobal.subtitleSemibold} `}>
+									<p >Разом</p>
+									<div >
 										{total} грн
 									</div>
 								</div>
 
 								{/* cart action buttons */}
-								<div className='flex flex-col md:flex-row gap-3 md:gap-[6px] lg:gap-10 px-6 items-center justify-center'>
+								<div className={`${stylesGlobal.flexCenter} ${styles.cartButtonContainer}`}>
 									<button
-										className={`${stylesGlobal.button} py-[14px]  w-[240px] border border-button rounded-xl`}
+										className={`${stylesGlobal.button}    border-button `}
 									>
 										Продовжити покупки
 									</button>
 									<button
-										className={`${stylesGlobal.button} py-[14px] px-12 w-[240px] border border-button bg-button rounded-xl `}
+										className={`${stylesGlobal.button}   border-button bg-button  `}
 									>
 										До сплати
 									</button>
