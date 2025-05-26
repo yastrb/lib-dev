@@ -65,13 +65,13 @@ const CartModal = ({ toggleModal }) => {
 										/>	
 									<Button
 										label='До сплати'
-										onClick={handleClearCart}
+										onClick={() => console.log('Proceed to payment')}
 										className={`${stylesGlobal.button} ${styles.cartButton}`}	/>
 								</div>
 							</div>
 						</>
 					) : (
-						<p className={`${stylesGlobal.subtitleMain} cart-info text-grey`}>
+						<p className={`${stylesGlobal.subtitleMain} ${styles.cartInfo}`}>
 							Кошик поки що порожній :)
 						</p>
 					)}

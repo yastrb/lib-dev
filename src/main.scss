@@ -17,7 +17,10 @@ $font-main: "Montserrat", sans-serif;
 	font-size: 2rem;
 	font-weight: 600;
 	text-transform: uppercase;
-	color: #000;
+	@media (max-width: 768px) {
+		font-size: 1.25rem;
+		line-height: 1.25;
+	}
 }
 
 .menu {
@@ -34,7 +37,10 @@ $font-main: "Montserrat", sans-serif;
 	font-family: $font-main;
 	font-weight: 600;
 	font-size: 2rem;
-	color: #000;
+		@media (max-width: 768px) {
+		font-size: 1.25rem;
+		line-height: 1.25;
+	}
 }
 
 .subtitle-semibold {
@@ -49,6 +55,10 @@ $font-main: "Montserrat", sans-serif;
 	font-size: 1.125rem;
 	line-height: 1.5;
 	color: #000;
+	@media (max-width: 768px) {
+		font-size: 1rem;
+		line-height: 1.25;
+	}
 }
 
 .body-regular {
@@ -393,14 +403,6 @@ body.active-modal {
 		transform: none;
 		border-radius: 0;
 	}
-}
-
-.cart-info {
-	position: absolute;
-	top: 45%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	white-space: nowrap;
 }
 
 .close-modal {
