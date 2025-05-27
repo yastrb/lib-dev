@@ -98,3 +98,39 @@
     white-space: nowrap;
     color: #ababab;
 }
+
+.cartItem {
+    display: grid;
+    gap: 8px;
+    grid-template-areas:
+        "img"
+        "info"
+        "price";
+    @media (max-width: 768px) {
+        grid-template-areas:
+            "img info"
+            "price price";
+        grid-template-columns: 1fr 2fr;
+    }
+    @media (min-width: 768px) {
+        .cart-item {
+            gap: 16px;
+            grid-template-columns: 180px 2fr;
+            grid-template-areas:
+                "img info"
+                "img price";
+        }
+    }
+}
+
+.cartItemImage {
+    grid-area: img;
+}
+
+.cartItemData {
+    grid-area: info;
+}
+
+.cartItemrice {
+    grid-area: price;
+}

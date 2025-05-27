@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import stock from '../../assets/stock.svg';
 import trash from '../../assets/trash.svg';
 import { decrease, increase, removeFromCart } from '../../redux/cartSlice';
-import stylesGlobal from '../../style';
+import stylesGlobal from '../../style'
+import styles from './cartItem.module.scss';
 
 
 const CartItem = ({ id, title, author, images, price }) => {
@@ -21,30 +22,30 @@ const CartItem = ({ id, title, author, images, price }) => {
 	const qty = cartItem ? cartItem.qty : 1;
 
 	return (
-		<div className="cart-item w-full relative py-6  after:absolute after:content-[''] after:left-0 after:bottom-0 after:w-full after:h-[1px] after:bg-grey">
+		<div className={styles.cartItem}>
 			{/* image */}
 			<img
-				className=' cart-image h-full w-full bg-cover md:h-60 xl:flex xl:w-[180px] xl:h-[240px] rounded-xl'
+				className={styles.cartItemImage}
 				src={coverImageUrl}
 				alt={title}
 			/>
 
 			{/* info */}
-			<div className=' cart-data flex items-start justify-between'>
-				<div>
-					<h4 className={`${stylesGlobal.subtitleMedium} mb-2`}>{title}</h4>
-					<p className={`${stylesGlobal.bodyRegular} mb-4`}>
+			<div className={styles.cartItemData}>
+				<div className={styles.cartItemDetails}>
+					<h4 className={`${stylesGlobal.subtitleMedium} ${styles.title}`}>{title}</h4>
+					<p className={`${stylesGlobal.bodyRegular} ${styles.author}`}>
 						Автор:{' '}
 						{author}
 					</p>
 					<p
-						className={`${stylesGlobal.bodyRegular} mb-4 p-2 bg-[#e4e5e5] rounded-xl`}
+						className={`${stylesGlobal.bodyRegular} ${styles.productCode}`}
 					>
 						Код товару: {id}
 					</p>
-					<p className='flex gap-2 items-center'>
+					<p className={styles.inStock}>
 						<img src={stock} alt='in stock' />
-						<span className={`${stylesGlobal.bodyRegular} text-green`}>
+						<span className={`${stylesGlobal.bodyRegular} ${styles.inStockText}`}>
 							В наявності
 						</span>
 					</p>
@@ -56,44 +57,38 @@ const CartItem = ({ id, title, author, images, price }) => {
 			</div>
 
 			{/* price */}
-			<div className='cart-price flex gap-8 justify-between xl:justify-end'>
-				<div className={`${stylesGlobal.flexCenter}`}>
-					{/* decrease */}
+			<div className={styles.cartItemPrice}>
+				<div className={styles.quantityControls}>
 					<button
 						onClick={() => {
 							if (qty > 1) {
 								dispatch(decrease({ id }));
-							} else if (qty <= 1) {
+							} else {
 								dispatch(removeFromCart(id));
 							}
 						}}
-						className='flex items-center justify-center w-12 h-12'
+						className={styles.qtyButton}
 					>
 						-
 					</button>
 
-					{/* quantity */}
-					<div className='flex items-center justify-center w-8 h-8 md:w-12 md:h-12 border-solid border-[1px] border-grey rounded-lg'>
+					<div className={styles.qtyDisplay}>
 						{qty}
 					</div>
 
-					{/* increase */}
 					<button
-						onClick={() => {
-							dispatch(increase({ id }));
-						}}
-						className='flex items-center justify-center w-12 h-12'
+						onClick={() => dispatch(increase({ id }))}
+						className={styles.qtyButton}
 					>
 						+
 					</button>
 				</div>
 
-				<h4
-					className={`flex items-center justify-center text-[20px] ${stylesGlobal.subtitleMedium}`}
-				>
+				<h4 className={`${stylesGlobal.subtitleMedium} ${styles.priceText}`}>
 					{price * qty} {price > 0 ? `грн` : `Ціну уточнюйте`}
 				</h4>
 			</div>
+
 		</div>
 	);
 };

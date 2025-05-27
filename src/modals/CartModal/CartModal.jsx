@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { calculateTotals, clearCart } from '../../redux/cartSlice'
-import stylesGlobal from '../../style'
 import CartItem from './CartItem'
+import stylesGlobal from '../../style'
 import styles from './cartModal.module.scss';
 import Button from '../../ui/Button';
 

@@ -215,45 +215,45 @@ body.active-modal {
 	font-size: 18px;
 }
 
-.cart-item {
-	display: grid;
-	gap: 8px;
-	grid-template-areas:
-		"img"
-		"info"
-		"price";
-}
+// .cart-item {
+// 	display: grid;
+// 	gap: 8px;
+// 	grid-template-areas:
+// 		"img"
+// 		"info"
+// 		"price";
+// }
 
-.cart-image {
-	grid-area: img;
-}
+// .cart-image {
+// 	grid-area: img;
+// }
 
-.cart-data {
-	grid-area: info;
-}
+// .cart-data {
+// 	grid-area: info;
+// }
 
-.cart-price {
-	grid-area: price;
-}
+// .cart-price {
+// 	grid-area: price;
+// }
 
-@media (max-width: 768px) {
-	.cart-item {
-		grid-template-columns: 128px 2fr;
-		grid-template-areas:
-			"img info"
-			"price price";
-	}
-}
+// @media (max-width: 768px) {
+// 	.cart-item {
+// 		grid-template-columns: 128px 2fr;
+// 		grid-template-areas:
+// 			"img info"
+// 			"price price";
+// 	}
+// }
 
-@media (min-width: 768px) {
-	.cart-item {
-		gap: 16px;
-		grid-template-columns: 180px 2fr;
-		grid-template-areas:
-			"img info"
-			"img price";
-	}
-}
+// @media (min-width: 768px) {
+// 	.cart-item {
+// 		gap: 16px;
+// 		grid-template-columns: 180px 2fr;
+// 		grid-template-areas:
+// 			"img info"
+// 			"img price";
+// 	}
+// }
 
 .product-item {
 	width: 100%;
