@@ -66,7 +66,7 @@ const CartModal = ({ toggleModal }) => {
 									<Button
 										label='До сплати'
 										onClick={() => console.log('Proceed to payment')}
-										className={`${stylesGlobal.button} ${styles.cartButton}`}	/>
+										className={`${stylesGlobal.button} ${styles.cartButton}  ${styles.cartButtonFilled}`}	/>
 								</div>
 							</div>
 						</>
