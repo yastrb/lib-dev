@@ -1,12 +1,12 @@
-import SearchResults from '@components/SearchResults';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import searchIcon from '../../assets/search.svg';
-import clearIcon from '../../assets/xmark.svg';
-import getBooks from './api/getBooks';
-import useDebounce from './hooks/useDebounce';
-import './SearchBar.css';
-import { filterBooks } from './utils/filterBooks';
+import SearchResults from 'components/SearchResults'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import searchIcon from '../../assets/search.svg'
+import clearIcon from '../../assets/xmark.svg'
+import getBooks from './api/getBooks'
+import useDebounce from './hooks/useDebounce'
+import './SearchBar.css'
+import { filterBooks } from './utils/filterBooks'
 const SearchBar = ({ searchType }) => {
 	const { t } = useTranslation();
 	const [books, setBooks] = useState([]);
@@ -17,9 +17,9 @@ const SearchBar = ({ searchType }) => {
 	useEffect(() => {
 		const fetchBooks = async () => {
 			try {
-				const newBooks = await getBooks();
-				setBooks(newBooks);
-				console.log(newBooks);
+				const Books = await getBooks();
+				setBooks(Books);
+				// console.log("all boooks",Books);
 			} catch (error) {
 				console.error('Error fetching books:', error);
 			}

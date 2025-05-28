@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { calculateTotals, clearCart } from '../../redux/cartSlice'
-import styles from '../../style'
 import CartItem from './CartItem'
+import stylesGlobal from '../../style'
+import styles from './cartModal.module.scss';
+import Button from '../../ui/Button';
 
 const CartModal = ({ toggleModal }) => {
 	const dispatch = useDispatch()
@@ -19,56 +21,57 @@ const CartModal = ({ toggleModal }) => {
 	}, [cartItems])
 
 	return (
-		<div className='modal'>
-			<div onClick={toggleModal} className='overlay'></div>
-			<div className='modal-content w-[300px] md:w-[600px] xl:w-[996px] flex flex-col h-[80vh] max-h-[90vh] pb-[50px]'>
-				<h1 className={`${styles.heading} text-center mb-6`}>Кошик</h1>
+		<div className= 'modal'>
+			<div onClick={toggleModal} className={styles.overlay}></div>
+
+			<div className={styles.cartModal + ' modal-content'}>
+				<h1 className={`${stylesGlobal.heading} ${styles.cartHeading}`}>Кошик</h1>
 
 				{/* cart items container */}
-				<div className='cart-items flex flex-col flex-grow overflow-hidden'>
+				<div className={styles.cartItems}>
 					{cartItems.length > 0 ? (
 						<>
 							{/* cart heading */}
 							<div
-								className={`${styles.menu} cart-heading flex justify-between block-with-divider text-grey`}
+								className={`${stylesGlobal.menu} ${styles.cartAmount}  block-with-divider`}
 							>
 								<div>{amount} шт</div>
 								<button onClick={handleClearCart}>Видалити все</button>
 							</div>
 
 							{/* items list */}
-							<div className='cart-list overflow-y-auto max-h-[560px] mx-3 mt-4 md:mx-6 flex-grow'>
+							<div className={styles.cartList} >
 								{cartItems.map(item => {
-									return <CartItem key={item._id} {...item} />
+									return <CartItem key={item.id} {...item} />
+									
 								})}
 							</div>
 
-							<div className='cart-total mt-4'>
+							<div className={styles.cartTotalContainer}>
 								{/* total */}
-								<div className='flex justify-between px-6 mb-8'>
-									<p className={`${styles.subtitleSemibold}`}>Разом</p>
-									<div className={`${styles.subtitleSemibold}`}>
+								<div className={`${styles.cartTotal} ${stylesGlobal.subtitleSemibold} `}>
+									<p >Разом</p>
+									<div >
 										{total} грн
 									</div>
 								</div>
 
 								{/* cart action buttons */}
-								<div className='flex flex-col md:flex-row gap-3 md:gap-[6px] lg:gap-10 px-6 items-center justify-center'>
-									<button
-										className={`${styles.button} py-[14px]  w-[240px] border border-button rounded-xl`}
-									>
-										Продовжити покупки
-									</button>
-									<button
-										className={`${styles.button} py-[14px] px-12 w-[240px] border border-button bg-button rounded-xl `}
-									>
-										До сплати
-									</button>
+								<div className={`${stylesGlobal.flexCenter} ${styles.cartButtonContainer}`}>
+									<Button
+										label={"Продовжити покупки"}
+										onClick={toggleModal}
+										className={`${stylesGlobal.button} ${styles.cartButton}`}
+										/>	
+									<Button
+										label='До сплати'
+										onClick={() => console.log('Proceed to payment')}
+										className={`${stylesGlobal.button} ${styles.cartButton}  ${styles.cartButtonFilled}`}	/>
 								</div>
 							</div>
 						</>
 					) : (
-						<p className={`${styles.subtitleMain} cart-info text-grey`}>
+						<p className={`${stylesGlobal.subtitleMain} ${styles.cartInfo}`}>
 							Кошик поки що порожній :)
 						</p>
 					)}

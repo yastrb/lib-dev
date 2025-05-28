@@ -1,0 +1,18 @@
+.Header{
+	padding: 20px var(--main-padding-h);
+	background-color: #FFF7D4;
+	.wrapper{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.logo{
+			width: 180px;
+			height: 80px;
+		}
+	}
+	.icons{
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+}

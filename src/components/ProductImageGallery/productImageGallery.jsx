@@ -2,16 +2,16 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateStatus } from '../../redux/imageLightBoxStatus'
 import './style.css'
-const ProductImageGallery = ({ images }) => {
-	const [mainImage, setMainImage] = useState(images[0])
+const ProductImageGallery = ({ imageSrc }) => {
+	const [mainImage, setMainImage] = useState(imageSrc?.[0])
 	const dispatch = useDispatch()
 	const status = useSelector(state => state.imageLightBoxStatus.status)
 
 	const handleToggleStatus = () => {
 		dispatch(updateStatus(!status))
 	}
-	const handleClick = (image, index) => {
-		setMainImage(image)
+	const handleClick = (imageSrc, index) => {
+		setMainImage(imageSrc)
 		console.log(index)
 	}
 	return (
@@ -23,7 +23,7 @@ const ProductImageGallery = ({ images }) => {
 				alt=''
 			/>
 			<div className='flex justify-center sm:justify-start gap-x-6 w-full'>
-				{images.map((el, index) => (
+				{imageSrc.map((el, index) => (
 					<img
 						className=' rounded-xl imageGallery-ImgArray cursor-pointer'
 						key={index}
