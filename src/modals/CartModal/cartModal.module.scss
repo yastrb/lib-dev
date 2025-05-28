@@ -26,7 +26,7 @@
 
 .cartModal {
     @include flexCol;
-    position: relative; // або static
+    position: static;
     z-index: 60;
     line-height: 1.4;
     background: #f1f1f1;
