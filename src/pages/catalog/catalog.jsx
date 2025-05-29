@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import IconBtn from '../../assets/icons/btnCatalogOpenMobileMenu.svg';
-import DropDownCatalogSort from '../../components/dropDownCatalogSort';
-import { useGetAllBooksQuery } from '../../redux/booksSlice';
-import styles from '../../style.js';
-import SelectedFilters from '././Components/SelectedFilters/index.js';
-import Cataloglist from './cataloglist.jsx';
-import FiltersMenu from './Sections/FilterMenu/index.js';
-import './styles.css';
+import { useEffect, useState } from 'react'
+import IconBtn from '../../assets/icons/btnCatalogOpenMobileMenu.svg'
+import DropDownCatalogSort from '../../components/dropDownCatalogSort'
+import { useGetAllBooksQuery } from '../../redux/booksSlice'
+import styles from '../../style.ts'
+import SelectedFilters from '././Components/SelectedFilters/index.js'
+import Cataloglist from './cataloglist.jsx'
+import FiltersMenu from './Sections/FilterMenu/index.js'
+import './styles.css'
 
 const Catalog = () => {
 	const [menuStatus, setMenuStatus] = useState(false);

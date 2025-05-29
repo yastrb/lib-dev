@@ -1,0 +1,11 @@
+@use 'react-responsive-tools' as *;
+
+
+.Author {
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

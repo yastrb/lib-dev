@@ -1,4 +1,4 @@
-import axios from '/node_modules/axios';
+import axios from '/node_modules/axios'
 
 const getBooks = async (content = {}) => {
   try {
@@ -14,7 +14,6 @@ const getBooks = async (content = {}) => {
         },
       }
     );
-	console.log("search books",response.data.content);
     return response.data.content; 
   } catch (error) {
     console.error('Error fetching books:', error);

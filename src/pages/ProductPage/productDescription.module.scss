@@ -1,0 +1,37 @@
+@import './mixins.scss';
+
+.descriptionWrapper {
+	position: relative;
+	width: 100%;
+	max-width: 40rem;
+	margin: 3.5rem auto 2.5rem;
+	padding: 0 0.75rem;
+}
+
+.descriptionContent {
+	font-weight: 400;
+	font-size: 1rem;
+	transition: all 0.5s;
+	overflow: hidden;
+}
+
+.fadeOverlay {
+	position: absolute;
+	bottom: 2.5rem;
+	left: 0;
+	right: 0;
+	height: 4rem;
+	background: linear-gradient(to top, white, transparent);
+}
+
+.toggleBtn {
+	margin-top: 1rem;
+	font-size: 1rem;
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+
+	img {
+		padding-left: 1.25rem;
+	}
+}

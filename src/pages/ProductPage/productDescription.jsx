@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import IconDown from './BtnIconDown.svg'
 import IconUp from './BtnIconUp.svg'
+import styles from  './productDescription.module.scss'
 const ProductDescription = ({ description }) => {
 	const [isExpanded, setIsExpanded] = useState(false)
 	const contentRef = useRef(null)
@@ -10,7 +11,6 @@ const ProductDescription = ({ description }) => {
 		if (contentRef.current) {
 			const totalHeight = contentRef.current.scrollHeight
 			if (totalHeight > 7 * 16) {
-				// 7rem = 7 * 16px
 				setShowButton(true)
 			} else {
 				setShowButton(false)
@@ -27,35 +27,30 @@ const ProductDescription = ({ description }) => {
 		setIsExpanded(!isExpanded)
 	}
 	return (
-		<div className='relative w-full max-w-2xl mt-14 px-3 mb-10 md:mb-36'>
-			<div
-				ref={contentRef}
-				style={{ height: contentHeight }}
-				className='w-full font-normal text-base transition-all duration-500 overflow-hidden'
-			>
-				<p>{description}</p>
-			</div>
-			{showButton && (
-				<>
-					<div
-						className={`absolute bottom-10 left-0 right-0 h-16 bg-gradient-to-t from-white ${
-							isExpanded ? 'hidden' : 'block'
-						}`}
-					></div>
-					<button className='text-base font-normal mt-4' onClick={handleToggle}>
-						{isExpanded ? (
-							<p className='flex'>
-								Згорнути <img className='pl-5' src={IconUp} alt='' />
-							</p>
-						) : (
-							<p className='flex'>
-								Читати все <img className='pl-5' src={IconDown} alt='' />
-							</p>
-						)}
-					</button>
-				</>
-			)}
-		</div>
+	<div className={styles.descriptionWrapper}>
+    <div
+      ref={contentRef}
+      style={{ height: contentHeight }}
+      className={styles.descriptionContent}>
+      <p>{description}</p>
+    </div>
+    {showButton && (
+      <>
+        {!isExpanded && <div className={styles.fadeOverlay}></div>}
+        <button className={styles.toggleBtn} onClick={handleToggle}>
+          {isExpanded ? (
+            <p>
+              Згорнути <img src={IconUp} alt='' />
+            </p>
+          ) : (
+            <p>
+              Читати все <img src={IconDown} alt='' />
+            </p>
+          )}
+        </button>
+      </>
+    )}
+  </div>
 	)
 }
 

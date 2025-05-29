@@ -1,0 +1,272 @@
+@use 'react-responsive-tools' as *;
+
+
+.RegistrationModal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+
+  .overLay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(45, 45, 45, 0.62);
+  }
+
+  .content {
+    position: relative;
+    padding: 24px 16px;
+    border-radius: 12px;
+    z-index: 101;
+    background-color: rgba(252, 251, 255, 1);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include for-md {
+      padding: 24px 102px 60px 102px;
+    }
+
+    .title {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 100%;
+      margin-bottom: 32px;
+
+      @include for-md {
+        font-size: 24px;
+        margin-bottom: 40px;
+      }
+    }
+
+    .input {
+      @include for-md {
+        width: 384px;
+      }
+    }
+
+    .errorText {
+      color: #ff4d4f;
+      font-size: 12px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .inputContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .passwordHint {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 100%;
+      color: rgba(118, 118, 118, 1);
+      padding: 4px 16px 0 16px;
+    }
+
+    .btnContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      padding: 32px 0;
+
+      .btnReg,
+      .btnLog {
+        width: 100%;
+        padding: 14px 0;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        border-radius: 12px;
+      }
+
+      .btnReg {
+        background-color: rgba(255, 217, 90, 1);
+
+        &.loading {
+          background-color: #FFE566;
+          cursor: wait;
+        }
+
+        &.success {
+          background-color: #52c41a;
+        }
+
+        &.error {
+          background-color: #ff4d4f;
+        }
+
+        &:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+      }
+
+      .btnLog {
+        border: 1px solid rgba(255, 217, 90, 1);
+
+        &:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .alternativeContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+
+      .lineBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 24px;
+        padding: 8px 0px;
+
+        .line {
+          width: 100%;
+          height: 1px;
+          background-color: rgba(171, 171, 171, 1);
+        }
+
+        .alternative {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          color: rgba(118, 118, 118, 1);
+          white-space: nowrap;
+          padding: 0 12.5px;
+
+          @include for-md {
+            padding: 0 36px;
+          }
+        }
+      }
+
+      .googleBtn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    }
+
+    .BtnClose {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      cursor: pointer;
+      z-index: 102;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+
+
+    //CkeckBox
+    .CheckboxContainer {
+      margin: 16px 0;
+      position: relative;
+      padding: 10px;
+
+      .checkbox {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkboxLabel {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        font-size: 14px;
+        user-select: none;
+      }
+
+      .checkmark {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border: 2px solid #ABABAB;
+        border-radius: 4px;
+        transition: all 0.2s ease-in-out;
+
+        &::after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+
+      .checkbox:checked+.checkboxLabel .checkmark {
+        background-color: #FFD600;
+        border-color: #FFD600;
+
+        &::after {
+          display: block;
+        }
+      }
+
+      .text {
+        color: rgba(118, 118, 118, 1);
+        font-weight: 400;
+        font-size: 12px;
+      }
+
+      &.Error {
+        .checkmark {
+          border-color: #ff4d4f;
+        }
+
+        .text {
+          color: #ff4d4f;
+        }
+      }
+
+
+    }
+  }
+}
